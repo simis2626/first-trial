@@ -4,15 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongo1 = require('mongodb').MongoClient;
+
 
 
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var dbc = require('./routes/dbconnect');
-//this is a comment
-//this is a newer comment
+
 
 
 var app = express();
