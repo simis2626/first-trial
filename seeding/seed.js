@@ -24,7 +24,8 @@ var mongo1 = require("mongodb").MongoClient;
 var db = require("mongodb").db;
 
 mongo1.connect('mongodb://10.3.0.47:27017/nodehtml', function(err, db){
-
+    console.log("err");
+    if err !== null return;
 
     var insertJSON = [];
 
