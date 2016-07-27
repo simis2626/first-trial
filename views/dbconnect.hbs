@@ -1,2 +1,27 @@
 <h1>{{title}}</h1>
 <p>database connected</p>
+<br>
+<div class="panel panel-info">
+<table class="table">
+    <tr>
+    <th>Name</th><th>Data</th>
+    </tr>
+{{#each DB}}
+<tr>
+    <td>{{name}}</td>
+    <td>{{code}}</td>
+</tr>
+
+{{/each}}
+
+</table>
+</div>
+
+{{#each imgs}}
+
+
+       <img class="well" width="300px" src={{code}}>
+
+
+
+{{/each}}
