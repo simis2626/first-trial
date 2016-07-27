@@ -14,24 +14,22 @@ function doTheLoop(jsonArray, db, funcCallback){
 
     }
 
-    setTimeout(funcCallback() ,2000);
-
+    funcCallback();
 
 }
 
 
 var mongo1 = require("mongodb").MongoClient;
-var db = require("mongodb").db;
 
-mongo1.connect('mongodb://10.3.0.47:27017/nodehtml', function(err, db){
-    console.log("err");
-    if err !== null return;
 
+mongo1.connect('mongodb://localhost:27017/nodehtml', function(err, db){
+    console.log(err);
+   
     var insertJSON = [];
 
     doTheLoop(insertJSON, db, function (){
 
-        db.collection('html').insertMany(insertJSON, function(db){
+        db.collection('html').insertMany(insertJSON, function(){
 
             db.close();
             console.log("closed");
