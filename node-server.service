@@ -1,0 +1,14 @@
+[Unit]
+Description=node-server basic app
+
+[Service]
+ExecStart=/root/first-trial/bin/www
+Restart=always
+User=root
+Group=root
+Environment=PATH=/usr/bin:/usr/local/bin
+WorkingDirectory=/root/first-trial
+
+[Install]
+WantedBy=multi-user.target
+
