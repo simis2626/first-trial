@@ -1,5 +1,19 @@
-<h1>{{title}}</h1>
+<div class="container"><h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+    <span>
+<form name="dbsearch" class="form" action="/dbstart" method="get">
+<button class="button" type="submit">Click Here</button>
+</form>
 
-<button class="button"></button>
-<a href="/dbstart">This goes to the DB</a>
+    <form name="files2" action="/upload" method="post" class="form" id="files" enctype="multipart/form-data">
+        <input type="file" id="data" name="data2">
+
+
+
+       <button class="button" type="submit">Submit</button>
+    </form>
+</span>
+
+
+
+</div>
