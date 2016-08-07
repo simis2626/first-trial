@@ -23,7 +23,7 @@ var buffer1 = Buffer.from(req.file.buffer);
 
 console.log(buffer1);
 
-fs.createReadStream(buffer1).pipe(gridfs.openUploadStream(req.file.originalname)).on('finish', function(){
+buffer1.toJSON().pipe(gridfs.openUploadStream(req.file.originalname).on('finish', function(){
 
 
  res.render('index',{title:'Upload Successful'});
