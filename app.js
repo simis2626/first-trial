@@ -11,9 +11,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var dbc = require('./routes/dbconnect');
 var upload = require ('./routes/upload');
 
+var dbc = require('./routes/dbconnect');
+var gridfslist = require('./routes/gridfslist');
 
 var app = express();
 
@@ -33,6 +34,8 @@ app.use('/dbstart', dbc);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/upload',upload);
+app.use('/gridfslist',gridfslist);
+
 
 
 // catch 404 and forward to error handler

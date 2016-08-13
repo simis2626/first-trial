@@ -27,7 +27,7 @@ console.log(req.file);
 streamer.createReadStream(req.file.buffer).pipe(gridfs.openUploadStream(req.file.originalname).on('finish', function(){
 
 
- res.render('index',{title:'Upload Successful'});
+ res.render('index',{title:'Upload Successful',filename:req.file.originalname});
 }));});});
 
 

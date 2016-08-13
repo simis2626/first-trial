@@ -1,0 +1,27 @@
+
+<div class="container">
+
+<div class="row">
+    <div class="col-md-12"><h1>{{title}}</h1>
+
+<br></div></div>
+
+<div class="row"><div class="panel panel-info">
+
+    <table class="table">
+        <tr>
+            <th>FileName</th><th>Load</th>
+        </tr>
+        {{#each DB}}
+            <tr>
+
+                <td>{{filename}}</td>
+                <td><a href="/get/"{{_id}} class="btn btn-default">Request File</a></td>
+            </tr>
+
+        {{/each}}
+
+    </table>
+
+</div></<div>
+</div>
