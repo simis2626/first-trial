@@ -1,19 +1,36 @@
-<div class="container"><h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-    <span>
-<form name="dbsearch" class="form" action="/dbstart" method="get">
-<button class="button" type="submit">Click Here</button>
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{title}}</h1>
+        </div>
+    </div>
 
-    <form name="files2" action="/upload" method="post" class="form" id="files" enctype="multipart/form-data">
-        <input type="file" id="data" name="data2">
+    <div class="row">
+        <div class="col-md-12">
+            <p>Welcome to {{title}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form name="dbsearch" action="/dbstart" method="get">
+                <button class="btn btn-default" type="submit">List DB Items</button>
+            </form>
+        </div>
+    </div>
+    <div class="row"><br><br></div>
+    <div class="row">
+        <div class="form-group">
+            <form name="files2" action="/upload" method="post" class="form" id="files" enctype="multipart/form-data">
+                <div class="col-md-3"><input type="file" class="btn btn-default" width="100%" id="data" name="data2">
+                </div>
+                <div class="col-md-2>">
 
+                    <button class="btn btn-primary" type="submit">Upload Files</button>
+                </div>
+            </form>
+        </div>
 
-
-       <button class="button" type="submit">Submit</button>
-    </form>
-</span>
-
+    </div>
 
 
 </div>

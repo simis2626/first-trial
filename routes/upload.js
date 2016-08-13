@@ -5,6 +5,7 @@ var mongo2 = require('mongodb');
 var fs = require ('fs');
 var multa = require('multer');
 var multa1 = multa({inMemory:true});
+var streamer = require('streamifier');
 
 
 /* Connect to db. */
@@ -19,21 +20,15 @@ mongo1.connect(url, function(err, db) {
 //console.log(err);
 
  var gridfs = new mongo2.GridFSBucket(db);
-var buffer1 = Buffer.from(req.file.buffer);
 
-console.log(buffer1);
 
-buffer1.toJSON().pipe(gridfs.openUploadStream(req.file.originalname).on('finish', function(){
+console.log(req.file);
+
+streamer.createReadStream(req.file.buffer).pipe(gridfs.openUploadStream(req.file.originalname).on('finish', function(){
 
 
  res.render('index',{title:'Upload Successful'});
-});
-
-
-
-
-
-})});
+}));});});
 
 
 
