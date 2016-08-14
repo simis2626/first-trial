@@ -5,6 +5,29 @@
     <div class="col-md-12"><h1>{{title}}</h1>
 
 <br></div></div>
+    <div class="row">
+        <div class="col-md-7"></div>
+        <div class="col-md-5">
+            <script>
+                if ({{filename}}){
+                    document.write( Successful <small> Saved {{filename}})
+                }
+            </script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group"><div class="col-md-7"></div>
+            <form name="files2" action="/upload" method="post" class="form" id="files" enctype="multipart/form-data">
+                <div class="col-md-3">Upload Files:<br><input type="file" width="100%" id="data" name="data2">
+                </div>
+                <div class="col-md-2>"><br>
+
+                    <button class="btn btn-primary" type="submit">Upload Files</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 
 <div class="row"><div class="panel panel-info">
 
@@ -17,6 +40,7 @@
 
                 <td>{{filename}}</td>
                 <td><a href={{_id}} class="btn btn-default">Request File</a></td>
+                <td><a href={{_idDelete}} class="btn btn-warning">Delete File</a></td>
             </tr>
 
         {{/each}}
