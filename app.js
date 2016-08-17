@@ -36,6 +36,14 @@ app.use('/users', users);
 app.use('/upload',upload);
 app.use('/gridfslist',gridfslist);
 
+app.get('/app',function(req,res){
+
+  res.sendFile(__dirname + '/public/app.html');
+
+
+});
+app.use('/node_modules', express.static(__dirname +'/node_modules'));
+
 
 
 // catch 404 and forward to error handler
