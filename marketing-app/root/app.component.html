@@ -18,13 +18,13 @@
     <div class="row"> <!-- Selector -->
         <div class="col-md-1"></div>
         <div class="col-md-8">
-            <button #marketing name="marketing" class="{{selectedHeader[0]}}" (click)="headingClicked(marketing.name)">
+            <button #marketing name="marketing" class="{{headerButtons[0]}}" (click)="headingClicked(marketing.name)">
                 Marketing
             </button>
-            <button #consultant name="consultant" class="{{selectedHeader[1]}}"
+            <button #consultant name="consultant" class="{{headerButtons[1]}}"
                     (click)="headingClicked(consultant.name)">Consultant Report
             </button>
-            <button #seeker name="seeker" class="{{selectedHeader[2]}}" (click)="headingClicked(seeker.name)">Job
+            <button #seeker name="seeker" class="{{headerButtons[2]}}" (click)="headingClicked(seeker.name)">Job
                 Seeker
             </button>
         </div>

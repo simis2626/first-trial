@@ -1,17 +1,20 @@
 /**
  * Created by andromeda on 18/08/2016.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 @Component({
     selector: 'root-component',
     templateUrl: 'app/root/app.component.html'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
     selectedHeader;
     activeClass = "btn btn-primary active";
     inactiveClass = "btn btn-default";
-    headerButtons;
+    public headerButtons;
+
+
+
 
     ngOnInit() {
         this.headerButtons = [
