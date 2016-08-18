@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <div class="row"> <!-- Title Row -->
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <h2>ORS Marketing Tracker
+                <small> for Alisha Robertson-Ryan</small>
+            </h2>
+        </div>
+
+    </div>
+    <div class="row"><!-- Status -->
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <p *ngIf="status">This is a status</p>
+        </div>
+
+    </div>
+    <div class="row"> <!-- Selector -->
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <button #marketing name="marketing" class="{{selectedHeader[0]}}" (click)="headingClicked(marketing.name)">
+                Marketing
+            </button>
+            <button #consultant name="consultant" class="{{selectedHeader[1]}}"
+                    (click)="headingClicked(consultant.name)">Consultant Report
+            </button>
+            <button #seeker name="seeker" class="{{selectedHeader[2]}}" (click)="headingClicked(seeker.name)">Job
+                Seeker
+            </button>
+        </div>
+        <!-- Gap -->
+        <div class="col-md-12"></div>
+
+
+    </div>
+
+
+</div>
