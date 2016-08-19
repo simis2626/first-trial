@@ -10,3 +10,7 @@ a {
 small {
   color: grey;
 }
+
+.modal.in {
+    display: inherit;
+}

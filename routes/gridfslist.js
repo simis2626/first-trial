@@ -97,7 +97,7 @@ router.get('/', function(req, res, next) {
                 console.log("Connected Successfully");
 
                 db.collection('fs.files').find().toArray(function(err, docs){
-                        for( var yt=0; yt<docs.length; yt++){
+                    for (var yt = 0; yt < docs.length; yt++) {
                                 docs[yt]._idDelete = "/gridfslist/delete/" + docs[yt]._id;
                                 docs[yt]._id = "/gridfslist/get/" + docs[yt]._id;
 

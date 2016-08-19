@@ -1,4 +1,6 @@
-<div class="container-fluid">
+<login #loginModal id="login"></login>
+<div *ngIf="loginModal.authStatus" class="container-fluid">
+
     <div class="row"> <!-- Title Row -->
         <div class="col-md-1"></div>
         <div class="col-md-8">

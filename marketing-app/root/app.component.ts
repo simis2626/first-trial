@@ -18,7 +18,7 @@ export class AppComponent {
     public appTitle = "ORS Marketing Tracker";
     public subTitle = "for Alisha Robertson-Ryan";
     public activeButton;
-
+    private authState: boolean = false;
 
 
 
@@ -61,6 +61,7 @@ export class AppComponent {
 
 
     }
+
 
 }
 

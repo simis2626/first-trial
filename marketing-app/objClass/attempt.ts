@@ -10,6 +10,7 @@ export class Attempt {
     followUpRequired: boolean;
     followUpDate: string;
     dateAdded: string;
-    clientsReferred: string[]
+    clientsReferred: string;
+    employerId: string;
 
 }

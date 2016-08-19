@@ -1,20 +1,20 @@
 /**
- * Created by Andromeda on 19/08/2016.
+ * Created by andromeda on 19/08/2016.
  */
+
 import {Injectable} from '@angular/core';
-import {Employer} from '../objClass/employer';
+import {Consultant} from '../objClass/consultant';
 import {Http, Response} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
 
 
 @Injectable()
-export class EmployerProvider {
+export class ConsultantProvider {
 
     constructor(private http: Http) {
     }
 
-    private employersUrl = '/api/employers';
-
+    private consultantsUrl = '/api/consultants';
 
 
     private extractData(res: Response) {
@@ -23,10 +23,13 @@ export class EmployerProvider {
     }
 
 
-    public getEmployers(): Observable<Employer[]> {
+    public getConsultants(): Observable<Consultant[]> {
+
+
+
 
         //noinspection TypeScriptUnresolvedFunction
-        return this.http.get(this.employersUrl).map(this.extractData);
+        return this.http.get(this.consultantsUrl).map(this.extractData);
 
 
     }

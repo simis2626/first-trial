@@ -9,12 +9,12 @@ import {Observable}     from 'rxjs/Observable';
 
 
 @Injectable()
-export class EmployerProvider {
+export class AttemptProvider {
 
     constructor(private http: Http) {
     }
 
-    private attemptsUrl = '/api/attempt';
+    private attemptsUrl = '/api/attempts';
     customUrl: string
 
 
@@ -29,6 +29,7 @@ export class EmployerProvider {
         this.customUrl = this.attemptsUrl + '/' + employerID;
 
 
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.customUrl).map(this.extractData);
 
 
