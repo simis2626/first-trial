@@ -1,8 +1,9 @@
 /**
- * Created by Andromeda on 19/08/2016.
+ * Created by andromeda on 19/08/2016.
  */
+
 import {Injectable} from '@angular/core';
-import {Employer} from '../objClass/employer';
+import {Attempt} from '../objClass/attempt';
 import {Http, Response} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
 
@@ -13,8 +14,8 @@ export class EmployerProvider {
     constructor(private http: Http) {
     }
 
-    private employersUrl = '/api/employers';
-
+    private attemptsUrl = '/api/attempt';
+    customUrl: string
 
 
     private extractData(res: Response) {
@@ -23,9 +24,12 @@ export class EmployerProvider {
     }
 
 
-    public getEmployers(): Observable<Employer[]> {
+    public getAttempts(employerID: string): Observable<Attempt[]> {
 
-        return this.http.get(this.employersUrl).map(this.extractData);
+        this.customUrl = this.attemptsUrl + '/' + employerID;
+
+
+        return this.http.get(this.customUrl).map(this.extractData);
 
 
     }
