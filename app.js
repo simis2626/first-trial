@@ -12,7 +12,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var upload = require ('./routes/upload');
-
+var api = require('./routes/api');
 var dbc = require('./routes/dbconnect');
 var gridfslist = require('./routes/gridfslist');
 
@@ -35,6 +35,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/upload',upload);
 app.use('/gridfslist',gridfslist);
+app.use('/api', api);
 
 app.get('/marketing-app', function (req, res) {
 

@@ -2,7 +2,7 @@
  * Created by Andromeda on 19/08/2016.
  */
 export class Employer {
-    _id: number;
+    _id: string;
     phoneNumber: string;
     contactPerson: {name: string; notes: string};
     address: string;

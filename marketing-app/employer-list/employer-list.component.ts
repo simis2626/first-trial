@@ -21,7 +21,8 @@ export class EmployerList implements OnInit {
 
     getEmployers() {
 
-        this.employerProvider.getEmployers().then(employers => this.employers = employers);
+        this.employerProvider.getEmployers()
+            .subscribe(employers => this.employers = employers);
 
 
     }

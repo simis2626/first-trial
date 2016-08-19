@@ -2,6 +2,9 @@
  * Created by andromeda on 18/08/2016.
  */
 import {Component} from '@angular/core';
+import '../services/rxjs-operators';
+
+
 @Component({
     selector: 'root-component',
     templateUrl: 'app/root/app.component.html'
