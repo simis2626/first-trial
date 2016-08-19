@@ -2,8 +2,8 @@
  * Created by Andromeda on 19/08/2016.
  */
 import {Component, Input, OnInit} from '@angular/core';
-import {Employer} from 'marketing-app/objClass/employer';
-import {EmployerProvider} from 'marketing-app/services/employer.service';
+import {Employer} from '../objClass/employer';
+import {EmployerProvider} from '../services/employer.service';
 
 
 @Component(

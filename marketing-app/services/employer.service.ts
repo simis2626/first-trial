@@ -2,7 +2,7 @@
  * Created by Andromeda on 19/08/2016.
  */
 import {Injectable} from '@angular/core';
-import {Employer} from 'marketing-app/objClass/employer';
+import {Employer} from '../objClass/employer';
 
 @Injectable()
 export class EmployerProvider {

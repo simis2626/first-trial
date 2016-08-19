@@ -10,7 +10,7 @@ import {Employer} from "../objClass/employer";
 export class EmployerComponent {
 
     @Input()
-    employer: Employer;
+    public employer: Employer;
 
 
 }
