@@ -12,7 +12,8 @@ export class AppComponent {
     activeClass = "btn btn-primary active";
     inactiveClass = "btn btn-default";
     public headerButtons;
-
+    public appTitle = "ORS Marketing Tracker";
+    public subTitle = "for Alisha Robertson-Ryan";
 
 
 
