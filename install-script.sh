@@ -1,6 +1,6 @@
 #!/bin/bash
 systemctl stop node-server
-rm -r *
+rm -r first-trial
 echo -n "Enter the branch name > "
 read text
 git clone --branch $text https://github.com/simis2626/first-trial.git

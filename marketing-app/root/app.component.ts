@@ -14,6 +14,8 @@ export class AppComponent {
     public headerButtons;
     public appTitle = "ORS Marketing Tracker";
     public subTitle = "for Alisha Robertson-Ryan";
+    public activeButton;
+
 
 
 
@@ -22,6 +24,7 @@ export class AppComponent {
             this.activeClass, this.inactiveClass, this.inactiveClass
 
         ];
+        this.activeButton = 1;
     }
 
 
@@ -35,18 +38,21 @@ export class AppComponent {
                     this.activeClass, this.inactiveClass, this.inactiveClass
 
                 ];
+                this.activeButton = 1;
                 break;
             case "consultant":
                 this.headerButtons = [
                     this.inactiveClass, this.activeClass, this.inactiveClass
 
                 ];
+                this.activeButton = 2;
                 break;
             case "seeker":
                 this.headerButtons = [
                     this.inactiveClass, this.inactiveClass, this.activeClass
 
                 ];
+                this.activeButton = 3;
                 break;
         }
 

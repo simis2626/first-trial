@@ -28,7 +28,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.use('/dbstart', dbc);
 app.use('/', routes);
@@ -42,6 +42,7 @@ app.get('/marketing-app', function (req, res) {
 
 
 });
+
 app.use('/systemjs.config.js', function (req, res) {
 
   res.sendFile(__dirname + '/systemjs.config.js');

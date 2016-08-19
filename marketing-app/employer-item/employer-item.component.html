@@ -1,6 +1,84 @@
-<div class="container-fluid">
-    <div class="col-md-12">
-        <label>Employer:</label>
-        <p>{{this.employer?.name}}</p>
+<li class="list-group-item container-fluid"><a style="color: black" data-toggle="collapse"
+                                               href="#showContent{{employer._id}}">
+    <div class="col-md-6 pull-left">
+
+        <dl class="dl-horizontal pull-left">
+            <div>
+                <small>Employer:</small>
+            </div>
+            <div class="text-capitalize">{{employer.name}}</div>
+            <div>
+                <small>Accessible by PT</small>
+                <span *ngIf="employer.publicTransport" class="glyphicon glyphicon-ok"></span>
+                <span *ngIf="!employer.publicTransport" class="glyphicon glyphicon-remove"></span>
+            </div>
+        </dl>
+    </div>
+    <div class="col-md-6 pull-left">
+        <dl class="dl-horizontal pull-left">
+            <div>
+                <small>Positions Required:</small>
+            </div>
+            <div class="text-capitalize">{{employer.positionsNeeded}}</div>
+            <div>
+                <small>Contactable</small>
+                <span *ngIf="employer.doNotContact" class="glyphicon glyphicon-remove"></span>
+                <span *ngIf="!employer.doNotContact" class="glyphicon glyphicon-ok"></span>
+
+            </div>
+        </dl>
+
+
+    </div>
+</a>
+</li>
+
+
+<div id="showContent{{employer._id}}" class="collapse">
+    <div class="well">
+
+        <div class="row">
+            <div class="col-md-12"><span class="pull-left"><div><small>Address:</small></div>
+                    <div class="text-capitalize">{{employer.address}}</div></span><span class="pull-right"><button
+                    class="btn btn-default">Select</button> </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <small>Contact Person:</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-capitalize">{{employer.contactPerson.name}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <small>Phone Number:</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{{employer.phoneNumber}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <small>Notes:</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12"><p>{{employer.notes}}</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <small>Date Added:</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">{{employer.dateAdded}}</div>
+        </div>
+
+
     </div>
 </div>
+
+
