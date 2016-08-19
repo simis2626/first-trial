@@ -17,14 +17,11 @@
     <div class="col-md-6 pull-left">
         <dl class="dl-horizontal pull-left">
             <div>
-                <small>Positions Required:</small>
+                <small>Roles within Company:</small>
             </div>
             <div class="text-capitalize">{{employer.positionsNeeded}}</div>
-            <div>
-                <small>Contactable</small>
-                <span *ngIf="employer.doNotContact" class="glyphicon glyphicon-remove"></span>
-                <span *ngIf="!employer.doNotContact" class="glyphicon glyphicon-ok"></span>
-
+            <div *ngIf="employer.doNotContact">
+                Do Not Call
             </div>
         </dl>
 
