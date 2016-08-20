@@ -1,7 +1,7 @@
 /**
  * Created by andromeda on 19/08/2016.
  */
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Consultant} from '../objClass/consultant';
 import {ConsultantProvider} from "../services/consultant.service";
 
@@ -22,8 +22,8 @@ export class LoginComponent implements OnInit {
     public status: boolean = false;
     private idSelected: string;
     public classModal: string;
-    public authStatus: boolean;
-
+    public authStatus: boolean = false;
+    public triedSubmit: boolean = false;
 
     getConsultants() {
 
@@ -53,14 +53,19 @@ export class LoginComponent implements OnInit {
         for (let i = 0; i < this.consultants.length; i++) {
             if (this.consultants[i]._id == this.idSelected && this.consultants[i].password == pwdCheck) {
                 console.log("success");
-                this.classModal = "modal fade";
+                this.selectedConsultant = this.consultants[i];
+                this.triedSubmit = true;
                 this.authStatus = true;
-                return true;
+                setTimeout(()=> {
+                    this.classModal = "modal fade";
+                    return true
+                }, 2000);
             }
 
         }
 
         console.log("failure");
+        this.triedSubmit = true;
         return false;
     }
 
