@@ -4,7 +4,7 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Attempt} from '../objClass/attempt';
 import {AttemptProvider} from '../services/attempt.service';
 import {Employer} from "../objClass/employer";
@@ -17,7 +17,7 @@ import {EmployerProvider} from "../services/employer.service";
         templateUrl: 'app/marketing-list/marketing-list.component.html',
         providers: [AttemptProvider, EmployerProvider],
     })
-export class AttemptList implements OnInit {
+export class AttemptList implements OnInit, OnChanges {
     constructor(private attemptProvider: AttemptProvider, private employerProvider: EmployerProvider) {
 
 
@@ -33,10 +33,21 @@ export class AttemptList implements OnInit {
         setTimeout(()=> {
             console.log(this.employer);
             this.getAttempts();
-        }, 5000)
+        }, 2000)
 
 
     }
+
+    ngOnChanges() {
+        this.employer = this.employerProvider.getSelectedEmployer();
+        setTimeout(()=> {
+            console.log(this.employer);
+            this.getAttempts();
+        }, 2000)
+
+
+    }
+
 
 
     private selectedAttempt: Attempt;
