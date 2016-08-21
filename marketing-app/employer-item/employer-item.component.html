@@ -1,5 +1,7 @@
-<li class="list-group-item container-fluid"><a style="color: black" data-toggle="collapse"
-                                               href="#showContent{{employer._id}}">
+<a style="color: black" data-toggle="collapse"
+
+   href="#showContent{{employer._id}}">
+    <li class="list-group-item container-fluid">
     <div class="col-md-6 pull-left">
 
         <dl class="dl-horizontal pull-left">
@@ -27,8 +29,9 @@
 
 
     </div>
+
+    </li>
 </a>
-</li>
 
 
 <div id="showContent{{employer._id}}" class="collapse">
@@ -37,7 +40,7 @@
         <div class="row">
             <div class="col-md-12"><span class="pull-left"><div><small>Address:</small></div>
                     <div class="text-capitalize">{{employer.address}}</div></span><span class="pull-right"><button
-                    class="btn btn-default">Select</button> </span>
+                    class="btn btn-default" (click)="attemptsRequested()">Select</button> </span>
             </div>
         </div>
 

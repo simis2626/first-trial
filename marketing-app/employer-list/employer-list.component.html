@@ -3,9 +3,17 @@
 
     <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
         <ul class="list-group">
-            <employer *ngFor="let employer of employers" [employer]="employer"></employer>
+            <div [ngSwitch]="ready">
+            <span *ngSwitchCase="true"><employer *ngFor="let employer of employers" [employer]="employer"
+                                                 (employerSelectedEvent)="employerSelectedMethod(employer)"
+                                                 #emp{{employer._id}}></employer>
+            </span><span *ngSwitchDefault class="container-fluid center-block"><img src="/public/loading.gif"></span>
+
+            </div>
         </ul>
     </div>
 
 
 </div>
+
+<!---->

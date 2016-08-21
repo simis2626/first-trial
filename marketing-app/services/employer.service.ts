@@ -15,7 +15,7 @@ export class EmployerProvider {
 
     private employersUrl = '/api/employers';
 
-
+    static selectedEmployer: Employer;
 
     private extractData(res: Response) {
         let body = res.json();
@@ -31,5 +31,16 @@ export class EmployerProvider {
 
     }
 
+    public setEmployer(employer: Employer) {
+        EmployerProvider.selectedEmployer = employer;
+        console.log("Employer Set in Service");
+        console.log(EmployerProvider.selectedEmployer);
+    }
 
+    public getSelectedEmployer(): Employer {
+
+
+        return EmployerProvider.selectedEmployer;
+
+    }
 }

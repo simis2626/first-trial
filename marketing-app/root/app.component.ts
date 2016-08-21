@@ -1,8 +1,9 @@
 /**
  * Created by andromeda on 18/08/2016.
  */
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import '../services/rxjs-operators';
+import {Employer} from "../objClass/employer";
 
 
 @Component({
@@ -19,6 +20,9 @@ export class AppComponent {
     public subTitle = "for Alisha Robertson-Ryan";
     public activeButton;
     private authState: boolean = false;
+    public showMarketing: boolean;
+    private selectedEmployer: Employer;
+
 
 
 
@@ -28,7 +32,24 @@ export class AppComponent {
 
         ];
         this.activeButton = 1;
+        this.showMarketing = false;
     }
+
+    displayMarketingList(employer: Employer) {
+        this.showMarketing = true;
+        this.selectedEmployer = employer;
+
+
+    }
+
+    getEmployer() {
+
+        return this.selectedEmployer;
+    }
+
+
+
+
 
 
     headingClicked(inString: string) {

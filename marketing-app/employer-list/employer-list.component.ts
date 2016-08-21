@@ -1,7 +1,7 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {Employer} from '../objClass/employer';
 import {EmployerProvider} from '../services/employer.service';
 
@@ -16,9 +16,11 @@ export class EmployerList implements OnInit {
     constructor(private employerProvider: EmployerProvider) {
     }
 
-    selectedEmployer: Employer;
+    public selectedEmployer: Employer;
     employers: Employer[];
-
+    private ready: boolean = false;
+    public employerSelected: boolean = false;
+    @Output() employerSelectedEmit = new EventEmitter();
     getEmployers() {
 
         this.employerProvider.getEmployers()
@@ -30,10 +32,16 @@ export class EmployerList implements OnInit {
 
     ngOnInit() {
         this.getEmployers();
+        setTimeout(()=> this.ready = true, 300);
     }
 
-    employerSelected(employer: Employer) {
+    employerSelectedMethod(employer: Employer) {
+        console.log("EmployerSelected Fired");
+        console.log(employer)
+        this.employerSelected = true;
         this.selectedEmployer = employer;
+        this.employerSelectedEmit.emit(employer);
+
     }
 
 
