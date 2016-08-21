@@ -33,7 +33,7 @@ export class AttemptList implements OnInit, OnChanges {
         setTimeout(()=> {
             console.log(this.employer);
             this.getAttempts();
-        }, 2000)
+        }, 50)
 
 
     }
@@ -43,7 +43,7 @@ export class AttemptList implements OnInit, OnChanges {
         setTimeout(()=> {
             console.log(this.employer);
             this.getAttempts();
-        }, 2000)
+        }, 10)
 
 
     }
@@ -63,7 +63,7 @@ export class AttemptList implements OnInit, OnChanges {
                 setTimeout(()=>this.ready = true, 5000);
 
             }
-            , 1000)
+            , 50)
 
 
     }

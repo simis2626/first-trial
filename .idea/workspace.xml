@@ -7,6 +7,7 @@
     <list default="true" id="abcf2575-1bd7-431f-9ad5-b90c1862ab4c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts" afterPath="$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/marketing-app/root/app.component.ts" afterPath="$PROJECT_DIR$/marketing-app/root/app.component.ts" />
     </list>
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,16 +60,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="marketing-list.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="marketing-list.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+            <state relative-caret-position="510">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#47#93#0" expanded="false" />
                 <element signature="e#94#160#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/marketing-app/root/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,8 +144,8 @@
         <option value="$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.html" />
         <option value="$PROJECT_DIR$/marketing-app/root/app.component.html" />
         <option value="$PROJECT_DIR$/seeding/seed.js" />
-        <option value="$PROJECT_DIR$/marketing-app/root/app.component.ts" />
         <option value="$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts" />
+        <option value="$PROJECT_DIR$/marketing-app/root/app.component.ts" />
       </list>
     </option>
   </component>
@@ -456,7 +467,7 @@
       <workItem from="1471610542689" duration="9245000" />
       <workItem from="1471673439725" duration="2231000" />
       <workItem from="1471756432286" duration="15504000" />
-      <workItem from="1471773985506" duration="332000" />
+      <workItem from="1471773985506" duration="675000" />
     </task>
     <task id="LOCAL-00001" summary="working root component">
       <created>1471515079848</created>
@@ -542,11 +553,18 @@
       <option name="project" value="LOCAL" />
       <updated>1471774206871</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="working api connection to employers">
+      <created>1471774323623</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1471774323623</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70206000" />
+    <option name="totallyTimeSpent" value="70549000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="42" width="1680" height="830" extended-state="0" />
@@ -900,14 +918,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/marketing-app/root/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="39" column="37" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/marketing-app/root/app.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="531">
@@ -926,13 +936,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        <state relative-caret-position="510">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#47#93#0" expanded="false" />
             <element signature="e#94#160#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/marketing-app/root/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
