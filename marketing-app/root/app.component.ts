@@ -36,7 +36,8 @@ export class AppComponent {
     }
 
     displayMarketingList(employer: Employer) {
-        this.showMarketing = true;
+        this.showMarketing = false;
+        setTimeout(()=>this.showMarketing = true, 1000);
         this.selectedEmployer = employer;
 
 
