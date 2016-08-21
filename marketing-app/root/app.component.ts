@@ -21,7 +21,6 @@ export class AppComponent {
     public activeButton;
     private authState: boolean = false;
     public showMarketing: boolean;
-    private selectedEmployer: Employer;
 
 
 
@@ -36,21 +35,12 @@ export class AppComponent {
     }
 
     displayMarketingList(employer: Employer) {
-        this.showMarketing = false;
+        //this.showMarketing = false;
         setTimeout(()=>this.showMarketing = true, 3);
-        this.selectedEmployer = employer;
+
 
 
     }
-
-    getEmployer() {
-
-        return this.selectedEmployer;
-    }
-
-
-
-
 
 
     headingClicked(inString: string) {

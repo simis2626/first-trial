@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/marketing-app/root/app.component.ts" line="29" />
+    <bookmark url="file://$PROJECT_DIR$/marketing-app/root/app.component.ts" line="28" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abcf2575-1bd7-431f-9ad5-b90c1862ab4c" name="Default" comment="">
@@ -29,62 +29,7 @@
     <favorites_list name="test" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="employer-item.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/marketing-app/employer-item/employer-item.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="employer-item.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/marketing-app/employer-item/employer-item.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="marketing-list.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="marketing-list.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#47#93#0" expanded="false" />
-                <element signature="e#94#160#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/marketing-app/root/app.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,8 +89,8 @@
         <option value="$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.html" />
         <option value="$PROJECT_DIR$/marketing-app/root/app.component.html" />
         <option value="$PROJECT_DIR$/seeding/seed.js" />
-        <option value="$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts" />
         <option value="$PROJECT_DIR$/marketing-app/root/app.component.ts" />
+        <option value="$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts" />
       </list>
     </option>
   </component>
@@ -467,7 +412,7 @@
       <workItem from="1471610542689" duration="9245000" />
       <workItem from="1471673439725" duration="2231000" />
       <workItem from="1471756432286" duration="15504000" />
-      <workItem from="1471773985506" duration="675000" />
+      <workItem from="1471773985506" duration="2031000" />
     </task>
     <task id="LOCAL-00001" summary="working root component">
       <created>1471515079848</created>
@@ -560,18 +505,25 @@
       <option name="project" value="LOCAL" />
       <updated>1471774323623</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="working api connection to employers">
+      <created>1471774800233</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1471774800233</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70549000" />
+    <option name="totallyTimeSpent" value="71905000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="42" width="1680" height="830" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47136828" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47136828" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953104" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -894,22 +846,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/marketing-app/employer-item/employer-item.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/marketing-app/employer-item/employer-item.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/seeding/seed.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -926,30 +862,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.html">
+    <entry file="file://$PROJECT_DIR$/marketing-app/root/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="345">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="e#47#93#0" expanded="false" />
-            <element signature="e#94#160#0" expanded="true" />
+            <element signature="e#94#168#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/marketing-app/root/app.component.ts">
+    <entry file="file://$PROJECT_DIR$/marketing-app/marketing-list/marketing-list.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="40" column="41" selection-start-line="40" selection-start-column="41" selection-end-line="40" selection-end-column="41" />
+        <state relative-caret-position="60">
+          <caret line="4" column="47" selection-start-line="4" selection-start-column="47" selection-end-line="4" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/marketing-app/employer-item/employer-item.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/marketing-app/employer-item/employer-item.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
           <folding />
         </state>
       </provider>
