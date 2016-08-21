@@ -8,13 +8,15 @@
                     <h4 class="modal-title">Select a User</h4>
                 </div>
                 <div class="modal-body">
-                    <span *ngFor="let consultant of consultants"><button class="btn btn-default"
-                                                                         id="btn{{consultant._id}}"
-                                                                         (click)="setSelectedConsultant(consultant._id)">{{consultant.name}}</button> </span>
+                    <span myRemoveActive><button *ngFor="let consultant of consultants"
+                                                 myForceActive="btn{{consultant._id}}"
+                                                 id="btn{{consultant._id}}"
+                                                 (click)="setSelectedConsultant(consultant._id)">{{consultant.name}}</button> </span>
                     <div class="form-group"><label for="pwd">Enter password: </label>
                         <input #pwd id="pwd" class="form-control" type="password" (submit)="checkPassword(pwd.value)">
                     </div>
-                    <div *ngIf="(!authStatus) && triedSubmit" class="alert-warning" role="alert">Login Failed: check the
+                    <div *ngIf="(!authStatus) && triedSubmit" class="alert alert-warning" role="alert">Login Failed:
+                        check the
                         user selected and reenter password.
                     </div>
                     <div *ngIf="authStatus && triedSubmit" class="alert alert-success" role="alert">Login Succeeded:

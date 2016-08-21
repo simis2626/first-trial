@@ -11,11 +11,12 @@ import {EmployerList} from "../employer-list/employer-list.component";
 import {LoginComponent} from '../login/login.component';
 import {AttemptProvider} from '../services/attempt.service';
 import {ConsultantProvider} from '../services/consultant.service';
+import {ForceActiveDirective, RemoveActiveDirective} from '../directives/directives';
 
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule],
-    declarations: [AppComponent, EmployerComponent, EmployerList, LoginComponent],
+    declarations: [AppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, RemoveActiveDirective],
     bootstrap: [AppComponent],
     providers: [EmployerProvider, AttemptProvider, ConsultantProvider]
 })
