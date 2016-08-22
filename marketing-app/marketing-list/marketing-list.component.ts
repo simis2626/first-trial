@@ -14,8 +14,7 @@ import {EmployerProvider} from "../services/employer.service";
 @Component(
     {
         selector: 'marketing-list',
-        templateUrl: 'app/marketing-list/marketing-list.component.html',
-        providers: [AttemptProvider, EmployerProvider],
+        templateUrl: 'app/marketing-list/marketing-list.component.html'
     })
 export class AttemptList implements OnInit, OnChanges, DoCheck {
     constructor(private attemptProvider: AttemptProvider, private employerProvider: EmployerProvider) {
