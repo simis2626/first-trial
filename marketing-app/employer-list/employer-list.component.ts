@@ -9,8 +9,7 @@ import {EmployerProvider} from '../services/employer.service';
 @Component(
     {
         selector: 'employer-list',
-        templateUrl: 'app/employer-list/employer-list.component.html',
-        providers: [EmployerProvider]
+        templateUrl: 'app/employer-list/employer-list.component.html'
     })
 export class EmployerList implements OnInit {
     constructor(private employerProvider: EmployerProvider) {
