@@ -8,8 +8,7 @@ import {EmployerProvider} from '../services/employer.service';
 
 @Component({
     selector: 'employer',
-    templateUrl: 'app/employer-item/employer-item.component.html',
-    providers: [EmployerProvider],
+    templateUrl: 'app/employer-item/employer-item.component.html'
 })
 export class EmployerComponent implements OnInit {
 
