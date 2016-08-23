@@ -54,13 +54,15 @@ export class LoginComponent implements OnInit {
         for (let i = 0; i < this.consultants.length; i++) {
             if (this.consultants[i]._id == this.idSelected && this.consultants[i].password == pwdCheck) {
 
-                this.selectedConsultant = this.consultants[i];
-                this.triedSubmit = true;
-                this.authStatus = true;
+                
+                
                 setTimeout(()=> {
                     this.classModal = "modal fade";
                     return true;
-                }, 500);
+                }, 1500);
+               this.selectedConsultant = this.consultants[i];
+                this.triedSubmit = true;
+                this.authStatus = true; 
             }
 
         }
