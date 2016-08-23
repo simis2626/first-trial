@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
                 setTimeout(()=> {
                     this.classModal = "modal fade";
                     return true;
-                }, 1500);
+                }, 500);
             }
 
         }
