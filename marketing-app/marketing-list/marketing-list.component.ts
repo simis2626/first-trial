@@ -16,47 +16,27 @@ import {EmployerProvider} from "../services/employer.service";
         selector: 'marketing-list',
         templateUrl: 'app/marketing-list/marketing-list.component.html'
     })
-export class AttemptList implements OnInit, OnChanges, DoCheck {
+export class AttemptList implements OnInit {
     constructor(private attemptProvider: AttemptProvider, private employerProvider: EmployerProvider) {
-
+        employerProvider.selectedEmployer$.subscribe(
+            employer => {
+                this.ready = false;
+                this.employer = employer;
+                this.getAttempts();
+            }
+        );
 
     }
-
-    private employer: Employer;
-    private ready: boolean = false;
 
 
     ngOnInit() {
         this.employer = this.employerProvider.getSelectedEmployer();
-        setTimeout(()=> {
-            console.log(this.employer);
-            this.getAttempts();
-        }, 50)
-
-
-    }
-
-    ngDoCheck() {
-        if (this.employer != this.employerProvider.getSelectedEmployer()) {
-            this.ready = false;
-            this.ngOnChanges();
-        }
-
-
+        this.getAttempts();
     }
 
 
-    ngOnChanges() {
-        this.employer = this.employerProvider.getSelectedEmployer();
-        setTimeout(()=> {
-            console.log(this.employer);
-            this.getAttempts();
-        }, 10)
-
-
-    }
-
-
+    private employer: Employer;
+    private ready: boolean = false;
 
     private selectedAttempt: Attempt;
     private attempts: Attempt[];

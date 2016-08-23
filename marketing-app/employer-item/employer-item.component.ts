@@ -13,6 +13,14 @@ import {EmployerProvider} from '../services/employer.service';
 export class EmployerComponent implements OnInit {
 
     constructor(private employerProvider: EmployerProvider) {
+        employerProvider.selectedEmployer$.subscribe(
+            employer=> {
+                if (employer != this.employer) {
+                    document.getElementById('anchor' + this.employer._id).style.backgroundColor = "initial";
+                }
+
+            }
+        )
     }
 
     @Input()
@@ -25,10 +33,9 @@ export class EmployerComponent implements OnInit {
     }
 
     attemptsRequested() {
-        console.log("AttemptsRequested")
-        this.employerSelectedEvent.emit(this.employer);
-        this.employerProvider.setEmployer(this.employer);
-
+        console.log("AttemptsRequested");
+        this.employerProvider.setSelectedEmployer(this.employer);
+        document.getElementById('anchor' + this.employer._id).style.backgroundColor = "LightCyan";
 
     }
 

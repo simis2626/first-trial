@@ -5,7 +5,7 @@
         <ul class="list-group" [ngSwitch]="ready">
             <span *ngSwitchCase="true">
             <attempt *ngFor="let attempt of attempts" [attempt]="attempt"></attempt></span>
-            <div class="container-fluid center-block" *ngSwitchDefault><img src="/public/loading.gif"></div>
+            <div class="container center-block" *ngSwitchDefault><img src="/public/loading.gif"></div>
         </ul>
     </div>
 

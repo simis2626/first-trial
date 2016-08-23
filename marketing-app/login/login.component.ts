@@ -6,6 +6,7 @@ import {Consultant} from '../objClass/consultant';
 import {ConsultantProvider} from "../services/consultant.service";
 
 
+
 @Component({
     selector: 'login',
     templateUrl: 'app/login/login.component.html',
@@ -58,16 +59,33 @@ export class LoginComponent implements OnInit {
                 this.authStatus = true;
                 setTimeout(()=> {
                     this.classModal = "modal fade";
-                    return true
-                }, 2000);
+                    return true;
+                }, 1500);
             }
 
         }
 
         console.log("failure");
         this.triedSubmit = true;
+        document.getElementById('pwdinput').innerText = "";
+        setTimeout(()=>this.triedSubmit = false, 2000);
         return false;
+
+
+    }
+
+    onkPress(event) {
+        if (event.keyCode == 13) {
+
+            //noinspection TypeScriptUnresolvedVariable
+            var saus = <HTMLInputElement>(document.getElementById('pwdinput'));
+            this.checkPassword(saus.value);
+        }
     }
 
 
+    hide() {
+
+        this.classModal = "modal fade";
+    }
 }

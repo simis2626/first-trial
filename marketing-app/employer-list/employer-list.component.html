@@ -5,7 +5,7 @@
         <ul class="list-group">
             <div [ngSwitch]="ready">
             <span *ngSwitchCase="true"><employer *ngFor="let employer of employers" [employer]="employer"
-                                                 (employerSelectedEvent)="employerSelectedMethod(employer)"
+
                                                  #emp{{employer._id}}></employer>
             </span><span *ngSwitchDefault class="container-fluid center-block"><img src="/public/loading.gif"></span>
 

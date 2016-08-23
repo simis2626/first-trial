@@ -1,11 +1,11 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
-import {Injectable} from '@angular/core';
+import {Injectable, EventEmitter, Output} from '@angular/core';
 import {Employer} from '../objClass/employer';
 import {Http, Response} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
-
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class EmployerProvider {
@@ -13,9 +13,15 @@ export class EmployerProvider {
     constructor(private http: Http) {
     }
 
+    @Output() selectedEmployerChanged = new EventEmitter();
+
+
     private employersUrl = '/api/employers';
 
-    selectedEmployer: Employer;
+    private selectedEmployer = new Subject<Employer>();
+    private selectedEmployer2 = new Employer;
+    selectedEmployer$ = this.selectedEmployer.asObservable();
+
 
     private extractData(res: Response) {
         let body = res.json();
@@ -31,16 +37,13 @@ export class EmployerProvider {
 
     }
 
-    public setEmployer(employer: Employer) {
-        this.selectedEmployer = employer;
-        console.log("Employer Set in Service");
-        console.log(this.selectedEmployer);
+    setSelectedEmployer(employer: Employer) {
+        this.selectedEmployer.next(employer);
+        this.selectedEmployer2 = employer;
     }
 
-    public getSelectedEmployer(): Employer {
-
-
-        return this.selectedEmployer;
-
+    getSelectedEmployer() {
+        return this.selectedEmployer2;
     }
+
 }

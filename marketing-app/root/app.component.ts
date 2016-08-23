@@ -1,16 +1,28 @@
 /**
  * Created by andromeda on 18/08/2016.
  */
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component} from '@angular/core';
 import '../services/rxjs-operators';
 import {Employer} from "../objClass/employer";
-
+import {EmployerProvider} from "../services/employer.service"
 
 @Component({
     selector: 'root-component',
     templateUrl: 'app/root/app.component.html'
 })
 export class AppComponent {
+
+    constructor(employerProvider: EmployerProvider) {
+        employerProvider.selectedEmployer$.subscribe(
+            employer => {
+                this.showMarketing = true;
+            }
+        )
+
+    }
+
+
+
 
     selectedHeader;
     activeClass = "btn btn-primary active";
@@ -34,13 +46,6 @@ export class AppComponent {
         this.showMarketing = false;
     }
 
-    displayMarketingList(employer: Employer) {
-        //this.showMarketing = false;
-        setTimeout(()=>this.showMarketing = true, 3);
-
-
-
-    }
 
 
     headingClicked(inString: string) {

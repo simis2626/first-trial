@@ -34,14 +34,7 @@ export class EmployerList implements OnInit {
         setTimeout(()=> this.ready = true, 300);
     }
 
-    employerSelectedMethod(employer: Employer) {
-        console.log("EmployerSelected Fired");
-        console.log(employer)
-        this.employerSelected = true;
-        this.selectedEmployer = employer;
-        this.employerSelectedEmit.emit(employer);
 
-    }
 
 
 }
