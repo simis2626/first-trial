@@ -87,8 +87,8 @@ export class LoginComponent implements OnInit {
 
     }
 
-    onkPress(event) {
-        if (event.keyCode == 13) {
+    onkPress(event2) {
+        if (event2.keyCode == 13) {
 
             //noinspection TypeScriptUnresolvedVariable
             var saus = <HTMLInputElement>(document.getElementById('pwdinput'));
