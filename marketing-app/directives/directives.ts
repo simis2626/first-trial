@@ -26,7 +26,6 @@ export class ForceActiveDirective {
 
 @Directive({selector: '[myRemoveActive]'})
 export class RemoveActiveDirective {
-    @Input() selectedID: string;
 
     constructor(private el: ElementRef) {
 
