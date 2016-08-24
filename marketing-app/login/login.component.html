@@ -13,8 +13,7 @@
                                                  id="btn{{consultant._id}}"
                                                  (click)="setSelectedConsultant(consultant._id)">{{consultant.name}}</button> </span>
                     <div class="form-group"><label for="pwdinput">Enter password: </label>
-                        <input #pwd id="pwdinput" (keydown)="onkPress($event)" class="form-control" type="password"
-                               (submit)="checkPassword(pwd.value)">
+                        <input #pwd id="pwdinput" (keydown)="onkPress($event)" class="form-control" type="password">
                     </div>
                     <div *ngIf="showWarning" class="alert alert-warning" role="alert">Login Failed:
                         check the
@@ -25,7 +24,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="/" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="/" class="btn btn-default">Close</a>
                     <a class="btn btn-success" (click)="checkPassword(pwd.value)">Login</a>
                 </div>
             </div><!-- /.modal-content -->
