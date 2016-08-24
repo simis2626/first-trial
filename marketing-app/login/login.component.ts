@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
                this.selectedConsultant = this.consultants[i];
                 this.triedSubmit = true;
                 this.authStatus = true;
-                this.checkSuccesswarning();
+                this.checkSuccessWarning();
                 setTimeout(()=> {
                     this.classModal = "modal fade";
                     this.checkSuccessWarning();
