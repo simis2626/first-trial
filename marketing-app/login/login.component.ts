@@ -70,8 +70,9 @@ export class LoginComponent implements OnInit {
                 setTimeout(()=> {
                     this.classModal = "modal fade";
                     this.checkSuccessWarning();
-                    return true;
+                    
                 }, 1500);
+                return true;
             }
 
         }
