@@ -25,6 +25,11 @@ export class LoginComponent implements OnInit {
     public classModal: string;
     public authStatus: boolean = false;
     public triedSubmit: boolean = false;
+    public showSuccess: boolean;
+    public showWarning: boolean;
+
+
+
 
     getConsultants() {
 
@@ -39,7 +44,8 @@ export class LoginComponent implements OnInit {
         this.classModal = "modal fade in";
         this.getConsultants();
         this.authStatus = false;
-
+        this.showSuccess = false;
+        this.showWarning = false;
 
     }
 
@@ -56,13 +62,16 @@ export class LoginComponent implements OnInit {
 
                 
                 
-                setTimeout(()=> {
-                    this.classModal = "modal fade";
-                    return true;
-                }, 1500);
+                
                this.selectedConsultant = this.consultants[i];
                 this.triedSubmit = true;
-                this.authStatus = true; 
+                this.authStatus = true;
+                this.checkSuccesswarning();
+                setTimeout(()=> {
+                    this.classModal = "modal fade";
+                    this.checkSuccessWarning();
+                    return true;
+                }, 1500);
             }
 
         }
@@ -70,7 +79,8 @@ export class LoginComponent implements OnInit {
         console.log("failure");
         this.triedSubmit = true;
         document.getElementById('pwdinput').innerText = "";
-        setTimeout(()=>this.triedSubmit = false, 2000);
+        this.checkSuccessWarning();
+        setTimeout(()=> {this.triedSubmit=false; this.checkSuccessWarning();} , 2000);
         return false;
 
 
@@ -90,4 +100,13 @@ export class LoginComponent implements OnInit {
 
         this.classModal = "modal fade";
     }
+    
+    checkSuccessWarning(){
+     if(this.triedSubmit && this.authStatus){this.showSuccess = true;}
+     if(this.triedSubmit && (!this.authStatus)){this.showWarning = true;}   
+    if(!this.triedSubmit){this.showWarning = false; this.showSuccess = false;}
+        
+    
+    }
+    
 }
