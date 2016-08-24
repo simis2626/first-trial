@@ -16,11 +16,11 @@
                         <input #pwd id="pwdinput" (keydown)="onkPress($event)" class="form-control" type="password"
                                (submit)="checkPassword(pwd.value)">
                     </div>
-                    <div *ngIf="(!authStatus) && triedSubmit" class="alert alert-warning" role="alert">Login Failed:
+                    <div *ngIf="showWarning" class="alert alert-warning" role="alert">Login Failed:
                         check the
                         user selected and reenter password.
                     </div>
-                    <div *ngIf="authStatus && triedSubmit" class="alert alert-success" role="alert">Login Succeeded:
+                    <div *ngIf="showSuccess" class="alert alert-success" role="alert">Login Succeeded:
                         loading tracker.
                     </div>
                 </div>
