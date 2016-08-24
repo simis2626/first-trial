@@ -11,6 +11,7 @@ export class ForceActiveDirective {
     constructor(private el: ElementRef) {
         el.nativeElement.classList.add("btn");
         el.nativeElement.classList.add("btn-default");
+        
 
     }
 
@@ -32,10 +33,10 @@ export class RemoveActiveDirective {
 
     }
 
-    @HostListener('click') onClick($event) {
+    @HostListener('click') onClick() {
 
         for (let i = 0; i < this.el.nativeElement.children.length; i++) {
-            if (this.el.nativeElement.children[i].id != event.srcElement.id) {
+            if (this.el.nativeElement.children[i].id != this.selectedID) {
                 this.el.nativeElement.children[i].classList.remove("active");
             }
 
