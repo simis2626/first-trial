@@ -35,8 +35,8 @@ export class RemoveActiveDirective {
     @HostListener('click') onClick() {
 
         for (let i = 0; i < this.el.nativeElement.children.length; i++) {
-            if (false) {
-                this.el.nativeElement.children[i].classList.remove("active");
+            if (true) {
+                //this.el.nativeElement.children[i].classList.remove("active");
             }
 
 
