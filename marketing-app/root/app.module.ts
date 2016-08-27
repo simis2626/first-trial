@@ -18,12 +18,12 @@ import {AttemptComponent} from "../marketing-item/marketing-item.component";
 import {LoginComponent} from '../login/login.component';
 import {AttemptProvider} from '../services/attempt.service';
 import {ConsultantProvider} from '../services/consultant.service';
-import {ForceActiveDirective, RemoveActiveDirective} from '../directives/directives';
+import {ForceActiveDirective} from '../directives/directives';
 
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule],
-    declarations: [AppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, RemoveActiveDirective, AttemptComponent, AttemptList],
+    declarations: [AppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, AttemptComponent, AttemptList],
     bootstrap: [AppComponent],
     providers: [EmployerProvider, AttemptProvider, ConsultantProvider]
 })

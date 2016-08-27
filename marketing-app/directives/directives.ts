@@ -1,19 +1,33 @@
 /**
  * Created by andromeda on 21/08/2016.
  */
-import {Directive, ElementRef, HostListener, Input} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
+import {ConsultantProvider} from '../services/consultant.service';
+import {Consultant} from "../objClass/consultant";
 
 
 @Directive({selector: '[myForceActive]'})
-export class ForceActiveDirective {
+export class ForceActiveDirective implements OnInit {
     @Input('myForceActive') selectedID: string;
 
-    constructor(private el: ElementRef) {
+
+    private selectedConsultant: Consultant;
+
+    constructor(private el: ElementRef, consultantProvider: ConsultantProvider) {
         el.nativeElement.classList.add("btn");
         el.nativeElement.classList.add("btn-default");
-        
+        consultantProvider.selectedConsultant$.subscribe(
+            consultant => {
+                this.selectedConsultant = consultant;
+            }
+        );
 
     }
+
+    ngOnInit() {
+
+    }
+    
 
     @HostListener('click') onClick() {
         console.log("The selID is" + this.selectedID);
@@ -24,25 +38,3 @@ export class ForceActiveDirective {
 }
 
 
-@Directive({selector: '[myRemoveActive]'})
-export class RemoveActiveDirective {
-
-    constructor(private el: ElementRef) {
-
-
-    }
-
-    @HostListener('click') onClick() {
-
-        for (let i = 0; i < this.el.nativeElement.children.length; i++) {
-            if (true) {
-                //this.el.nativeElement.children[i].classList.remove("active");
-            }
-
-
-        }
-
-
-    }
-
-}

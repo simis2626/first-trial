@@ -1,6 +1,8 @@
 <div class="panel panel-default" *ngIf="employer">
     <div class="panel-heading">Marketing Activity for <span class="text-capitalize">{{employer.name}}</span></div>
-
+    <div class="panel-heading">
+        <button class="btn btn-primary" type="button">Add Marketing</button>
+    </div>
     <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
         <ul class="list-group" [ngSwitch]="ready">
             <span *ngSwitchCase="true">

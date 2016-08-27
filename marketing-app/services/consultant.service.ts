@@ -6,6 +6,7 @@ import {Injectable} from '@angular/core';
 import {Consultant} from '../objClass/consultant';
 import {Http, Response} from '@angular/http';
 import {Observable}     from 'rxjs/Observable';
+import {Subject} from 'rxjs/Subject';
 
 
 @Injectable()
@@ -13,6 +14,11 @@ export class ConsultantProvider {
 
     constructor(private http: Http) {
     }
+
+
+    private selectedConsultant = new Subject<Consultant>();
+    selectedConsultant$ = this.selectedConsultant.asObservable();
+
 
     private consultantsUrl = '/api/consultants';
 

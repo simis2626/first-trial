@@ -40,17 +40,17 @@
         <div class="row">
             <div class="col-md-12"><span class="pull-left"><div><small>Address:</small></div>
                     <div class="text-capitalize">{{employer.address}}</div></span><span class="pull-right"><button
-                    class="btn btn-default" (click)="attemptsRequested()">Select</button> </span>
+                    class="btn btn-default" (click)="attemptsRequested()">Show Marketing</button></span>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 "><span class="pull-left">
                 <small>Contact Person:</small>
+
+            <div class="text-capitalize">{{employer.contactPerson.name}}</div></span><span class="pull-right"><button
+                    class="btn btn-warning" onclick="window.alert('frogrs');">Remove Employer</button> </span>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-capitalize">{{employer.contactPerson.name}}</div>
         </div>
         <div class="row">
             <div class="col-md-12">

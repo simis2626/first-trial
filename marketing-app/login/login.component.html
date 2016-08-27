@@ -8,10 +8,10 @@
                     <h4 class="modal-title">Select a User</h4>
                 </div>
                 <div class="modal-body">
-                    <span myRemoveActive><button *ngFor="let consultant of consultants"
-                                                 myForceActive="btn{{consultant._id}}"
-                                                 id="btn{{consultant._id}}"
-                                                 (click)="setSelectedConsultant(consultant._id)">{{consultant.name}}</button> </span>
+                    <span><button *ngFor="let consultant of consultants"
+                                  myForceActive="btn{{consultant._id}}"
+                                  id="btn{{consultant._id}}"
+                                  (click)="setSelectedConsultant(consultant._id)">{{consultant.name}}</button> </span>
                     <div class="form-group"><label for="pwdinput">Enter password: </label>
                         <input #pwd id="pwdinput" (keydown)="onkPress($event)" class="form-control" type="password">
                     </div>

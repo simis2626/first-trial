@@ -35,7 +35,7 @@ export class EmployerComponent implements OnInit {
     attemptsRequested() {
         console.log("AttemptsRequested");
         this.employerProvider.setSelectedEmployer(this.employer);
-        document.getElementById('anchor' + this.employer._id).style.backgroundColor = "LightCyan";
+        document.getElementById('anchor' + this.employer._id).style.backgroundColor = 'LightCyan';
 
     }
 
