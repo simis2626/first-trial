@@ -51,6 +51,10 @@ export class LoginComponent implements OnInit {
 
     setSelectedConsultant(setID: string) {
         this.idSelected = setID;
+        for (let i = 0; i < this.consultants.length; i++) {
+            if (this.consultants[i]._id == this.idSelected)
+                this.selectedConsultant = this.consultants[i];
+        }
 
 
     }
@@ -59,11 +63,6 @@ export class LoginComponent implements OnInit {
     checkPassword(pwdCheck: string) {
         for (let i = 0; i < this.consultants.length; i++) {
             if (this.consultants[i]._id == this.idSelected && this.consultants[i].password == pwdCheck) {
-
-                
-                
-                
-               this.selectedConsultant = this.consultants[i];
                 this.triedSubmit = true;
                 this.authStatus = true;
                 this.checkSuccessWarning();
