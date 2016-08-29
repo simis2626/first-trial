@@ -40,8 +40,8 @@ export class EmployerComponent implements OnInit {
     }
     
     
-    delete(event){
-        this.employerProvider.deleteEmployer(event.id)
+    delete(employerID :string){
+        this.employerProvider.deleteEmployer(employerID);
         
     }
 
