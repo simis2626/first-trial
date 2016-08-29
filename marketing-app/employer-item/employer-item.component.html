@@ -49,7 +49,7 @@
                 <small>Contact Person:</small>
 
             <div class="text-capitalize">{{employer.contactPerson.name}}</div></span><span class="pull-right"><button
-                    class="btn btn-warning" (click)="delete($event)">Remove Employer</button> </span>
+                    class="btn btn-warning" (click)="delete({{employer._id}})">Remove Employer</button> </span>
             </div>
         </div>
         <div class="row">
