@@ -38,7 +38,12 @@ export class EmployerComponent implements OnInit {
         document.getElementById('anchor' + this.employer._id).style.backgroundColor = 'LightCyan';
 
     }
-
+    
+    
+    delete(event){
+        this.employerProvider.deleteEmployer(event.id)
+        
+    }
 
 
 }
