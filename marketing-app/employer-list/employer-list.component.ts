@@ -35,7 +35,7 @@ export class EmployerList implements OnInit {
     }
 
     onEmployerDelete(employerId: string) {
-        //  indexnum = this.employers.findIndex({_id:employerId});
+        //this.employers.findIndex())
 
 
     }
