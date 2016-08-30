@@ -19,13 +19,13 @@ router.get('/employers', function (req, res, next) {
     }
 );
 /* Connect to db. */
-router.get('/employers/delete/:employerId', function (req, res, next) {
+router.delete('/employers/delete/:employerId', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/marketing';
          var findObjectId = new mongoObject.ObjectID(req.params.employerId);
          var searchJSON = {"_id": findObjectId };
         mongo1.connect(url, function (err, db) {
             db.collection('employers').removeOne(searchJSON);
-                res.redirect('back');
+                res.sendStatus(200);
             })
         });
 
