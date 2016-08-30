@@ -23,6 +23,7 @@ router.delete('/employers/:employerId', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/marketing';
          var findObjectId = new mongoObject.ObjectID(req.params.employerId);
          var searchJSON = {"_id": findObjectId };
+    console.log('deleting ' + searchJSON.toString());
         mongo1.connect(url, function (err, db) {
             db.collection('employers').removeOne(searchJSON);
                 res.sendStatus(200);

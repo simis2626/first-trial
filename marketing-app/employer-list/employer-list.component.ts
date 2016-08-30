@@ -34,7 +34,11 @@ export class EmployerList implements OnInit {
         setTimeout(()=> this.ready = true, 300);
     }
 
+    onEmployerDelete(employerId: string) {
+        //  indexnum = this.employers.findIndex({_id:employerId});
 
+
+    }
 
 
 }

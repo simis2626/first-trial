@@ -25,6 +25,7 @@ export class EmployerProvider {
 
     private extractData(res: Response) {
         let body = res.json();
+        console.log(body);
         return body || {};
     }
 
@@ -46,9 +47,11 @@ export class EmployerProvider {
         return this.selectedEmployer2;
     }
 
-    deleteEmployer(employerId: string) {
+    deleteEmployer(employerId: string): Observable<Response> {
 
         console.log("deleted");
-        return this.http.delete(this.employersUrl + "/" + employerId);
+        let delEmp = this.employersUrl + "/" + employerId;
+        console.log(delEmp);
+        return this.http.delete(delEmp);
     }
 }

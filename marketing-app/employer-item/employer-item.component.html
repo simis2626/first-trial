@@ -1,8 +1,15 @@
 <a id="anchor{{employer._id}}" style="color: black" data-toggle="collapse"
 
    href="#showContent{{employer._id}}">
+    <div *ngIf="deleting" class="progress">
+        <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="80"
+             aria-valuemin="0" aria-valuemax="100" [style.width]=deletePercent>
+            <span class="sr-only"></span>
+        </div>
+    </div>
+
     <li class="list-group-item container-fluid">
-    <div class="col-md-6 pull-left">
+        <div *ngIf="!deleting" class="col-md-6 pull-left">
 
         <dl class="dl-horizontal pull-left">
             <div>
@@ -16,7 +23,7 @@
             </div>
         </dl>
     </div>
-    <div class="col-md-6 pull-left">
+        <div *ngIf="!deleting" class="col-md-6 pull-left">
         <dl class="dl-horizontal pull-left">
             <div>
                 <small>Roles within Company:</small>
@@ -34,7 +41,9 @@
 </a>
 
 
-<div id="showContent{{employer._id}}" class="collapse">
+<div id="showContent{{employer._id}}" *ngIf="!deleting" class="collapse">
+
+
     <div class="well">
 
         <div class="row">
