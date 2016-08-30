@@ -46,4 +46,9 @@ export class EmployerProvider {
         return this.selectedEmployer2;
     }
 
+    deleteEmployer(employerId: string) {
+
+        console.log("deleted");
+        return this.http.delete(this.employersUrl + "/" + employerId);
+    }
 }

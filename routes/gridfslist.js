@@ -35,7 +35,7 @@ router.get('/get/:id', function(req, res, next) {
         })});
 
 
-router.get('/delete/:id', function(req, res, next) {
+router.get('/deleteEmployer/:id', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/nodehtml';
 
         mongo1.connect(url, function(err, db) {
@@ -98,7 +98,7 @@ router.get('/', function(req, res, next) {
 
                 db.collection('fs.files').find().toArray(function(err, docs){
                     for (var yt = 0; yt < docs.length; yt++) {
-                                docs[yt]._idDelete = "/gridfslist/delete/" + docs[yt]._id;
+                        docs[yt]._idDelete = "/gridfslist/deleteEmployer/" + docs[yt]._id;
                                 docs[yt]._id = "/gridfslist/get/" + docs[yt]._id;
 
 

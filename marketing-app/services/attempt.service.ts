@@ -15,7 +15,7 @@ export class AttemptProvider {
     }
 
     private attemptsUrl = '/api/attempts';
-    customUrl: string
+    customUrl: string;
 
 
     private extractData(res: Response) {
