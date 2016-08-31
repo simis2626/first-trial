@@ -14,3 +14,15 @@ small {
 .modal.in {
     display: inherit;
 }
+
+employer {
+    /*transform: translate(0, 0);*/
+    transition: opacity 5000ms ease-out;
+    will-change: opacity;
+}
+
+employer.move {
+    /*transform: translate(0px, 500px);*/
+    opacity: 0.1 !important;
+
+}

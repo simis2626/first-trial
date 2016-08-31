@@ -12,8 +12,9 @@
             <div [ngSwitch]="ready">
             <span *ngSwitchCase="true"><employer *ngFor="let employer of employers" [employer]="employer"
                                                  (employerDeleted)="onEmployerDelete($event)"
-
-                                                 #emp{{employer._id}}></employer>
+                                                 [class.move]="getMoveClass(employer._id)"
+                                                 (applyMoveClass)="changeClass($event)"
+                                                 #emp{{employer._id}} id="employ{{employer._id}}"></employer>
             </span><span *ngSwitchDefault class="container-fluid center-block"><img src="/public/loading.gif"></span>
 
             </div>

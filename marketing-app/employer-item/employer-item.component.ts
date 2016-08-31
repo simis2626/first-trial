@@ -27,12 +27,15 @@ export class EmployerComponent implements OnInit {
     @Input()
     public employer: Employer;
     private deleting: boolean = false;
-    private deleteWidth: number = 20;
+    private deleteWidth: number = 2;
     public deletePercent: string;
+    private initcheck: boolean = false;
+
 
     @Output() employerSelectedEvent = new EventEmitter();
 
     @Output() employerDeleted = new EventEmitter();
+    @Output() applyMoveClass = new EventEmitter();
 
 
     ngOnInit() {
@@ -61,13 +64,20 @@ export class EmployerComponent implements OnInit {
                     clearInterval(timer2);
                 }
             });
-        }, 4500);
+        }, 12000);
 
         timer2 = setInterval(()=> {
-            this.deleteWidth += 20;
-            this.deletePercent = this.deleteWidth + "%";
+            if (this.deleteWidth < 100) {
+                this.deleteWidth += 2;
+                this.deletePercent = this.deleteWidth + "%";
+            } else {
+                if (!this.initcheck) {
+                    this.applyMoveClass.emit(this.employer._id);
+                    this.initcheck = true;
+                }
+            }
             console.log(this.deletePercent);
-        }, 1000)
+        }, 80)
 
     }
 
