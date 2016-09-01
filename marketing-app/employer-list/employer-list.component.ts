@@ -20,6 +20,8 @@ export class EmployerList implements OnInit {
     empClasses;
     private ready: boolean = false;
     public employerSelected: boolean = false;
+    checkEmployer;
+
     @Output() employerSelectedEmit = new EventEmitter();
     getEmployers() {
 
@@ -33,15 +35,20 @@ export class EmployerList implements OnInit {
     ngOnInit() {
         this.empClasses = [];
         this.getEmployers();
-        setTimeout(()=> this.ready = true, 300);
-        setTimeout(()=> {
+
+        this.checkEmployer = setInterval(()=> {
+            if (this.employers) {
+
+
             for (let i = 0; i < this.employers.length; i++) {
                 let val = '{"id":"' + this.employers[i]._id + '","moveClass":"true"}';
 
                 this.empClasses.push(JSON.parse(val));
             }
-            console.log(this.empClasses);
-        }, 150);
+                this.ready = true;
+                clearInterval(this.checkEmployer);
+            }
+        }, 500);
     }
 
     onEmployerDelete(employerId: string) {
