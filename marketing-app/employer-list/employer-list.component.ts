@@ -36,12 +36,12 @@ export class EmployerList implements OnInit {
         setTimeout(()=> this.ready = true, 300);
         setTimeout(()=> {
             for (let i = 0; i < this.employers.length; i++) {
-                let val = '{"id":"' + this.employers[i]._id + '","moveClass":"false"}';
+                let val = '{"id":"' + this.employers[i]._id + '","moveClass":"true"}';
 
                 this.empClasses.push(JSON.parse(val));
             }
             console.log(this.empClasses);
-        }, 3000);
+        }, 150);
     }
 
     onEmployerDelete(employerId: string) {
@@ -49,15 +49,12 @@ export class EmployerList implements OnInit {
         this.employers = this.employers.filter((emps)=> {
             return emps._id != employerId;
         });
-        console.log(this.employers);
     }
 
     getMoveClass(empId: string) {
         for (let i = 0; i < this.empClasses.length; i++) {
             //noinspection TypeScriptUnresolvedVariable
-            if (empId == this.empClasses[i].id) {
-                //noinspection TypeScriptUnresolvedVariable
-                console.log("getMoveClass run for " + empId);
+            if (this.empClasses[i].id == empId) {
                 return this.empClasses[i].moveClass;
 
             }
@@ -69,15 +66,14 @@ export class EmployerList implements OnInit {
 
     changeClass(empId: string) {
         for (let i = 0; i < this.empClasses.length; i++) {
-            //noinspection TypeScriptUnresolvedVariable
-            if (empId == this.empClasses[i].id) {
-                //noinspection TypeScriptUnresolvedVariable
-                this.empClasses[i].moveClass = true;
+            if (this.empClasses[i].id == empId) {
+                console.log(this.empClasses[i].id);
+                this.empClasses[i].moveClass = false;
+                this.employerSelectedEmit.emit();
             }
 
 
         }
-        console.log(this.empClasses);
     }
 
 }

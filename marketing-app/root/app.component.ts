@@ -79,6 +79,12 @@ export class AppComponent {
 
     }
 
+    cancelMarketing() {
+
+        this.showMarketing = false;
+
+    }
+
 
 }
 

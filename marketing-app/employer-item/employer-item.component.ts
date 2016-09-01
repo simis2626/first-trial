@@ -64,11 +64,11 @@ export class EmployerComponent implements OnInit {
                     clearInterval(timer2);
                 }
             });
-        }, 12000);
+        }, 3000);
 
         timer2 = setInterval(()=> {
             if (this.deleteWidth < 100) {
-                this.deleteWidth += 2;
+                this.deleteWidth += 10;
                 this.deletePercent = this.deleteWidth + "%";
             } else {
                 if (!this.initcheck) {
@@ -77,7 +77,7 @@ export class EmployerComponent implements OnInit {
                 }
             }
             console.log(this.deletePercent);
-        }, 80)
+        }, 260)
 
     }
 
