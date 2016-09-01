@@ -28,16 +28,30 @@ export class AttemptList implements OnInit {
 
     }
 
-
+    checkAttempt;
     ngOnInit() {
         this.employer = this.employerProvider.getSelectedEmployer();
         this.getAttempts();
+        this.attemptClasses = [];
+        this.checkAttempt = setInterval(()=> {
+            if (this.attempts) {
+
+
+                for (let i = 0; i < this.attempts.length; i++) {
+                    let val = '{"id":"' + this.attempts[i]._id + '","moveClass":"true"}';
+
+                    this.attemptClasses.push(JSON.parse(val));
+                }
+                this.ready = true;
+                clearInterval(this.checkAttempt);
+            }
+        }, 500);
     }
 
 
     private employer: Employer;
     private ready: boolean = false;
-
+    attemptClasses;
     private selectedAttempt: Attempt;
     private attempts: Attempt[];
 
@@ -61,5 +75,35 @@ export class AttemptList implements OnInit {
         this.selectedAttempt = attempt;
     }
 
+    onAttemptDelete(attemptId: string) {
+        console.log(attemptId);
+        this.attempts = this.attempts.filter((attempts)=> {
+            return attempts._id != attemptId;
+        });
+    }
+
+    getMoveClass(empId: string) {
+        for (let i = 0; i < this.attemptClasses.length; i++) {
+            //noinspection TypeScriptUnresolvedVariable
+            if (this.attemptClasses[i].id == empId) {
+                return this.attemptClasses[i].moveClass;
+
+            }
+
+
+        }
+
+    }
+
+    changeClass(empId: string) {
+        for (let i = 0; i < this.attemptClasses.length; i++) {
+            if (this.attemptClasses[i].id == empId) {
+                console.log(this.attemptClasses[i].id);
+                this.attemptClasses[i].moveClass = false;
+            }
+
+
+        }
+    }
 
 }

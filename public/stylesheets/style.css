@@ -22,8 +22,15 @@ employer {
     display: block;
 }
 
-employer.move {
+.move {
     transform: translate(0px, -25px) !important;
     opacity: 0 !important;
 
+}
+
+attempt {
+    transform: translate(0, 0);
+    transition: opacity 300ms ease-out, transform 400ms ease-out;
+    will-change: opacity, transform;
+    display: block;
 }

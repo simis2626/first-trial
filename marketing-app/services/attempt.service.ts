@@ -35,5 +35,10 @@ export class AttemptProvider {
 
     }
 
+    deleteAttempt(attemptId: string): Observable<Response> {
+
+        let delAtt = this.attemptsUrl + "/" + attemptId;
+        return this.http.delete(delAtt);
+    }
 
 }

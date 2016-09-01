@@ -16,7 +16,7 @@ function doTheLoop(jsonArray, db, funcCallback){
             contactPerson: {name: "Jimminy Crickets", notes: "Jimminy Crickets"},
             address: "Jimminy Crickets",
             notes: "Jimminy Crickets",
-            name: "Jimminy Crickets",
+            name: "Jimminy Crickets" + i,
             doNotContact: false,
             positionsNeeded: "Jimminy Crickets",
             publicTransport: true,

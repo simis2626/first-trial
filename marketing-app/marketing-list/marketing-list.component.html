@@ -6,7 +6,9 @@
     <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
         <ul class="list-group" [ngSwitch]="ready">
             <span *ngSwitchCase="true">
-            <attempt *ngFor="let attempt of attempts" [attempt]="attempt"></attempt></span>
+            <attempt *ngFor="let attempt of attempts" [attempt]="attempt" (attemptDeleted)="onAttemptDelete($event)"
+                     [class.move]="!getMoveClass(attempt._id)"
+                     (applyMoveClass)="changeClass($event)"></attempt></span>
             <div class="container center-block" *ngSwitchDefault><img src="/public/loading.gif"></div>
         </ul>
     </div>
