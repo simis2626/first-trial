@@ -3,6 +3,8 @@
  */
 import {Injectable}      from '@angular/core';
 import {tokenNotExpired} from 'angular2-jwt';
+import {Auth0Lock} from 'auth0-lock';
+
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
