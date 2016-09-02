@@ -12,7 +12,6 @@ import {AttemptList} from "../marketing-list/marketing-list.component";
 import {AttemptComponent} from "../marketing-item/marketing-item.component";
 import {routing, appRoutingProviders} from '../root/app.routing';
 import {AppComponent} from '../root/app.component';
-import {AuthService} from '../auth0/auth.service';
 
 
 
@@ -26,7 +25,7 @@ import {ForceActiveDirective} from '../directives/directives';
     imports: [BrowserModule, HttpModule, JsonpModule, routing],
     declarations: [AppComponent, AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, AttemptComponent, AttemptList],
     bootstrap: [AppComponent],
-    providers: [EmployerProvider, AttemptProvider, AuthService, ConsultantProvider, appRoutingProviders]
+    providers: [EmployerProvider, AttemptProvider, ConsultantProvider, appRoutingProviders]
 })
 export class AppModule {
 }

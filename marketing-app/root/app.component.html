@@ -1,10 +1,4 @@
 <a routerLink="/Application" routerLinkActive="active">Click Here</a>
-<button class="btn btn-primary btn-margin" (click)="authProvider.login()" *ngIf="!authProvider.authenticated()">Log In
-</button>
-<button class="btn btn-primary btn-margin" (click)="authProvider.logout()" *ngIf="authProvider.authenticated()">Log
-    Out
-</button>
-
 <router-outlet>
 
 </router-outlet>
