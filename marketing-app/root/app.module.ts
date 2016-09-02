@@ -4,7 +4,7 @@
 import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule, JsonpModule} from '@angular/http';
-import {AppComponent}  from './app.component';
+import {AuthedAppComponent}  from '../app-authed/app-authed.component';
 import {EmployerProvider} from "../services/employer.service";
 import {EmployerComponent} from "../employer-item/employer-item.component";
 import {EmployerList} from "../employer-list/employer-list.component";
@@ -23,8 +23,8 @@ import {ForceActiveDirective} from '../directives/directives';
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule],
-    declarations: [AppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, AttemptComponent, AttemptList],
-    bootstrap: [AppComponent],
+    declarations: [AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, AttemptComponent, AttemptList],
+    bootstrap: [AuthedAppComponent],
     providers: [EmployerProvider, AttemptProvider, ConsultantProvider]
 })
 export class AppModule {

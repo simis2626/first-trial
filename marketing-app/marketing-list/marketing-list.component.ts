@@ -83,15 +83,13 @@ export class AttemptList implements OnInit {
     }
 
     getMoveClass(empId: string) {
+
         for (let i = 0; i < this.attemptClasses.length; i++) {
-            //noinspection TypeScriptUnresolvedVariable
             if (this.attemptClasses[i].id == empId) {
                 return this.attemptClasses[i].moveClass;
-
             }
-
-
         }
+
 
     }
 
