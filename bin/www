@@ -23,7 +23,9 @@ app.set('port', port);
 const options = {
 
   key: fs.readFileSync('certs/my-pri-key.pem'),
-  cert: fs.readFileSync('certs/51e71232ccb8b1cc.pem')
+    cert: fs.readFileSync('certs/51e71232ccb8b1cc.pem'),
+    ca: fs.readFileSync('certs/gd_bundle-g2-g1.pem')
+
 };
 
 var httpsServer = https.createServer(options, app);
