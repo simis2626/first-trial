@@ -10,7 +10,7 @@
     // map tells the System loader where to look for things
     var map = {
         'app':                        'app', // 'dist',
-        'angular2-jwt': 'node_modules/angular2-jwt',
+        'angular2-jwt': 'node_modules/angular2-jwt/angular2-jwt.js',
         '@angular':                   'node_modules/@angular',
         'rxjs':                       'node_modules/rxjs'
     };
