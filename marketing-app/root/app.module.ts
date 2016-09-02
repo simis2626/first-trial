@@ -10,8 +10,8 @@ import {EmployerComponent} from "../employer-item/employer-item.component";
 import {EmployerList} from "../employer-list/employer-list.component";
 import {AttemptList} from "../marketing-list/marketing-list.component";
 import {AttemptComponent} from "../marketing-item/marketing-item.component";
-
-
+import {routing, appRoutingProviders} from '../root/app.routing';
+import {AppComponent} from '../root/app.component';
 
 
 
@@ -22,10 +22,10 @@ import {ForceActiveDirective} from '../directives/directives';
 
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, JsonpModule],
-    declarations: [AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, AttemptComponent, AttemptList],
-    bootstrap: [AuthedAppComponent],
-    providers: [EmployerProvider, AttemptProvider, ConsultantProvider]
+    imports: [BrowserModule, HttpModule, JsonpModule, routing],
+    declarations: [AppComponent, AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, AttemptComponent, AttemptList],
+    bootstrap: [AppComponent],
+    providers: [EmployerProvider, AttemptProvider, ConsultantProvider, appRoutingProviders]
 })
 export class AppModule {
 }
