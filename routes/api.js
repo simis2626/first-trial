@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var mongo1 = require('mongodb').MongoClient;
 var mongoObject = require('mongodb').ObjectID;
-
+var bparser = require('body-parser');
 
 /* Connect to db. */
 router.get('/employers', function (req, res, next) {
@@ -63,4 +63,25 @@ router.get('/consultants', function (req, res, next) {
         })
     }
 );
+
+
+router.post('/auth', function (req, res, next) {
+        var url = 'mongodb://10.3.0.47:27017/marketing';
+        console.log(req);
+        mongo1.connect(url, function (err, db) {
+            var searchJSON = req.body.consultant;
+            var checkval = req.body.password;
+            console.log(checkval);
+            console.log(searchJSON);
+            console.log(req.body);
+            //db.collection('auths').find(searchJSON).toArray(function (err, docs) {
+            //  res.setHeader('Content-Type', 'application/json');
+            //res.send(docs);
+            //})
+            res.statusCode = 200;
+            res.send(searchJSON);
+        })
+    }
+);
+
 module.exports = router;

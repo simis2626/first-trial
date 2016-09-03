@@ -4,6 +4,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Consultant} from '../objClass/consultant';
 import {ConsultantProvider} from "../services/consultant.service";
+import {AuthProvider} from "../services/auth.service";
 
 
 
@@ -15,7 +16,7 @@ import {ConsultantProvider} from "../services/consultant.service";
 
 })
 export class LoginComponent implements OnInit {
-    constructor(private consultantProvider: ConsultantProvider) {
+    constructor(private consultantProvider: ConsultantProvider, private authProvider: AuthProvider) {
     }
 
     consultants: Consultant[];
@@ -62,23 +63,38 @@ export class LoginComponent implements OnInit {
 
     checkPassword(pwdCheck: string) {
         for (let i = 0; i < this.consultants.length; i++) {
-            if (this.consultants[i]._id == this.idSelected && this.consultants[i].password == pwdCheck) {
+            if (this.consultants[i]._id == this.idSelected) {
                 this.triedSubmit = true;
-                this.authStatus = true;
-                this.checkSuccessWarning();
-                setTimeout(()=> {
+
+                console.log(this.consultants[i]);
+
+                this.authProvider.LoginAttempt(this.consultants[i], pwdCheck)
+                    .subscribe(authResult => {
+                        this.authStatus = authResult;
+                        return this.authStatus;
+                    });
+
+
+                //this.authStatus = ;
+                /*this.checkSuccessWarning();
+
+
+
+
+
+                 setTimeout(()=> {
                     this.classModal = "modal fade";
                     this.checkSuccessWarning();
                     
                 }, 1500);
-                return true;
+                 return true;*/
             }
 
         }
 
         console.log("failure");
         this.triedSubmit = true;
-        document.getElementById('pwdinput').innerText = "";
+        //document.getElementById('pwdinput').innerText = "";
         this.checkSuccessWarning();
         setTimeout(()=> {this.triedSubmit=false; this.checkSuccessWarning();} , 2000);
         return false;

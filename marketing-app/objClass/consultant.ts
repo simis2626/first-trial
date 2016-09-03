@@ -5,6 +5,4 @@ export class Consultant {
     _id: string;
     userId: string;
     name: string;
-    password: string;
-
 }
