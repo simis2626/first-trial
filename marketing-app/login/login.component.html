@@ -17,6 +17,9 @@
                         <label for="pwdinput">Enter password: </label>
                         <input #pwd id="pwdinput" (keydown)="onkPress($event)" class="form-control" type="password">
                     </div>
+                    <div *ngIf="showPending" class="alert alert-info" role="alert">Authenticating...
+
+                    </div>
                     <div *ngIf="showWarning" class="alert alert-warning" role="alert">Login Failed:
                         check the
                         user selected and reenter password.

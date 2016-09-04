@@ -15,13 +15,8 @@ export class ConsultantProvider {
     constructor(private http: Http) {
     }
 
-
-    private selectedConsultant = new Subject<Consultant>();
-    selectedConsultant$ = this.selectedConsultant.asObservable();
-
-
     private consultantsUrl = '/api/consultants';
-
+    selectedConsultant: Consultant;
 
     private extractData(res: Response) {
         let body = res.json();
@@ -30,14 +25,8 @@ export class ConsultantProvider {
 
 
     public getConsultants(): Observable<Consultant[]> {
-
-
-
-
         //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.consultantsUrl).map(this.extractData);
-
-
     }
 
 
