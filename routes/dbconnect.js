@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongo1 = require('mongodb').MongoClient
+var mongo1 = require('mongodb').MongoClient;
 
 
 /* Connect to db. */

@@ -1,0 +1,35 @@
+<div>
+    <div class="{{classModal}}" tabindex="-1" role="dialog">
+        <div id="myModal" class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button (click)="hide()" type="button" class="close" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Login</h4>
+                </div>
+                <div class="modal-body">
+                    <div><label>Select a User</label></div>
+                    <span><a class="btn btn-default" *ngFor="let consultant of consultants"
+                             id="btn{{consultant._id}}"
+                             (click)="setSelectedConsultant(consultant._id)">{{consultant.name}}</a> </span>
+                    <div class="form-group">
+                        <div><label *ngIf="idSelected">Logging in as {{selectedConsultant.name}}</label></div>
+                        <label for="pwdinput">Enter password: </label>
+                        <input #pwd id="pwdinput" (keydown)="onkPress($event)" class="form-control" type="password">
+                    </div>
+                    <div *ngIf="showWarning" class="alert alert-warning" role="alert">Login Failed:
+                        check the
+                        user selected and reenter password.
+                    </div>
+                    <div *ngIf="showSuccess" class="alert alert-success" role="alert">Login Succeeded:
+                        loading tracker.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="/" class="btn btn-default">Close</a>
+                    <a class="btn btn-success" (click)="checkPassword(pwd.value)">Login</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

@@ -1,8 +1,36 @@
 body {
-  padding: 50px;
+  padding: 1px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+small {
+  color: grey;
+}
+
+.modal.in {
+    display: inherit;
+}
+
+employer {
+    transform: translate(0, 0);
+    transition: opacity 300ms ease-out, transform 400ms ease-out;
+    will-change: opacity, transform;
+    display: block;
+}
+
+.move {
+    transform: translate(0px, -25px) !important;
+    opacity: 0 !important;
+
+}
+
+attempt {
+    transform: translate(0, 0);
+    transition: opacity 300ms ease-out, transform 400ms ease-out;
+    will-change: opacity, transform;
+    display: block;
 }

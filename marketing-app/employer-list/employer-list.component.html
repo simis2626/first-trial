@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+    <div class="panel-heading">Employers</div>
+    <div class="panel-heading">
+        <button class="btn btn-primary" type="button">Add Employer</button>
+        <label for="searchfilter"></label> <input id="searchfilter" type="search">
+        <button class="btn btn-default" type="button">Search</button>
+
+    </div>
+
+    <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
+        <ul class="list-group">
+            <div [ngSwitch]="ready">
+            <span *ngSwitchCase="true"><employer *ngFor="let employer of employers" [employer]="employer"
+                                                 (employerDeleted)="onEmployerDelete($event)"
+                                                 [class.move]="!getMoveClass(employer._id)"
+                                                 (applyMoveClass)="changeClass($event)"
+                                                 #emp{{employer._id}} id="employ{{employer._id}}"></employer>
+            </span><span *ngSwitchDefault class="container-fluid center-block"><img src="/public/loading.gif"></span>
+
+            </div>
+        </ul>
+    </div>
+
+
+</div>
+
+<!---->
