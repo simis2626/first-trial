@@ -7,6 +7,7 @@ var mongo1 = require('mongodb').MongoClient;
 var mongoObject = require('mongodb').ObjectID;
 var bparser = require('body-parser');
 
+
 /* Connect to db. */
 router.get('/employers', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/marketing';
@@ -65,22 +66,32 @@ router.get('/consultants', function (req, res, next) {
 );
 
 
+//router.use(bparser.json({ type: 'application/*+json' }));
 router.post('/auth', function (req, res, next) {
+
+    var content = '';
+
+    req.on('data', function (data) {
+        // Append data.
+        content += data;
+    });
+
+    req.on('end', function () {
+        // Assuming, we're receiving JSON, parse the string into a JSON object to return.
+        var data = JSON.parse(content);
         var url = 'mongodb://10.3.0.47:27017/marketing';
-        console.log(req);
+
         mongo1.connect(url, function (err, db) {
-            var searchJSON = req.body.consultant;
-            var checkval = req.body.password;
-            console.log(checkval);
-            console.log(searchJSON);
-            console.log(req.body);
-            //db.collection('auths').find(searchJSON).toArray(function (err, docs) {
-            //  res.setHeader('Content-Type', 'application/json');
-            //res.send(docs);
-            //})
-            res.statusCode = 200;
-            res.send(searchJSON);
+            var searchJSON = '{"consultantId":"' + data.consultant._id + '"}';
+            var checkval = data.password;
+            db.collection('auths').find(searchJSON).toArray(function (err, docs) {
+                res.statusCode = 200;
+                res.setHeader('Content-Type', 'application/json');
+                res.send(docs);
+            })
+
         })
+    });
     }
 );
 

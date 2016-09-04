@@ -25,7 +25,7 @@ app.set('view engine', 'hbs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({type: 'application/*+json'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/public', express.static(path.join(__dirname, 'public')));
@@ -37,7 +37,7 @@ app.use('/upload',upload);
 app.use('/gridfslist',gridfslist);
 app.use('/api', api);
 
-app.get('/marketing-app', function (req, res) {
+app.get('/marketing-app*', function (req, res) {
 
   res.sendFile(__dirname + '/public/app.html');
 
