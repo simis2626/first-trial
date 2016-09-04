@@ -2,6 +2,7 @@
  * Created by andromeda on 19/08/2016.
  */
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {Consultant} from '../objClass/consultant';
 import {ConsultantProvider} from "../services/consultant.service";
 import {AuthProvider} from "../services/auth.service";
@@ -16,7 +17,7 @@ import {AuthProvider} from "../services/auth.service";
 
 })
 export class LoginComponent implements OnInit {
-    constructor(private consultantProvider: ConsultantProvider, private authProvider: AuthProvider) {
+    constructor(private consultantProvider: ConsultantProvider, private authProvider: AuthProvider, private router: Router) {
     }
 
     consultants: Consultant[];
@@ -71,33 +72,26 @@ export class LoginComponent implements OnInit {
                 this.authProvider.LoginAttempt(this.consultants[i], pwdCheck)
                     .subscribe(authResult => {
                         this.authStatus = authResult;
+                        if (this.authStatus) {
+                            this.checkSuccessWarning();
+                            setTimeout(()=> {
+                                this.classModal = "modal fade";
+                                this.checkSuccessWarning();
+                                this.router.navigate(['./Application']);
+                            }, 1500);
+                        } else {
+                            this.checkSuccessWarning();
+                        }
+
                         return this.authStatus;
                     });
 
-
-                //this.authStatus = ;
-                /*this.checkSuccessWarning();
-
-
-
-
-
-                 setTimeout(()=> {
-                    this.classModal = "modal fade";
-                    this.checkSuccessWarning();
-                    
-                }, 1500);
-                 return true;*/
             }
-
         }
 
-        console.log("failure");
         this.triedSubmit = true;
         //document.getElementById('pwdinput').innerText = "";
-        this.checkSuccessWarning();
         setTimeout(()=> {this.triedSubmit=false; this.checkSuccessWarning();} , 2000);
-        return false;
 
 
     }

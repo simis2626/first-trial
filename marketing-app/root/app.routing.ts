@@ -30,7 +30,12 @@ const appRoutes: Routes = [
         data: {
             title: 'ORS Marketing Tracker'
         }
-    }
+    },
+    {
+        path: '*',
+        redirectTo: '/',
+        pathMatch: 'full'
+    },
 ];
 
 export const appRoutingProviders: any[] = [];

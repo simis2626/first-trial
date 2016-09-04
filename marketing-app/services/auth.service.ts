@@ -25,9 +25,9 @@ export class AuthProvider {
 
 
     private extractData(res: Response) {
-        //let body = res.json();
-        console.log(res);
-        return true;//res;//body || {};
+        let body = res.json();
+
+        return body.SuccessfulAuth;//res;//body || {};
     }
 
 
@@ -35,14 +35,16 @@ export class AuthProvider {
 
         let bodyString1: any;
         bodyString1 = '{"consultant":' + JSON.stringify(consultant) + ', "password":"' + password + '"}';
-        console.log(this.options);
-        console.log(bodyString1);
+
         let bodyString: any;
         bodyString = JSON.parse(bodyString1);
-        console.log(bodyString);
 
-        this.http.post(this.authUrl, JSON.stringify(bodyString), this.options).map(this.extractData).subscribe((result)=>this.isLoggedIn = result);
-        return this.http.post(this.authUrl, JSON.stringify(bodyString), this.options).map(this.extractData);
+
+        let singleHttpRequest = this.http.post(this.authUrl, JSON.stringify(bodyString), this.options).map(this.extractData);
+        setTimeout(()=> {
+            singleHttpRequest.subscribe((data)=>this.isLoggedIn = data);
+        }, 300);
+        return singleHttpRequest;
 
 
     }

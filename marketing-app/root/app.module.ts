@@ -20,13 +20,14 @@ import {AttemptProvider} from '../services/attempt.service';
 import {ConsultantProvider} from '../services/consultant.service';
 import {ForceActiveDirective} from '../directives/directives';
 import {AuthProvider} from "../services/auth.service";
+import {AuthGuard} from "../services/auth.guard";
 
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule, routing],
     declarations: [AppComponent, AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, ForceActiveDirective, AttemptComponent, AttemptList],
     bootstrap: [AppComponent],
-    providers: [AuthProvider, EmployerProvider, AttemptProvider, ConsultantProvider, appRoutingProviders]
+    providers: [AuthGuard, AuthProvider, EmployerProvider, AttemptProvider, ConsultantProvider, appRoutingProviders]
 })
 export class AppModule {
 }

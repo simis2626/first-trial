@@ -80,14 +80,21 @@ router.post('/auth', function (req, res, next) {
         // Assuming, we're receiving JSON, parse the string into a JSON object to return.
         var data = JSON.parse(content);
         var url = 'mongodb://10.3.0.47:27017/marketing';
-
+        var response = false;
         mongo1.connect(url, function (err, db) {
-            var searchJSON = '{"consultantId":"' + data.consultant._id + '"}';
+            console.log(data.consultant._id);
+            var searchJSON = JSON.parse('{"consultantId":"' + data.consultant._id + '"}');
+
             var checkval = data.password;
-            db.collection('auths').find(searchJSON).toArray(function (err, docs) {
+            db.collection('auths').findOne(searchJSON, {comment: 'Sausages'}, function (err, docs) {
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
-                res.send(docs);
+                if (docs.password == checkval) {
+                    response = true;
+                } else {
+                    response = false;
+                }
+                res.send('{"SuccessfulAuth":' + response + '}');
             })
 
         })
