@@ -12,7 +12,6 @@ import {AuthProvider} from "../services/auth.service";
 @Component({
     selector: 'login',
     templateUrl: 'app/login/login.component.html',
-    providers: [ConsultantProvider]
 
 
 })
@@ -29,8 +28,7 @@ export class LoginComponent implements OnInit {
     public triedSubmit: boolean = false;
     public showSuccess: boolean;
     public showWarning: boolean;
-
-
+    public showPending: boolean = false;
 
 
     getConsultants() {
@@ -66,14 +64,16 @@ export class LoginComponent implements OnInit {
         for (let i = 0; i < this.consultants.length; i++) {
             if (this.consultants[i]._id == this.idSelected) {
                 this.triedSubmit = true;
-
+                this.showPending = true;
                 console.log(this.consultants[i]);
 
                 this.authProvider.LoginAttempt(this.consultants[i], pwdCheck)
                     .subscribe(authResult => {
+                        this.showPending = false;
                         this.authStatus = authResult;
                         if (this.authStatus) {
                             this.checkSuccessWarning();
+                            this.consultantProvider.selectedConsultant = this.consultants[i];
                             setTimeout(()=> {
                                 this.classModal = "modal fade";
                                 this.checkSuccessWarning();
@@ -112,11 +112,18 @@ export class LoginComponent implements OnInit {
     }
     
     checkSuccessWarning(){
-     if(this.triedSubmit && this.authStatus){this.showSuccess = true;}
-     if(this.triedSubmit && (!this.authStatus)){this.showWarning = true;}   
-    if(!this.triedSubmit){this.showWarning = false; this.showSuccess = false;}
-        
-    
+
+        if (this.triedSubmit && this.authStatus) {
+            this.showSuccess = true;
+        }
+        if (this.triedSubmit && (!this.authStatus)) {
+            this.showWarning = true;
+        }
+        if (!this.triedSubmit) {
+            this.showWarning = false;
+            this.showSuccess = false;
+        }
     }
-    
+
+
 }
