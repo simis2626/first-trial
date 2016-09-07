@@ -1,0 +1,41 @@
+
+.confirm-wrapper {
+    padding: 5px 40px;
+}
+
+.confirm-wrapper.confirming {
+    padding: 5px 10px;
+}
+
+.btn {
+    display: inline;
+}
+
+.parent-btn {
+    will-change: opacity;
+    transition: opacity 500ms ease-out, scale 50ms linear;
+    z-index: 2;
+    position: absolute;
+}
+
+.parent-btn.clicked {
+    opacity: 0;
+    z-index: -1;
+    transform: scale(0);
+
+}
+
+.confirms {
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 500ms 100ms ease, scale 10ms linear;
+    will-change: opacity;
+    transform: scale(0);
+
+}
+
+.confirms.confirming {
+    opacity: 1;
+    transform: scale(1);
+
+}
