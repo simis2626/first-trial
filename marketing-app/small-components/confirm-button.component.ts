@@ -18,8 +18,7 @@ export class ConfirmButtonComponent {
     @Output() clickConfirmed = new EventEmitter();
 
     confirming: boolean;
-    confirmingWrapper: boolean;
-    clicked: boolean;
+    
 
 
     parentClicked() {
@@ -38,7 +37,7 @@ export class ConfirmButtonComponent {
     }
 
     transition(selector: boolean) {
-
+        this.confirming = selector;
 
     }
 
