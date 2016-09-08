@@ -62,8 +62,8 @@
             <div class="col-md-12 "><span class="pull-left">
                 <small>Contact Person:</small>
 
-            <div class="text-capitalize">{{employer.contactPerson.name}}</div></span><span class="pull-right"><button
-                    class="btn btn-warning" (click)="deleteEmployer()">Remove Employer</button> </span>
+            <div class="text-capitalize">{{employer.contactPerson.name}}</div></span><span class="pull-right"><confirm-button
+                    (clickConfirmed)="deleteEmployer()">Remove Employer</confirm-button> </span>
             </div>
         </div>
         <div class="row">
