@@ -31,12 +31,14 @@
     z-index: 1;
     transition: opacity 500ms 100ms ease, scale 10ms linear;
     will-change: opacity;
-    transform: scale(0);
+    transform: scale(0
+    display:none;
 
 }
 
 .confirms.confirming {
     opacity: 1;
     transform: scale(1);
+    display:inline;
 
 }
