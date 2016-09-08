@@ -12,7 +12,7 @@ import {AttemptList} from "../marketing-list/marketing-list.component";
 import {AttemptComponent} from "../marketing-item/marketing-item.component";
 import {routing, appRoutingProviders} from '../root/app.routing';
 import {AppComponent} from '../root/app.component';
-import {ConfirmButtonComponent} from '../small-components/confirm-button.component.ts';
+import {ConfirmButtonComponent} from '../small-components/confirm-button.component';
 
 
 
