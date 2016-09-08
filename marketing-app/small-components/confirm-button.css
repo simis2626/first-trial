@@ -16,7 +16,6 @@
     will-change: opacity;
     transition: opacity 500ms ease-out, scale 50ms linear;
     z-index: 2;
-    position: absolute;
 }
 
 .parent-btn.confirming {
