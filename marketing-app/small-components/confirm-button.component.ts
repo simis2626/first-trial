@@ -6,7 +6,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
 
 
 @Component({
-    styleUrl: ['app/small-components/confirm-button.css'],
+    styleUrls: ['app/small-components/confirm-button.css'],
     templateUrl: 'app/small-components/confirm-button.component.html',
 
     selector: 'confirm-button'
