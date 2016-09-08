@@ -1,6 +1,7 @@
 
 .confirm-wrapper {
     padding: 5px 40px;
+    display: inline;
 }
 
 .confirm-wrapper.confirming {
