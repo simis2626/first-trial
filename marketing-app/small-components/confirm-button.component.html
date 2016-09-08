@@ -15,10 +15,10 @@
 </head>
 <body>
 
-<div class="confirm-wrapper">
-    <button id="parent-btn" class="btn btn-warning parent-btn">Delete</button>
-    <button id="cancel" class="btn btn-default confirms" disabled="true">Cancel</button>
-    <button id="confirm" class="btn btn-warning confirms" disabled="true">Continue</button>
+<div class="confirm-wrapper" [class.confirming]='confirming'>
+    <button id="parent-btn" (click)="parentClicked()" class="btn btn-warning parent-btn" [class.confirming]='confirming'>Delete</button>
+    <button id="cancel" (click)="cancelClicked()" class="btn btn-default confirms" [class.confirming]='confirming'>Cancel</button>
+    <button id="confirm" (click)="continueClicked()" class="btn btn-warning confirms" [class.confirming]='confirming'>Continue</button>
 </div>
 
 
@@ -30,7 +30,7 @@
         crossorigin="anonymous"></script>
 
 
-<script>
+/*<script>
     $(document).ready(function () {
         $("#parent-btn").click(function () {
             $("#parent-btn").addClass("clicked");
@@ -50,7 +50,7 @@
         });
     });
 
-</script>
+</script>*/
 
 
 </body>
