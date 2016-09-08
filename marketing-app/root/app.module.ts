@@ -12,6 +12,7 @@ import {AttemptList} from "../marketing-list/marketing-list.component";
 import {AttemptComponent} from "../marketing-item/marketing-item.component";
 import {routing, appRoutingProviders} from '../root/app.routing';
 import {AppComponent} from '../root/app.component';
+import {ConfirmButtonComponent} from '../small-components/confirm-button.component.ts';
 
 
 
@@ -24,7 +25,7 @@ import {AuthGuard} from "../services/auth.guard";
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule, routing],
-    declarations: [AppComponent, AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, AttemptComponent, AttemptList],
+    declarations: [ConfirmButtonComponent, AppComponent, AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, AttemptComponent, AttemptList],
     bootstrap: [AppComponent],
     providers: [AuthGuard, AuthProvider, EmployerProvider, AttemptProvider, ConsultantProvider, appRoutingProviders]
 })
