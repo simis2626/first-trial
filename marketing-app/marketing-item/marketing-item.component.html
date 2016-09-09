@@ -43,9 +43,8 @@
             </div>
         </dl>
         <div class="pull-right">
-            <button
-                    class="btn btn-warning clicked" (click)="deleteAttempt()">Remove record
-            </button>
+            <confirm-button (clickConfirmed)="deleteAttempt()">Remove record
+            </confirm-button>
         </div>
 
     </div>

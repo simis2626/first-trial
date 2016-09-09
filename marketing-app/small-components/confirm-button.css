@@ -1,11 +1,12 @@
 
 .confirm-wrapper {
-    padding: 5px 40px;
+    margin: 0.5em 2em;
     display: inline;
+    align-content: center;
 }
 
 .confirm-wrapper.confirming {
-    padding: 5px 10px;
+    margin: 0.5em 0.1em;
 }
 
 .btn {
@@ -16,12 +17,15 @@
     will-change: opacity;
     transition: opacity 500ms ease-out, scale 50ms linear;
     z-index: 2;
+    float: right;
+
 }
 
 .parent-btn.confirming {
     opacity: 0;
     z-index: -1;
     transform: scale(0);
+    position: absolute;
 
 }
 
@@ -31,13 +35,11 @@
     transition: opacity 500ms 100ms ease, scale 10ms linear;
     will-change: opacity;
     transform: scale(0);
-    display:none;
 
 }
 
 .confirms.confirming {
     opacity: 1;
     transform: scale(1);
-    display:inline;
 
 }
