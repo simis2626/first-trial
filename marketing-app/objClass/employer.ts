@@ -2,16 +2,16 @@
  * Created by Andromeda on 19/08/2016.
  */
 export class Employer {
-    _id: string;
-    phoneNumber: string;
-    contactPerson: {name: string; notes: string};
-    address: string;
-    notes: string;
-    name: string;
-    doNotContact: boolean;
-    positionsNeeded: string;
-    publicTransport: boolean;
-    dateAdded: string;
-    wageSubFactsProvided: boolean
-
+  constructor(public _id: string,
+              public phoneNumber: string,
+              public contactPerson: {name: string, notes: string},
+              public address: string,
+              public notes: string,
+              public name: string,
+              public doNotContact: boolean,
+              public positionsNeeded: string,
+              public publicTransport: boolean,
+              public dateAdded: string,
+              public wageSubFactsProvided: boolean) {
+  }
 }
