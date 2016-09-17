@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Employers</div>
     <div class="panel-heading">
-        <button class="btn btn-primary" type="button">Add Employer</button>
+        <button class="btn btn-primary" type="button" (click)="showAddForms()">Add Employer</button>
         <label for="searchfilter"></label> <input id="searchfilter" type="search">
         <button class="btn btn-default" type="button">Search</button>
 
@@ -9,6 +9,9 @@
 
     <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
         <ul class="list-group">
+            <li *ngIf="showAddForm" id="empForm" class="list-group-item container-fluid">
+                <employer-form></employer-form>
+            </li>
             <div [ngSwitch]="ready">
             <span *ngSwitchCase="true"><employer *ngFor="let employer of employers" [employer]="employer"
                                                  (employerDeleted)="onEmployerDelete($event)"

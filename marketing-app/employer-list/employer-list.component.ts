@@ -1,9 +1,9 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {Employer} from '../objClass/employer';
-import {EmployerProvider} from '../services/employer.service';
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
+import {Employer} from "../objClass/employer";
+import {EmployerProvider} from "../services/employer.service";
 
 
 @Component(
@@ -15,6 +15,7 @@ export class EmployerList implements OnInit {
     constructor(private employerProvider: EmployerProvider) {
     }
 
+    showAddForm: boolean = false;
     public selectedEmployer: Employer;
     employers: Employer[];
     empClasses;
@@ -70,6 +71,15 @@ export class EmployerList implements OnInit {
         }
 
     }
+
+    showAddForms() {
+        this.showAddForm = true;
+        setTimeout(()=> {
+            document.getElementById("empForm").scrollIntoView(true);
+        }, 200);
+
+    }
+
 
     changeClass(empId: string) {
         for (let i = 0; i < this.empClasses.length; i++) {

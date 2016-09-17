@@ -3,7 +3,7 @@
  */
 import {Injectable, EventEmitter, Output} from "@angular/core";
 import {Employer} from "../objClass/employer";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
@@ -11,7 +11,14 @@ import {Subject} from "rxjs/Subject";
 export class EmployerProvider {
 
     constructor(private http: Http) {
+        this.headers = new Headers();
+        this.headers.append('Content-Type', 'application/json');
+        this.options = new RequestOptions({headers: this.headers});
+
     }
+
+    options: RequestOptions;
+    headers: Headers;
 
     @Output() selectedEmployerChanged = new EventEmitter();
 
@@ -54,4 +61,22 @@ export class EmployerProvider {
         console.log(delEmp);
         return this.http.delete(delEmp);
     }
+
+    newEmployer(employer: Employer): Observable<boolean> {
+
+
+        let bodyString: any;
+        bodyString = employer.toString();
+
+
+        let singleHttpRequest = this.http.post(this.employersUrl, JSON.stringify(bodyString), this.options).map(this.extractData);
+
+        return singleHttpRequest;
+
+
+    }
+
+
+
+
 }
