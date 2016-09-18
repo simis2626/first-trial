@@ -1,6 +1,6 @@
 <div><h4>New Employer</h4>
     {{diagnostic}}
-    <form>
+    <form #employerForm="ngForm">
         <div style="width:40%; float: left;">
         <div class="form-group">
             <label for="name">Employer Name:</label><br><input [(ngModel)]="model.name" name="name" type="text"
@@ -42,20 +42,21 @@
                                                            maxlength="40" name="positions"><br></span>
         </div>
             <div class="form-group">
-                <label>Accessible by Public Transport<br></label><input [(ngModel)]="model.publicTransport" type="radio"
+                <label>Accessible by Public Transport</label><br><input [(ngModel)]="model.publicTransport" type="radio"
                                                                         name="pubT"
                                                                         value="true">Yes<input type="radio"
                                                                                   name="pubT"
                                                                                   value="false"
                                                                                   [(ngModel)]="model.publicTransport">No
                 <br>
-                <label>Wage Sub Facts Sheet Provided <br></label><input type="radio" name="wageS" value="true"
+                <label>Wage Sub Facts Sheet Provided </label><br><input type="radio" name="wageS" value="true"
                                                                         [(ngModel)]="model.wageSubFactsProvided">Yes<input
                     type="radio" name="wageS" value="false" [(ngModel)]="model.wageSubFactsProvided">No
                 <br style="clear: both;">
+                <input style="float: right;" name="submit" class="btn btn-primary" type="submit">
                 <confirm-button [inputValue]="'Cancel'" (clickConfirmed)="onCancel()">Cancel</confirm-button>
-                <br>
-                <input name="submit" type="submit">
+
+
             </div>
         </div>
     </form>

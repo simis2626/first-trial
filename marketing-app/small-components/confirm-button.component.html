@@ -1,6 +1,8 @@
 <span class="confirm-wrapper" [class.confirming]='confirming'>
-    <button id="parent-btn" (click)="parentClicked()" class="btn btn-warning parent-btn"
+    <button id="parent-btn" type="button" (click)="parentClicked()" class="btn btn-warning parent-btn"
             [class.confirming]='confirming'>{{inputValue}}</button>
-    <button id="cancel" (click)="cancelClicked()" class="btn btn-default confirms" [class.confirming]='confirming'>Cancel</button>
-    <button id="confirm" (click)="continueClicked()" class="btn btn-warning confirms" [class.confirming]='confirming'>Continue</button>
+    <button id="confirm" type="button" (click)="continueClicked()" class="btn btn-warning confirms"
+            [class.confirming]='confirming'>Continue</button>
+    <button id="cancel" type="button" (click)="cancelClicked()" class="btn btn-default confirms"
+            [class.confirming]='confirming'>Cancel</button>
 </span>

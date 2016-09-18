@@ -35,6 +35,7 @@
     transition: opacity 500ms 100ms ease, scale 10ms linear;
     will-change: opacity;
     transform: scale(0);
+    float: right;
 
 }
 
