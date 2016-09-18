@@ -1,12 +1,12 @@
 
 .confirm-wrapper {
-    margin: 0.5em 2em;
+    margin: auto auto;
     display: inline;
     align-content: center;
 }
 
 .confirm-wrapper.confirming {
-    margin: 0.5em 0.1em;
+    margin: auto 0.1em;
 }
 
 .btn {

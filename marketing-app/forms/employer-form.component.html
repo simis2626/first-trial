@@ -3,7 +3,8 @@
     <form>
         <div style="width:40%; float: left;">
         <div class="form-group">
-            <label for="name">Employer Name:</label><br><input #name name="name" type="text" id="name">
+            <label for="name">Employer Name:</label><br><input [(ngModel)]="model.name" name="name" type="text"
+                                                               id="name">
         </div>
             <div class="form-group"><h4>Address</h4><br>
                 <label for="street">Street:</label><br><input [(ngModel)]="model.address.street" name="address.street"
@@ -23,7 +24,7 @@
                                                                              id="contactPersonNotes">
         </div>
         </div>
-        <div style="width:40%; float: left;">
+        <div style="width:40%; float: right;">
         <div class="form-group">
             <label for="phoneNumber">Phone Number:</label><br><input [(ngModel)]="model.phoneNumber" type="text"
                                                                      id="phoneNumber" name="phoneNumber">
@@ -36,19 +37,24 @@
                 <button class="btn btn-default" (click)="addRole()">Add</button>
                 <br>
 
-                <span *ngFor="let boolean of roles"><input [(ngModel)]="model.positionsNeeded[countofRoles]" type="text"
+                <span *ngFor="let boolean of roles"><input [(ngModel)]="model.positionsNeeded[getRoleCount()]"
+                                                           type="text"
                                                            maxlength="40" name="positions"><br></span>
         </div>
             <div class="form-group">
-                <label>Accessible by Public </label><input [(ngModel)]="model.publicTransport" type="radio" name="pubT"
-                                                           value="true">Yes<input type="radio"
+                <label>Accessible by Public Transport<br></label><input [(ngModel)]="model.publicTransport" type="radio"
+                                                                        name="pubT"
+                                                                        value="true">Yes<input type="radio"
                                                                                   name="pubT"
                                                                                   value="false"
                                                                                   [(ngModel)]="model.publicTransport">No
                 <br>
-                <label>Wage Sub Facts Sheet Provided </label><input type="radio" name="pubT" value="true"
-                                                                    [(ngModel)]="model.wageSubFactsProvided">Yes<input
-                    type="radio" name="pubT" value="false" [(ngModel)]="model.wageSubFactsProvided">No
+                <label>Wage Sub Facts Sheet Provided <br></label><input type="radio" name="wageS" value="true"
+                                                                        [(ngModel)]="model.wageSubFactsProvided">Yes<input
+                    type="radio" name="wageS" value="false" [(ngModel)]="model.wageSubFactsProvided">No
+                <br style="clear: both;">
+                <confirm-button [inputValue]="'Cancel'" (clickConfirmed)="onCancel()">Cancel</confirm-button>
+                <br>
                 <input name="submit" type="submit">
             </div>
         </div>

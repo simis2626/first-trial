@@ -10,7 +10,7 @@
     <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
         <ul class="list-group">
             <li *ngIf="showAddForm" id="empForm" class="list-group-item container-fluid">
-                <employer-form></employer-form>
+                <employer-form (employerCanceled)="showAddForm = false"></employer-form>
             </li>
             <div [ngSwitch]="ready">
             <span *ngSwitchCase="true"><employer *ngFor="let employer of employers" [employer]="employer"

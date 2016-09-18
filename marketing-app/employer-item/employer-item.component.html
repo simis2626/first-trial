@@ -63,7 +63,7 @@
                 <small>Contact Person:</small>
 
             <div class="text-capitalize">{{employer.contactPerson.name}}</div></span><span class="pull-right"><confirm-button
-                    (clickConfirmed)="deleteEmployer()">Remove Employer</confirm-button> </span>
+                    (clickConfirmed)="deleteEmployer()" [inputValue]="'Delete'">Remove Employer</confirm-button> </span>
             </div>
         </div>
         <div class="row">

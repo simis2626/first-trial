@@ -1,7 +1,7 @@
 /**
  * Created by Andromeda on 11/09/2016.
  */
-import {Component} from "@angular/core";
+import {Component, Output, EventEmitter} from "@angular/core";
 import {Employer} from "../objClass/Employer";
 import {EmployerProvider} from "../services/employer.service";
 
@@ -25,12 +25,21 @@ export class EmployerFormComponent {
     }
 
 
+    @Output() employerSaved = new EventEmitter();
+    @Output() employerCanceled = new EventEmitter();
+
+
+
     addRole() {
         this.countofRoles++;
         this.roles.push(true);
 
     }
 
+    getRoleCount(): number {
+        return this.countofRoles;
+
+    }
 
     model: Employer;
 
@@ -38,6 +47,13 @@ export class EmployerFormComponent {
     onSubmit() {
 
     }
+
+    onCancel() {
+        this.employerCanceled.emit();
+
+    }
+
+
 
     // TODO: Remove this when we're done
     get diagnostic() {

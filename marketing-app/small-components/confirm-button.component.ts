@@ -2,7 +2,7 @@
  * Created by Andromeda on 7/09/2016.
  */
 
-import {Component, Output, EventEmitter} from '@angular/core';
+import {Component, Output, EventEmitter, Input} from "@angular/core";
 
 
 @Component({
@@ -14,11 +14,11 @@ import {Component, Output, EventEmitter} from '@angular/core';
 
 })
 export class ConfirmButtonComponent {
-
+    constructor() {
+    }
     @Output() clickConfirmed = new EventEmitter();
-
+    @Input() public inputValue: string;
     confirming: boolean;
-    
 
 
     parentClicked() {
