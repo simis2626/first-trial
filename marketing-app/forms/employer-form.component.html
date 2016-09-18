@@ -3,40 +3,53 @@
     <form>
         <div style="width:40%; float: left;">
         <div class="form-group">
-            <label for="name">Employer Name:</label><br><input #name type="text" id="name">
+            <label for="name">Employer Name:</label><br><input #name name="name" type="text" id="name">
         </div>
             <div class="form-group"><h4>Address</h4><br>
-                <label for="street">Street:</label><br><input id="street" type="text"><br>
-                <label for="suburb">Suburb:</label><br><input id="suburb" type="text">
-                <label for="postcode">Postcode:</label><br><input type="number" id="postcode">
+                <label for="street">Street:</label><br><input [(ngModel)]="model.address.street" name="address.street"
+                                                              id="street" type="text"><br>
+                <label for="suburb">Suburb:</label><br><input [(ngModel)]="model.address.suburb" name="address.suburb"
+                                                              id="suburb" type="text"><br>
+                <label for="postcode">Postcode:</label><br><input [(ngModel)]="model.address.postcode"
+                                                                  name="address.postcode" type="number" id="postcode">
 
             </div>
         <div class="form-group">
-            <label for="contactPersonName">Contact's Name:</label><br><input type="text" id="contactPersonName">
-            <label for="contactPersonNotes">Contact Notes:</label><br><input type="text" id="contactPersonNotes">
+            <label for="contactPersonName">Contact's Name:</label><br><input [(ngModel)]="model.contactPerson.name"
+                                                                             name="contactPerson.name" type="text"
+                                                                             id="contactPersonName"><br>
+            <label for="contactPersonNotes">Contact Notes:</label><br><input [(ngModel)]="model.contactPerson.notes"
+                                                                             type="text" name="contactPerson.notes"
+                                                                             id="contactPersonNotes">
         </div>
         </div>
         <div style="width:40%; float: left;">
         <div class="form-group">
-            <label for="phoneNumber">Phone Number:</label><br><input type="text" id="phoneNumber">
-            <label for="dontContact">Has the employer asked to not be contacted?</label><input type="checkbox"
+            <label for="phoneNumber">Phone Number:</label><br><input [(ngModel)]="model.phoneNumber" type="text"
+                                                                     id="phoneNumber" name="phoneNumber">
+            <label for="dontContact">Has the employer asked to not be contacted?</label><input
+                [(ngModel)]="model.doNotContact" type="checkbox" name="doNotContact"
                                                                                                id="dontContact">
         </div>
             <div class="form-group">
-                <label>Roles within {{name.value}}</label>
+                <label>Roles within Employer</label>
                 <button class="btn btn-default" (click)="addRole()">Add</button>
                 <br>
 
-                <span *ngFor="let boolean of roles"><input type="text" maxlength="40"><br></span>
+                <span *ngFor="let boolean of roles"><input [(ngModel)]="model.positionsNeeded[countofRoles]" type="text"
+                                                           maxlength="40" name="positions"><br></span>
         </div>
             <div class="form-group">
-                <label>Accessible by Public </label><input type="radio" name="pubT" value="Yes">Yes<input type="radio"
-                                                                                                          name="pubT"
-                                                                                                          value="No">No
+                <label>Accessible by Public </label><input [(ngModel)]="model.publicTransport" type="radio" name="pubT"
+                                                           value="true">Yes<input type="radio"
+                                                                                  name="pubT"
+                                                                                  value="false"
+                                                                                  [(ngModel)]="model.publicTransport">No
                 <br>
-                <label>Wage Sub Facts Sheet Provided </label><input type="radio" name="pubT" value="Yes">Yes<input
-                    type="radio" name="pubT" value="No">No
-                <input type="submit">
+                <label>Wage Sub Facts Sheet Provided </label><input type="radio" name="pubT" value="true"
+                                                                    [(ngModel)]="model.wageSubFactsProvided">Yes<input
+                    type="radio" name="pubT" value="false" [(ngModel)]="model.wageSubFactsProvided">No
+                <input name="submit" type="submit">
             </div>
         </div>
     </form>

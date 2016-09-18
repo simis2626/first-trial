@@ -10,24 +10,33 @@ import {EmployerProvider} from "../services/employer.service";
     templateUrl: 'app/forms/employer-form.component.html'
 })
 export class EmployerFormComponent {
-    roles: boolean[] = [true];
+    public roles: boolean[] = [true];
+    public countofRoles: number;
 
     constructor(employerProvider: EmployerProvider) {
         console.log(this.roles);
+        this.countofRoles = 0;
+        this.model = new Employer("", {name: "", notes: ""}, {
+            street: "",
+            suburb: "",
+            postcode: 0
+        }, "", "", false, [""], false, "", false);
+
     }
 
 
     addRole() {
+        this.countofRoles++;
         this.roles.push(true);
+
     }
 
 
-    model = Employer;
+    model: Employer;
 
-    submitted = false;
 
     onSubmit() {
-        this.submitted = true;
+
     }
 
     // TODO: Remove this when we're done
