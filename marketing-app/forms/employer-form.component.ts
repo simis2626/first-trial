@@ -2,7 +2,7 @@
  * Created by Andromeda on 11/09/2016.
  */
 import {Component, Output, EventEmitter} from "@angular/core";
-import {Employer} from "../objClass/Employer";
+import {Employer} from "../objClass/employer";
 import {EmployerProvider} from "../services/employer.service";
 
 @Component({
