@@ -1,18 +1,20 @@
 /**
  * Created by Andromeda on 11/09/2016.
  */
-import {Component, Output, EventEmitter} from "@angular/core";
+import {Component, Output, EventEmitter, AfterViewInit} from "@angular/core";
 import {Employer} from "../objClass/employer";
 import {EmployerProvider} from "../services/employer.service";
 
 @Component({
     selector: 'employer-form',
-    templateUrl: 'app/forms/employer-form.component.html'
+    templateUrl: 'app/forms/employer-form.component.html',
+    styleUrls: ['app/forms/employer-form.component.css']
 })
-export class EmployerFormComponent {
+export class EmployerFormComponent implements AfterViewInit {
     public roles: boolean[] = [true];
     public countofRoles: number;
-
+    public rolesAdded: string[] = [];
+    public transitionInForm: boolean = false;
     constructor(employerProvider: EmployerProvider) {
         console.log(this.roles);
         this.countofRoles = 0;
@@ -21,6 +23,14 @@ export class EmployerFormComponent {
             suburb: "",
             postcode: 0
         }, "", "", false, [""], false, "", false);
+
+    }
+
+    ngAfterViewInit() {
+
+        setTimeout(()=> {
+            this.transitionInForm = true;
+        }, 400);
 
     }
 
@@ -33,6 +43,7 @@ export class EmployerFormComponent {
     addRole() {
         this.countofRoles++;
         this.roles.push(true);
+        this.rolesAdded.push(this.model.positionsNeeded[this.countofRoles - 1])
 
     }
 
@@ -49,6 +60,7 @@ export class EmployerFormComponent {
     }
 
     onCancel() {
+        this.transitionInForm = false;
         this.employerCanceled.emit();
 
     }

@@ -76,7 +76,15 @@ export class EmployerList implements OnInit {
         this.showAddForm = true;
         setTimeout(()=> {
             document.getElementById("empForm").scrollIntoView(true);
-        }, 200);
+        }, 50);
+
+    }
+
+    hideAddForms() {
+
+        setTimeout(()=> {
+            this.showAddForm = true;
+        }, 1000);
 
     }
 

@@ -1,18 +1,21 @@
+<li class="list-group-item container-fluid frmHidden" [class.frmShow]="transitionInForm">
 <div><h4>New Employer</h4>
     {{diagnostic}}
     <form #employerForm="ngForm">
-        <div style="width:40%; float: left;">
+        <div style="width:48%; float: left;">
         <div class="form-group">
-            <label for="name">Employer Name:</label><br><input [(ngModel)]="model.name" name="name" type="text"
-                                                               id="name">
+            <label for="name">Employer Name*:</label><br><input required [(ngModel)]="model.name" name="name"
+                                                                type="text"
+                                                                id="name">
         </div>
-            <div class="form-group"><h4>Address</h4><br>
+            <div class="form-group"><h4 style="margin-bottom: 0; padding-bottom: 0">Address</h4><br>
                 <label for="street">Street:</label><br><input [(ngModel)]="model.address.street" name="address.street"
                                                               id="street" type="text"><br>
-                <label for="suburb">Suburb:</label><br><input [(ngModel)]="model.address.suburb" name="address.suburb"
-                                                              id="suburb" type="text"><br>
-                <label for="postcode">Postcode:</label><br><input [(ngModel)]="model.address.postcode"
-                                                                  name="address.postcode" type="number" id="postcode">
+                <label for="suburb">Suburb*:</label><br><input required [(ngModel)]="model.address.suburb"
+                                                               name="address.suburb"
+                                                               id="suburb" type="text"><br>
+                <label for="postcode">Postcode*:</label><br><input required [(ngModel)]="model.address.postcode"
+                                                                   name="address.postcode" type="number" id="postcode">
 
             </div>
         <div class="form-group">
@@ -24,41 +27,46 @@
                                                                              id="contactPersonNotes">
         </div>
         </div>
-        <div style="width:40%; float: right;">
-        <div class="form-group">
-            <label for="phoneNumber">Phone Number:</label><br><input [(ngModel)]="model.phoneNumber" type="text"
-                                                                     id="phoneNumber" name="phoneNumber">
-            <label for="dontContact">Has the employer asked to not be contacted?</label><input
-                [(ngModel)]="model.doNotContact" type="checkbox" name="doNotContact"
-                                                                                               id="dontContact">
-        </div>
+        <div style="width:48%; float: right;">
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number*:</label><br><input required [(ngModel)]="model.phoneNumber"
+                                                                          type="text"
+                                                                          id="phoneNumber" name="phoneNumber">
+                <label for="dontContact">Has the employer asked to not be contacted?</label><input
+                    [(ngModel)]="model.doNotContact" type="checkbox" name="doNotContact"
+                    id="dontContact">
+            </div>
             <div class="form-group">
                 <label>Roles within Employer</label>
-                <button class="btn btn-default" (click)="addRole()">Add</button>
                 <br>
-
-                <span *ngFor="let boolean of roles"><input [(ngModel)]="model.positionsNeeded[getRoleCount()]"
-                                                           type="text"
-                                                           maxlength="40" name="positions"><br></span>
-        </div>
+                <div *ngFor="let roleies of rolesAdded">
+                    {{roleies}}
+                </div>
+                <input [(ngModel)]="model.positionsNeeded[getRoleCount()]"
+                       type="text"
+                       maxlength="40" name="positions">
+                <button class="btn btn-default" (click)="addRole()">Add</button>
+            </div>
             <div class="form-group">
                 <label>Accessible by Public Transport</label><br><input [(ngModel)]="model.publicTransport" type="radio"
                                                                         name="pubT"
                                                                         value="true">Yes<input type="radio"
-                                                                                  name="pubT"
-                                                                                  value="false"
-                                                                                  [(ngModel)]="model.publicTransport">No
+                                                                                               name="pubT"
+                                                                                               value="false"
+                                                                                               [(ngModel)]="model.publicTransport">No
                 <br>
                 <label>Wage Sub Facts Sheet Provided </label><br><input type="radio" name="wageS" value="true"
                                                                         [(ngModel)]="model.wageSubFactsProvided">Yes<input
                     type="radio" name="wageS" value="false" [(ngModel)]="model.wageSubFactsProvided">No
-                <br style="clear: both;">
-                <input style="float: right;" name="submit" class="btn btn-primary" type="submit">
-                <confirm-button [inputValue]="'Cancel'" (clickConfirmed)="onCancel()">Cancel</confirm-button>
-
 
             </div>
         </div>
+        <br style="clear: both;">
+        <small>*Required</small>
+        <input [disabled]="!employerForm.form.valid" style="float: right;" name="submit" class="btn btn-primary"
+               type="submit">
+        <confirm-button [inputValue]="'Cancel'" (clickConfirmed)="onCancel()">Cancel</confirm-button>
     </form>
 
 </div>
+</li>
