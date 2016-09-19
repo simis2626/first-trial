@@ -19,6 +19,34 @@ router.get('/employers', function (req, res, next) {
         })
     }
 );
+router.post('/employers', function (req, res, next) {
+
+        var content = '';
+
+        req.on('data', function (data) {
+            // Append data.
+            content += data;
+        });
+
+        req.on('end', function () {
+            // Assuming, we're receiving JSON, parse the string into a JSON object to return.
+            console.log(content);
+            var data = JSON.parse(content);
+            //data = JSON.parse(data);
+            var url = 'mongodb://10.3.0.47:27017/marketing';
+            console.log(data);
+            mongo1.connect(url, function (err, db) {
+                db.collection('employers').insertOne(data.employer, function (err, docs) {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.send('{"SuccessfulAdd":"true"}');
+                })
+
+            })
+        });
+    }
+);
+
 /* Connect to db. */
 router.delete('/employers/:employerId', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/marketing';
@@ -81,6 +109,7 @@ router.post('/auth', function (req, res, next) {
         var data = JSON.parse(content);
         var url = 'mongodb://10.3.0.47:27017/marketing';
         var response = false;
+        console.log(content, data);
         mongo1.connect(url, function (err, db) {
             console.log(data.consultant._id);
             var searchJSON = JSON.parse('{"consultantId":"' + data.consultant._id + '"}');

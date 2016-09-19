@@ -66,9 +66,11 @@ export class EmployerProvider {
 
 
         let bodyString: any;
-        bodyString = employer.toString();
+        console.log(JSON.stringify(employer));
+        bodyString = '{"employer":' + JSON.stringify(employer) + '}';
+        bodyString = JSON.parse(bodyString);
 
-
+        console.log(bodyString);
         let singleHttpRequest = this.http.post(this.employersUrl, JSON.stringify(bodyString), this.options).map(this.extractData);
 
         return singleHttpRequest;

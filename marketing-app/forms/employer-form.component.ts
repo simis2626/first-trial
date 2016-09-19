@@ -15,7 +15,9 @@ export class EmployerFormComponent implements AfterViewInit {
     public countofRoles: number;
     public rolesAdded: string[] = [];
     public transitionInForm: boolean = false;
+    public employerProvider: EmployerProvider;
     constructor(employerProvider: EmployerProvider) {
+        this.employerProvider = employerProvider;
         console.log(this.roles);
         this.countofRoles = 0;
         this.model = new Employer("", {name: "", notes: ""}, {
@@ -52,11 +54,11 @@ export class EmployerFormComponent implements AfterViewInit {
 
     }
 
-    model: Employer;
+    public model: Employer;
 
 
     onSubmit() {
-
+        this.employerProvider.newEmployer(this.model).subscribe();
     }
 
     onCancel() {
