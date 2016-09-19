@@ -39,7 +39,8 @@ router.post('/employers', function (req, res, next) {
                 db.collection('employers').insertOne(data.employer, function (err, docs) {
                     res.statusCode = 200;
                     res.setHeader('Content-Type', 'application/json');
-                    res.send('{"SuccessfulAdd":"true"}');
+                    console.log(docs.ops[0]);
+                    res.send('{"employer":' + JSON.stringify(docs.ops[0]) + '}');
                 })
 
             })

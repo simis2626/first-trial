@@ -45,7 +45,7 @@
                 <input [(ngModel)]="model.positionsNeeded[getRoleCount()]"
                        type="text"
                        maxlength="40" name="positions">
-                <button class="btn btn-default" (click)="addRole()">Add</button>
+                <button class="btn btn-default" (click)="addRole()" type="button">Add</button>
             </div>
             <div class="form-group">
                 <label>Accessible by Public Transport</label><br><input [(ngModel)]="model.publicTransport" type="radio"
@@ -66,6 +66,11 @@
         <input [disabled]="!employerForm.form.valid" style="float: right;" name="submit" class="btn btn-primary"
                type="submit">
         <confirm-button [inputValue]="'Cancel'" (clickConfirmed)="onCancel()">Cancel</confirm-button>
+        <div *ngIf="showPending" class="alert alert-info" role="alert">Adding {{model.name}}. Please wait...
+
+        </div>
+        <div *ngIf="showSuccess" class="alert alert-success" role="alert"> Added {{model.name}}
+        </div>
     </form>
 
 </div>

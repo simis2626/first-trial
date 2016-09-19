@@ -13,6 +13,8 @@ import {EmployerProvider} from "../services/employer.service";
 export class EmployerFormComponent implements AfterViewInit {
     public roles: boolean[] = [true];
     public countofRoles: number;
+    public showSuccess: boolean = false;
+    public showPending: boolean = false;
     public rolesAdded: string[] = [];
     public transitionInForm: boolean = false;
     public employerProvider: EmployerProvider;
@@ -58,19 +60,21 @@ export class EmployerFormComponent implements AfterViewInit {
 
 
     onSubmit() {
-        this.employerProvider.newEmployer(this.model).subscribe();
+        this.showPending = true;
+        this.employerProvider.newEmployer(this.model).subscribe((data)=> {
+
+            this.employerSaved.emit(data);
+            this.showPending = false;
+            this.showSuccess = true;
+            setTimeout(()=>this.onCancel(), 500);
+
+
+        });
     }
 
     onCancel() {
         this.transitionInForm = false;
         this.employerCanceled.emit();
 
-    }
-
-
-
-    // TODO: Remove this when we're done
-    get diagnostic() {
-        return JSON.stringify(this.model);
     }
 }

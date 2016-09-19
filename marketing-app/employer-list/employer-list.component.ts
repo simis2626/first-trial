@@ -72,6 +72,20 @@ export class EmployerList implements OnInit {
 
     }
 
+    employerAdded(event) {
+
+        this.employers.unshift(event.employer);
+        setTimeout(()=> {
+            let val = '{"id":"' + event.employer._id + '","moveClass":"true"}';
+
+            this.empClasses.push(JSON.parse(val));
+        }, 100);
+
+        document.getElementById("employ" + event.employer._id).scrollIntoView(true);
+
+
+    }
+
     showAddForms() {
         this.showAddForm = true;
         setTimeout(()=> {
