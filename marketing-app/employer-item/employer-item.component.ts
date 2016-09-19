@@ -57,7 +57,7 @@ export class EmployerComponent implements OnInit, AfterViewInit {
 
     editEmployer() {
         this.editing = true;
-
+        document.getElementById("edit" + this.employer._id).scrollIntoView(true);
     }
 
     savedEmployer(event) {

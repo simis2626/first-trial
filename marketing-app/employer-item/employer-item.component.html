@@ -97,7 +97,7 @@
 
 
     </div>
-    <div class="well" *ngIf="editing">
+    <div id="edit{{employer._id}}" class="well" *ngIf="editing">
         <employer-form [optionalModel]="employer" (employerCanceled)="editing=false;"
                        (employerSaved)="savedEmployer($event)"></employer-form>
     </div>

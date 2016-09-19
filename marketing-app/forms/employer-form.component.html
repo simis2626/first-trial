@@ -1,5 +1,5 @@
 <li class="list-group-item container-fluid frmHidden" [class.frmShow]="transitionInForm">
-<div><h4>New Employer</h4>
+    <div><h4><span *ngIf="optionalModel">Edit</span><span *ngIf="!optionalModel">New</span> Employer</h4>
     {{diagnostic}}
     <form #employerForm="ngForm" (ngSubmit)="onSubmit()">
         <div style="width:48%; float: left;">
