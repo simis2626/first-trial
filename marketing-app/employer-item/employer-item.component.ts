@@ -29,6 +29,7 @@ export class EmployerComponent implements OnInit, AfterViewInit {
     public employer: Employer;
     @Input() public seqNumber: number;
     private deleting: boolean = false;
+    private editing: boolean = false;
     private deleteWidth: number = 2;
     public deletePercent: string;
     private initcheck: boolean = false;
@@ -54,7 +55,15 @@ export class EmployerComponent implements OnInit, AfterViewInit {
 
     }
 
+    editEmployer() {
+        this.editing = true;
 
+    }
+
+    savedEmployer(event) {
+        document.getElementById("employ" + this.employer._id).scrollIntoView(true);
+
+    }
 
 
     attemptsRequested() {

@@ -78,6 +78,21 @@ export class EmployerProvider {
 
     }
 
+    updateEmployer(employer: Employer): Observable<boolean> {
+
+
+        let bodyString: any;
+        console.log(JSON.stringify(employer));
+        bodyString = '{"employer":' + JSON.stringify(employer) + '}';
+        bodyString = JSON.parse(bodyString);
+
+        console.log(bodyString);
+        let singleHttpRequest = this.http.put(this.employersUrl, JSON.stringify(bodyString), this.options).map(this.extractData);
+
+        return singleHttpRequest;
+
+
+    }
 
 
 

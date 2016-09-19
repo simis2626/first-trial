@@ -1,7 +1,7 @@
 /**
  * Created by Andromeda on 11/09/2016.
  */
-import {Component, Output, EventEmitter, AfterViewInit} from "@angular/core";
+import {Component, Output, EventEmitter, AfterViewInit, Input, OnInit} from "@angular/core";
 import {Employer} from "../objClass/employer";
 import {EmployerProvider} from "../services/employer.service";
 
@@ -10,7 +10,7 @@ import {EmployerProvider} from "../services/employer.service";
     templateUrl: 'app/forms/employer-form.component.html',
     styleUrls: ['app/forms/employer-form.component.css']
 })
-export class EmployerFormComponent implements AfterViewInit {
+export class EmployerFormComponent implements AfterViewInit, OnInit {
     public roles: boolean[] = [true];
     public countofRoles: number;
     public showSuccess: boolean = false;
@@ -30,14 +30,24 @@ export class EmployerFormComponent implements AfterViewInit {
 
     }
 
-    ngAfterViewInit() {
 
+    ngOnInit() {
+
+
+        if (this.optionalModel) {
+            this.model = this.optionalModel;
+        }
+    }
+
+    ngAfterViewInit() {
         setTimeout(()=> {
             this.transitionInForm = true;
         }, 60);
 
     }
 
+
+    @Input() optionalModel: Employer;
 
     @Output() employerSaved = new EventEmitter();
     @Output() employerCanceled = new EventEmitter();
@@ -60,8 +70,10 @@ export class EmployerFormComponent implements AfterViewInit {
 
 
     onSubmit() {
-        this.model.dateAdded = new Date;
+
         this.showPending = true;
+        if (!this.optionalModel) {
+        this.model.dateAdded = new Date;
         this.employerProvider.newEmployer(this.model).subscribe((data)=> {
 
             this.employerSaved.emit(data);
@@ -71,6 +83,15 @@ export class EmployerFormComponent implements AfterViewInit {
 
 
         });
+        } else {
+            this.employerProvider.updateEmployer(this.model).subscribe((data)=> {
+
+                this.employerSaved.emit(data);
+                this.showPending = false;
+                this.showSuccess = true;
+                setTimeout(()=>this.onCancel(), 500);
+            });
+        }
     }
 
     onCancel() {

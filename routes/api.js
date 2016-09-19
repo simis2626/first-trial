@@ -47,6 +47,38 @@ router.post('/employers', function (req, res, next) {
         });
     }
 );
+router.put('/employers', function (req, res, next) {
+
+        var content = '';
+
+        req.on('data', function (data) {
+            // Append data.
+            content += data;
+        });
+
+        req.on('end', function () {
+            // Assuming, we're receiving JSON, parse the string into a JSON object to return.
+            console.log(content);
+            var data = JSON.parse(content);
+            //data = JSON.parse(data);
+            var url = 'mongodb://10.3.0.47:27017/marketing';
+            var findObjectId = new mongoObject.ObjectID(data.employer._id);
+            data.employer._id = new mongoObject.ObjectID(data.employer._id);
+            var searchJSON = {"_id": findObjectId};
+            console.log();
+            mongo1.connect(url, function (err, db) {
+                db.collection('employers').replaceOne(searchJSON, data.employer, function (err, docs) {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    console.log(docs);
+                    console.log(err);
+                    res.send('{"employer":' + JSON.stringify(docs) + '}');
+                })
+
+            })
+        });
+    }
+);
 
 /* Connect to db. */
 router.delete('/employers/:employerId', function (req, res, next) {

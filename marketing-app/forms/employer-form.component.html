@@ -4,34 +4,47 @@
     <form #employerForm="ngForm" (ngSubmit)="onSubmit()">
         <div style="width:48%; float: left;">
         <div class="form-group">
-            <label for="name">Employer Name*:</label><br><input required [(ngModel)]="model.name" name="name"
+            <label for="name">Employer Name*:</label><br><input class="form-control" required [(ngModel)]="model.name"
+                                                                name="name"
                                                                 type="text"
                                                                 id="name">
         </div>
             <div class="form-group"><h4 style="margin-bottom: 0; padding-bottom: 0">Address</h4><br>
-                <label for="street">Street:</label><br><input [(ngModel)]="model.address.street" name="address.street"
+                <label for="street">Street:</label><br><input class="form-control" [(ngModel)]="model.address.street"
+                                                              name="address.street"
                                                               id="street" type="text"><br>
-                <label for="suburb">Suburb*:</label><br><input required [(ngModel)]="model.address.suburb"
+                <label for="suburb">Suburb*:</label><br><input class="form-control" required
+                                                               [(ngModel)]="model.address.suburb"
                                                                name="address.suburb"
                                                                id="suburb" type="text"><br>
-                <label for="postcode">Postcode*:</label><br><input required [(ngModel)]="model.address.postcode"
-                                                                   name="address.postcode" type="number" id="postcode">
+                <label for="postcode">Postcode*:</label><br><input class="form-control" maxlength="4" minlength="4"
+                                                                   placeholder="3000" required
+                                                                   [(ngModel)]="model.address.postcode"
+                                                                   name="address.postcode" min="1000" type="number"
+                                                                   id="postcode">
 
             </div>
         <div class="form-group">
-            <label for="contactPersonName">Contact's Name:</label><br><input [(ngModel)]="model.contactPerson.name"
+            <label for="contactPersonName">Contact's Name:</label><br><input class="form-control"
+                                                                             [(ngModel)]="model.contactPerson.name"
                                                                              name="contactPerson.name" type="text"
                                                                              id="contactPersonName"><br>
-            <label for="contactPersonNotes">Contact Notes:</label><br><input [(ngModel)]="model.contactPerson.notes"
+            <label for="contactPersonNotes">Contact Notes:</label><br><input class="form-control"
+                                                                             [(ngModel)]="model.contactPerson.notes"
                                                                              type="text" name="contactPerson.notes"
                                                                              id="contactPersonNotes">
         </div>
         </div>
         <div style="width:48%; float: right;">
             <div class="form-group">
-                <label for="phoneNumber">Phone Number*:</label><br><input required [(ngModel)]="model.phoneNumber"
+                <label for="phoneNumber">Phone Number*:</label><br><input maxlength="10" minlength="8" min="10000000"
+                                                                          class="form-control" required
+                                                                          [(ngModel)]="model.phoneNumber"
                                                                           type="text"
                                                                           id="phoneNumber" name="phoneNumber">
+                <label for="notes">Employer Notes:</label><br><input class="form-control" id="notes"
+                                                                     [(ngModel)]="model.notes" type="text"
+                                                                     name="text"><br>
                 <label for="dontContact">Has the employer asked to not be contacted?</label><input
                     [(ngModel)]="model.doNotContact" type="checkbox" name="doNotContact"
                     id="dontContact">
@@ -42,7 +55,7 @@
                 <div *ngFor="let roleies of rolesAdded">
                     {{roleies}}
                 </div>
-                <input [(ngModel)]="model.positionsNeeded[getRoleCount()]"
+                <input class="form-control" [(ngModel)]="model.positionsNeeded[getRoleCount()]"
                        type="text"
                        maxlength="40" name="positions">
                 <button class="btn btn-default" (click)="addRole()" type="button">Add</button>
@@ -63,7 +76,8 @@
         </div>
         <br style="clear: both;">
         <small>*Required</small>
-        <input [disabled]="!employerForm.form.valid" style="float: right;" name="submit" class="btn btn-primary"
+        <input class="form-control" [disabled]="!employerForm.form.valid" style="float: right;" name="submit"
+               class="btn btn-primary"
                type="submit">
         <confirm-button [inputValue]="'Cancel'" (clickConfirmed)="onCancel()">Cancel</confirm-button>
         <div *ngIf="showPending" class="alert alert-info" role="alert">Adding {{model.name}}. Please wait...
