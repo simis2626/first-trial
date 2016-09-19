@@ -50,14 +50,14 @@
             <div class="form-group">
                 <label>Accessible by Public Transport</label><br><input [(ngModel)]="model.publicTransport" type="radio"
                                                                         name="pubT"
-                                                                        value="true">Yes<input type="radio"
+                                                                        [value]=true>Yes<input type="radio"
                                                                                                name="pubT"
-                                                                                               value="false"
+                                                                                               [value]=false
                                                                                                [(ngModel)]="model.publicTransport">No
                 <br>
-                <label>Wage Sub Facts Sheet Provided </label><br><input type="radio" name="wageS" value="true"
+                <label>Wage Sub Facts Sheet Provided </label><br><input type="radio" name="wageS" [value]=true
                                                                         [(ngModel)]="model.wageSubFactsProvided">Yes<input
-                    type="radio" name="wageS" value="false" [(ngModel)]="model.wageSubFactsProvided">No
+                    type="radio" name="wageS" [value]=false [(ngModel)]="model.wageSubFactsProvided">No
 
             </div>
         </div>

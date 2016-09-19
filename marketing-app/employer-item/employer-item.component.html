@@ -23,8 +23,8 @@
             <div class="text-capitalize">{{employer.name}}</div>
             <div>
                 <small>Accessible by PT</small>
-                <span *ngIf="employer.publicTransport" class="glyphicon glyphicon-ok"></span>
-                <span *ngIf="!employer.publicTransport" class="glyphicon glyphicon-remove"></span>
+                <span *ngIf="employer.publicTransport === true" class="glyphicon glyphicon-ok"></span>
+                <span *ngIf="employer.publicTransport === false" class="glyphicon glyphicon-remove"></span>
             </div>
         </dl>
     </div>
