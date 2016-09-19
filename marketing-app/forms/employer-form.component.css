@@ -1,7 +1,7 @@
 .frmHidden {
     opacity: 0;
-    transform: scaleX(0);
-    transition: transform 300ms ease-in, opacity 200ms ease-in;
+    transform: scaleY(0);
+    transition: transform 600ms ease-in, opacity 700ms ease-in;
     will-change: transform, opacity;
 }
 

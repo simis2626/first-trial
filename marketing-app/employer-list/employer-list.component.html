@@ -13,7 +13,9 @@
             <employer-form *ngIf="showAddForm" id="empForm" (employerCanceled)="showAddForm = false;"></employer-form>
 
             <div [ngSwitch]="ready">
-            <span *ngSwitchCase="true"><employer *ngFor="let employer of employers" [employer]="employer"
+            <span *ngSwitchCase="true"><employer *ngFor="let employer of employers; let ndx = index"
+                                                 [employer]="employer"
+                                                 [seqNumber]="ndx+1"
                                                  (employerDeleted)="onEmployerDelete($event)"
                                                  [class.move]="!getMoveClass(employer._id)"
                                                  (applyMoveClass)="changeClass($event)"

@@ -1,17 +1,18 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
-import {Component, Input, OnInit, Output, EventEmitter} from "@angular/core";
+import {Component, Input, OnInit, Output, EventEmitter, AfterViewInit} from "@angular/core";
 import {Employer} from "../objClass/employer";
-import {EmployerProvider} from '../services/employer.service';
+import {EmployerProvider} from "../services/employer.service";
 import {Response} from "@angular/http";
 
 
 @Component({
     selector: 'employer',
-    templateUrl: 'app/employer-item/employer-item.component.html'
+    templateUrl: 'app/employer-item/employer-item.component.html',
+    styleUrls: ['app/forms/employer-form.component.css']
 })
-export class EmployerComponent implements OnInit {
+export class EmployerComponent implements OnInit, AfterViewInit {
 
     constructor(private employerProvider: EmployerProvider) {
         employerProvider.selectedEmployer$.subscribe(
@@ -26,10 +27,13 @@ export class EmployerComponent implements OnInit {
 
     @Input()
     public employer: Employer;
+    @Input() public seqNumber: number;
     private deleting: boolean = false;
     private deleteWidth: number = 2;
     public deletePercent: string;
     private initcheck: boolean = false;
+
+    public transitionIn: boolean = false;
 
 
     @Output() employerSelectedEvent = new EventEmitter();
@@ -41,6 +45,17 @@ export class EmployerComponent implements OnInit {
     ngOnInit() {
         this.deletePercent = this.deleteWidth + "%";
     }
+
+
+    ngAfterViewInit() {
+        setTimeout(()=> {
+            this.transitionIn = true
+        }, this.seqNumber * 150);
+
+    }
+
+
+
 
     attemptsRequested() {
         console.log("AttemptsRequested");

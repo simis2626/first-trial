@@ -13,7 +13,7 @@
         </div>
     </div>
 
-    <li class="list-group-item container-fluid" *ngIf="!deleting">
+    <li class="list-group-item container-fluid frmHidden" *ngIf="!deleting" [class.frmShow]="transitionIn">
         <div class="col-md-6 pull-left">
 
         <dl class="dl-horizontal pull-left">

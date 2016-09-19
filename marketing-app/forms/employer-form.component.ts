@@ -30,7 +30,7 @@ export class EmployerFormComponent implements AfterViewInit {
 
         setTimeout(()=> {
             this.transitionInForm = true;
-        }, 10);
+        }, 60);
 
     }
 
