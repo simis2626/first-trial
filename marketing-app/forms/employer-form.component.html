@@ -1,7 +1,7 @@
 <li class="list-group-item container-fluid frmHidden" [class.frmShow]="transitionInForm">
 <div><h4>New Employer</h4>
     {{diagnostic}}
-    <form #employerForm="ngForm">
+    <form #employerForm="ngForm" (ngSubmit)="onSubmit()">
         <div style="width:48%; float: left;">
         <div class="form-group">
             <label for="name">Employer Name*:</label><br><input required [(ngModel)]="model.name" name="name"
