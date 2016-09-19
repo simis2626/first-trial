@@ -10,7 +10,7 @@ export class Employer {
               public doNotContact: boolean,
               public positionsNeeded: string[],
               public publicTransport: boolean,
-              public dateAdded: string,
+              public dateAdded: Date,
               public wageSubFactsProvided: boolean,
               public _id?: string) {
   }

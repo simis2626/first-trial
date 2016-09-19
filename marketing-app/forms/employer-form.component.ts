@@ -26,7 +26,7 @@ export class EmployerFormComponent implements AfterViewInit {
             street: "",
             suburb: "",
             postcode: 0
-        }, "", "", false, [""], false, "", false);
+        }, "", "", false, [""], false, new Date, false);
 
     }
 
@@ -60,6 +60,7 @@ export class EmployerFormComponent implements AfterViewInit {
 
 
     onSubmit() {
+        this.model.dateAdded = new Date;
         this.showPending = true;
         this.employerProvider.newEmployer(this.model).subscribe((data)=> {
 

@@ -1,0 +1,13 @@
+CACHE MANIFEST
+#v1
+
+# Explicitly cached 'master entries'.
+CACHE:
+node_modules/*
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css
+https://code.jquery.com/jquery-2.2.4.js
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
+# Resources that require the user to be online.
+NETWORK:
+*

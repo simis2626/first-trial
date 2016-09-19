@@ -79,9 +79,8 @@ export class EmployerList implements OnInit {
             let val = '{"id":"' + event.employer._id + '","moveClass":"true"}';
 
             this.empClasses.push(JSON.parse(val));
+            document.getElementById("employ" + event.employer._id).scrollIntoView(true);
         }, 100);
-
-        document.getElementById("employ" + event.employer._id).scrollIntoView(true);
 
 
     }
