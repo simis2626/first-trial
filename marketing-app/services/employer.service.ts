@@ -32,7 +32,6 @@ export class EmployerProvider {
 
     private extractData(res: Response) {
         let body = res.json();
-        console.log(body);
         return body || {};
     }
 
@@ -56,9 +55,7 @@ export class EmployerProvider {
 
     deleteEmployer(employerId: string): Observable<Response> {
 
-        console.log("deleted");
         let delEmp = this.employersUrl + "/" + employerId;
-        console.log(delEmp);
         return this.http.delete(delEmp);
     }
 
@@ -66,11 +63,9 @@ export class EmployerProvider {
 
 
         let bodyString: any;
-        console.log(JSON.stringify(employer));
         bodyString = '{"employer":' + JSON.stringify(employer) + '}';
         bodyString = JSON.parse(bodyString);
 
-        console.log(bodyString);
         let singleHttpRequest = this.http.post(this.employersUrl, JSON.stringify(bodyString), this.options).map(this.extractData);
 
         return singleHttpRequest;
@@ -82,11 +77,9 @@ export class EmployerProvider {
 
 
         let bodyString: any;
-        console.log(JSON.stringify(employer));
         bodyString = '{"employer":' + JSON.stringify(employer) + '}';
         bodyString = JSON.parse(bodyString);
 
-        console.log(bodyString);
         let singleHttpRequest = this.http.put(this.employersUrl, JSON.stringify(bodyString), this.options).map(this.extractData);
 
         return singleHttpRequest;

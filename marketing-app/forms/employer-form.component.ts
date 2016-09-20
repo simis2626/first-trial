@@ -20,7 +20,6 @@ export class EmployerFormComponent implements AfterViewInit, OnInit {
     public employerProvider: EmployerProvider;
     constructor(employerProvider: EmployerProvider) {
         this.employerProvider = employerProvider;
-        console.log(this.roles);
         this.countofRoles = 0;
         this.model = new Employer("", {name: "", notes: ""}, {
             street: "",

@@ -3,9 +3,8 @@
  */
 import {Component, Input, OnInit, EventEmitter, Output} from "@angular/core";
 import {Attempt} from "../objClass/attempt";
-import {AttemptProvider} from '../services/attempt.service';
+import {AttemptProvider} from "../services/attempt.service";
 import {Response} from "@angular/http";
-
 
 
 @Component({
@@ -37,7 +36,6 @@ export class AttemptComponent implements OnInit {
             let robert: Response;
             this.attemptProvider.deleteAttempt(this.attempt._id).subscribe((outcome)=> {
                 robert = outcome;
-                console.log(robert);
                 if (robert.status == 200) {
                     this.attemptDeleted.emit(this.attempt._id);
                     this.deleting = false;
@@ -56,7 +54,6 @@ export class AttemptComponent implements OnInit {
                     this.initcheck = true;
                 }
             }
-            console.log(this.deletePercent);
         }, 260)
 
 

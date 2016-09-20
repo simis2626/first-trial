@@ -18,10 +18,8 @@ router.get('/get/:id', function(req, res, next) {
         mongo1.connect(url, function(err, db) {
 
                 var findObjectId = new mongoObject.ObjectID(req.params.id);
-                console.log(findObjectId);
                 var searchJSON = {"_id": findObjectId };
                 db.collection('fs.files').find(searchJSON).toArray(function(err,docs){
-                        console.log(docs[0].filename);
                         res.attachment(docs[0].filename);
                         var gridfs = new mongo2.GridFSBucket(db);
                         gridfs.openDownloadStream(findObjectId).pipe(res);
@@ -41,7 +39,6 @@ router.get('/deleteEmployer/:id', function (req, res, next) {
         mongo1.connect(url, function(err, db) {
 
                 var findObjectId = new mongoObject.ObjectID(req.params.id);
-                console.log(findObjectId);
                 var searchJSON = {"_id": findObjectId };
                 var gridfs = new mongo2.GridFSBucket(db);
                         gridfs.delete(findObjectId, function(){
@@ -65,7 +62,6 @@ router.get('/deleteEmployer/:id', function (req, res, next) {
 router.post('/', multa1.single('data2'),function(req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/nodehtml';
         //console.log(req.file);
-        console.log(req.body);
 
         mongo1.connect(url, function(err, db) {
 
@@ -74,7 +70,6 @@ router.post('/', multa1.single('data2'),function(req, res, next) {
                 var gridfs = new mongo2.GridFSBucket(db);
 
 
-                console.log(req.file);
 
                 streamer.createReadStream(req.file.buffer).pipe(gridfs.openUploadStream(req.file.originalname).on('finish', function(){
 
@@ -93,8 +88,6 @@ router.get('/', function(req, res, next) {
 
         mongo1.connect(url, function(err, db) {
 
-                console.log(err);
-                console.log("Connected Successfully");
 
                 db.collection('fs.files').find().toArray(function(err, docs){
                     for (var yt = 0; yt < docs.length; yt++) {

@@ -14,8 +14,6 @@ router.use('/gridfslist',gridfslist);
 
 router.post('/', multa1.single('data2'),function(req, res, next) {
  var url = 'mongodb://10.3.0.47:27017/nodehtml';
- //console.log(req.file);
- console.log(req.body);
 
 mongo1.connect(url, function(err, db) {
 
@@ -24,7 +22,6 @@ mongo1.connect(url, function(err, db) {
  var gridfs = new mongo2.GridFSBucket(db);
 
 
-console.log(req.file);
 
 streamer.createReadStream(req.file.buffer).pipe(gridfs.openUploadStream(req.file.originalname).on('finish', function(){
 

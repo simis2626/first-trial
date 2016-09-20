@@ -53,7 +53,6 @@ export class EmployerList implements OnInit {
     }
 
     onEmployerDelete(employerId: string) {
-        console.log(employerId);
         this.employers = this.employers.filter((emps)=> {
             return emps._id != employerId;
         });
@@ -104,14 +103,13 @@ export class EmployerList implements OnInit {
 
     changeClass(empId: string) {
         for (let i = 0; i < this.empClasses.length; i++) {
-            if (this.empClasses[i].id == empId) {
-                console.log(this.empClasses[i].id);
+            if (this.empClasses[i].id == empId)
                 this.empClasses[i].moveClass = false;
                 this.employerSelectedEmit.emit();
             }
 
 
         }
-    }
+
 
 }

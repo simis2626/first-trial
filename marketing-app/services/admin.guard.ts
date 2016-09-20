@@ -14,7 +14,6 @@ export class AdminGuard implements CanActivate {
 
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        console.log('AdminGuard#canActivate called');
         if (this.consultantProvider.selectedConsultant.admin) {
             return true;
         } else {

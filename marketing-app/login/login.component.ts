@@ -1,12 +1,11 @@
 /**
  * Created by andromeda on 19/08/2016.
  */
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {Consultant} from '../objClass/consultant';
+import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
+import {Consultant} from "../objClass/consultant";
 import {ConsultantProvider} from "../services/consultant.service";
 import {AuthProvider} from "../services/auth.service";
-
 
 
 @Component({
@@ -29,8 +28,8 @@ export class LoginComponent implements OnInit {
     public showSuccess: boolean;
     public showWarning: boolean;
     public showPending: boolean = false;
-
-
+    public remember: boolean = false;
+    public showSavedLogin: boolean = false;
     getConsultants() {
 
         this.consultantProvider.getConsultants()
@@ -43,9 +42,21 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this.classModal = "modal fade in";
         this.getConsultants();
+        this.authProvider.checkToken().then((loggedIn)=> {
+            if (loggedIn) {
+                this.showSavedLogin = true;
+                this.consultantProvider.selectedConsultant = this.consultants.find((consultant: Consultant)=> {
+                    return consultant._id === this.authProvider.preloggedInUser;
+                });
+                setTimeout(()=> {
+                    this.router.navigate(['./Application']);
+                }, 800);
+            }
+        });
         this.authStatus = false;
         this.showSuccess = false;
         this.showWarning = false;
+
 
     }
 
@@ -59,18 +70,25 @@ export class LoginComponent implements OnInit {
 
     }
 
+    toggleRememberme() {
+        if (this.remember) {
+            this.remember = false;
+        } else {
+            this.remember = true;
+        }
+    }
 
     checkPassword(pwdCheck: string) {
+
         for (let i = 0; i < this.consultants.length; i++) {
             if (this.consultants[i]._id == this.idSelected) {
                 this.triedSubmit = true;
                 this.showPending = true;
-                console.log(this.consultants[i]);
 
-                this.authProvider.LoginAttempt(this.consultants[i], pwdCheck)
+                this.authProvider.LoginAttempt(this.consultants[i], pwdCheck, this.remember)
                     .subscribe(authResult => {
                         this.showPending = false;
-                        this.authStatus = authResult;
+                        this.authStatus = authResult.SuccessfulAuth;
                         if (this.authStatus) {
                             this.checkSuccessWarning();
                             this.consultantProvider.selectedConsultant = this.consultants[i];

@@ -4,9 +4,9 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
-import {Component, Input, OnInit, OnChanges, DoCheck} from '@angular/core';
-import {Attempt} from '../objClass/attempt';
-import {AttemptProvider} from '../services/attempt.service';
+import {Component, OnInit} from "@angular/core";
+import {Attempt} from "../objClass/attempt";
+import {AttemptProvider} from "../services/attempt.service";
 import {Employer} from "../objClass/employer";
 import {EmployerProvider} from "../services/employer.service";
 
@@ -76,7 +76,6 @@ export class AttemptList implements OnInit {
     }
 
     onAttemptDelete(attemptId: string) {
-        console.log(attemptId);
         this.attempts = this.attempts.filter((attempts)=> {
             return attempts._id != attemptId;
         });
@@ -96,7 +95,6 @@ export class AttemptList implements OnInit {
     changeClass(empId: string) {
         for (let i = 0; i < this.attemptClasses.length; i++) {
             if (this.attemptClasses[i].id == empId) {
-                console.log(this.attemptClasses[i].id);
                 this.attemptClasses[i].moveClass = false;
             }
 

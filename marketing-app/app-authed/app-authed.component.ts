@@ -1,10 +1,10 @@
 /**
  * Created by andromeda on 18/08/2016.
  */
-import {Component} from '@angular/core';
-import '../services/rxjs-operators';
-import {Employer} from "../objClass/employer";
-import {EmployerProvider} from "../services/employer.service"
+import {Component} from "@angular/core";
+import "../services/rxjs-operators";
+import {EmployerProvider} from "../services/employer.service";
+import {ConsultantProvider} from "../services/consultant.service";
 
 @Component({
     selector: 'app-authed',
@@ -12,7 +12,8 @@ import {EmployerProvider} from "../services/employer.service"
 })
 export class AuthedAppComponent {
 
-    constructor(employerProvider: EmployerProvider) {
+    constructor(employerProvider: EmployerProvider, consultantProvider: ConsultantProvider) {
+        this.consultantProvider = consultantProvider;
         employerProvider.selectedEmployer$.subscribe(
             employer => {
                 this.showMarketing = true;
@@ -21,13 +22,13 @@ export class AuthedAppComponent {
 
     }
 
-
+    consultantProvider: ConsultantProvider;
     selectedHeader;
     activeClass = "btn btn-primary active";
     inactiveClass = "btn btn-default";
     public headerButtons;
     public appTitle = "ORS Marketing Tracker";
-    public subTitle = "for Alisha Robertson-Ryan";
+    public subTitle = "for Consultant";
     public activeButton;
     private authState: boolean = false;
     public showMarketing: boolean;
@@ -38,6 +39,7 @@ export class AuthedAppComponent {
             this.activeClass, this.inactiveClass, this.inactiveClass
 
         ];
+        this.subTitle = "for " + this.consultantProvider.selectedConsultant.name;
         this.activeButton = 1;
         this.showMarketing = false;
     }

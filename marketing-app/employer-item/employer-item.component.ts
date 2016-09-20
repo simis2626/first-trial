@@ -69,7 +69,6 @@ export class EmployerComponent implements OnInit, AfterViewInit {
 
 
     attemptsRequested() {
-        console.log("AttemptsRequested");
         this.employerProvider.setSelectedEmployer(this.employer);
         document.getElementById('anchor' + this.employer._id).style.backgroundColor = 'LightCyan';
 
@@ -83,7 +82,6 @@ export class EmployerComponent implements OnInit, AfterViewInit {
             let robert: Response;
             this.employerProvider.deleteEmployer(this.employer._id).subscribe((outcome)=> {
                 robert = outcome;
-                console.log(robert);
                 if (robert.status == 200) {
                     this.employerDeleted.emit(this.employer._id);
                     this.deleting = false;
@@ -102,7 +100,6 @@ export class EmployerComponent implements OnInit, AfterViewInit {
                     this.initcheck = true;
                 }
             }
-            console.log(this.deletePercent);
         }, 260)
 
     }
