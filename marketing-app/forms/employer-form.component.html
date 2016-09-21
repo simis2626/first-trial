@@ -52,6 +52,15 @@
             <div class="form-group">
                 <label>Roles within Employer</label>
                 <br>
+
+                <div *ngFor="let role of countRoles; let ndx = index;">
+                    {{model.positionsNeeded[ndx]}}<span style="float: right" *ngIf="model.positionsNeeded[ndx]"
+                                                        (click)="deleteRole(ndx)"
+                                                        class="glyphicon glyphicon-remove-circle"
+                                                        aria-hidden="true"></span>
+
+
+                </div>
                 <div *ngFor="let roleies of rolesAdded">
                     {{roleies}}
                 </div>

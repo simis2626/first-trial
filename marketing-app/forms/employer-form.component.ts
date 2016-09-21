@@ -4,6 +4,7 @@
 import {Component, Output, EventEmitter, AfterViewInit, Input, OnInit} from "@angular/core";
 import {Employer} from "../objClass/employer";
 import {EmployerProvider} from "../services/employer.service";
+import forEach = require("core-js/fn/array/for-each");
 
 @Component({
     selector: 'employer-form',
@@ -17,6 +18,7 @@ export class EmployerFormComponent implements AfterViewInit, OnInit {
     public showPending: boolean = false;
     public rolesAdded: string[] = [];
     public transitionInForm: boolean = false;
+    public countRoles: boolean[] = [];
     public employerProvider: EmployerProvider;
     constructor(employerProvider: EmployerProvider) {
         this.employerProvider = employerProvider;
@@ -35,6 +37,17 @@ export class EmployerFormComponent implements AfterViewInit, OnInit {
 
         if (this.optionalModel) {
             this.model = this.optionalModel;
+            this.model.positionsNeeded.forEach((position)=> {
+                this.countRoles.push(true);
+                this.countofRoles++;
+            });
+
+
+
+
+
+
+
         }
     }
 
@@ -42,6 +55,13 @@ export class EmployerFormComponent implements AfterViewInit, OnInit {
         setTimeout(()=> {
             this.transitionInForm = true;
         }, 60);
+
+    }
+
+    deleteRole(indexNum: number) {
+        console.log(indexNum);
+        this.model.positionsNeeded.splice(indexNum, 1);
+
 
     }
 
