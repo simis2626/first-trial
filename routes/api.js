@@ -72,6 +72,59 @@ router.put('/employers', function (req, res, next) {
     }
 );
 
+router.post('/attempts', function (req, res, next) {
+
+        var content = '';
+
+        req.on('data', function (data) {
+            // Append data.
+            content += data;
+        });
+
+        req.on('end', function () {
+            var data = JSON.parse(content);
+            //data = JSON.parse(data);
+            var url = 'mongodb://10.3.0.47:27017/marketing';
+            mongo1.connect(url, function (err, db) {
+                db.collection('attempts').insertOne(data.attempt, function (err, docs) {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.send('{"employer":' + JSON.stringify(docs.ops[0]) + '}');
+                })
+
+            })
+        });
+    }
+);
+router.put('/attempts', function (req, res, next) {
+
+        var content = '';
+
+        req.on('data', function (data) {
+            // Append data.
+            content += data;
+        });
+
+        req.on('end', function () {
+            var data = JSON.parse(content);
+            //data = JSON.parse(data);
+            var url = 'mongodb://10.3.0.47:27017/marketing';
+            var findObjectId = new mongoObject.ObjectID(data.attempt._id);
+            data.employer._id = new mongoObject.ObjectID(data.attempt._id);
+            var searchJSON = {"_id": findObjectId};
+            mongo1.connect(url, function (err, db) {
+                db.collection('attempt').replaceOne(searchJSON, data.attempt, function (err, docs) {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.send('{"attempt":' + JSON.stringify(docs) + '}');
+                })
+
+            })
+        });
+    }
+);
+
+
 /* Connect to db. */
 router.delete('/employers/:employerId', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/marketing';

@@ -3,14 +3,13 @@
  */
 
 export class Attempt {
-    constructor(public _id: string,
-                public EC: string,
-                public Date: string,
+    constructor(public EC: string,
                 public notes: string,
                 public followUpRequired: boolean,
-                public followUpDate: string,
-                public dateAdded: string,
-                public clientsReferred: string,
-                public employerId: string) {
+                public dateAdded: Date,
+                public clientsReferred: string[],
+                public employerId: string,
+                public _id?: string,
+                public followUpDate?: Date) {
     }
 }

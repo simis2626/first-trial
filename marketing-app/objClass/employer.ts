@@ -1,6 +1,7 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
+//TODO: Add Employer has hired from us checkbox.
 export class Employer {
   constructor(public phoneNumber: string,
               public contactPerson: {name: string, notes: string},

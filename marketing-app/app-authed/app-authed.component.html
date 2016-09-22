@@ -36,15 +36,13 @@
     </div>
     <div class="row">
         <br>
-        <div class="col-md-1"></div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <employer-list (employerSelectedEmit)="cancelMarketing()" #empList *ngIf="activeButton==1"
             ></employer-list>
 
 
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <marketing-list *ngIf="showMarketing && activeButton==1"></marketing-list>
         </div>
 

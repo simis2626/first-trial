@@ -1,0 +1,19 @@
+.frmHidden {
+    opacity: 0;
+    transform: scaleY(0);
+    transition: transform 600ms ease-in, opacity 700ms ease-in;
+    will-change: transform, opacity;
+}
+
+.frmShow {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442; /* red */
+}
