@@ -2,96 +2,56 @@
     <div><h4><span *ngIf="optionalModel">Edit</span><span *ngIf="!optionalModel">New</span> Marketing</h4>
         <form #attemptForm="ngForm" (ngSubmit)="onSubmit()">
             <div style="width:48%; float: left;">
-                <div class="form-group"><h4 style="margin-bottom: 0; padding-bottom: 0">
+                <div class="form-group"><h4>
                     {{employerProvider.getSelectedEmployer().name}}</h4><br>
-                    <label for="street">Street:</label><br><input class="form-control"
-                                                                  [(ngModel)]="model.address.street"
-                                                                  name="address.street"
-                                                                  id="street" type="text"><br>
-                    <label for="suburb">Suburb*:</label><br><input class="form-control" required
-                                                                   [(ngModel)]="model.address.suburb"
-                                                                   name="address.suburb"
-                                                                   id="suburb" type="text"><br>
-                    <label for="postcode">Postcode*:</label><br><input class="form-control" maxlength="4" minlength="4"
-                                                                       placeholder="3000" required
-                                                                       [(ngModel)]="model.address.postcode"
-                                                                       name="address.postcode" min="1000" type="number"
-                                                                       id="postcode">
+                    <label for="notes">Notes:</label><br><textarea required class="form-control"
+                                                                   [(ngModel)]="model.notes"
+                                                                   name="notes"
+                                                                   id="notes"></textarea>
 
                 </div>
-                <div class="form-group">
-                    <label for="contactPersonName">Contact's Name:</label><br><input class="form-control"
-                                                                                     [(ngModel)]="model.contactPerson.name"
-                                                                                     name="contactPerson.name"
-                                                                                     type="text"
-                                                                                     id="contactPersonName"><br>
-                    <label for="contactPersonNotes">Contact Notes:</label><br><input class="form-control"
-                                                                                     [(ngModel)]="model.contactPerson.notes"
-                                                                                     type="text"
-                                                                                     name="contactPerson.notes"
-                                                                                     id="contactPersonNotes">
-                </div>
+
             </div>
             <div style="width:48%; float: right;">
                 <div class="form-group">
-                    <label for="phoneNumber">Phone Number*:</label><br><input maxlength="10" minlength="8"
-                                                                              min="10000000"
-                                                                              class="form-control" required
-                                                                              [(ngModel)]="model.phoneNumber"
-                                                                              type="text"
-                                                                              id="phoneNumber" name="phoneNumber">
-                    <label for="notes">Employer Notes:</label><br><input class="form-control" id="notes"
-                                                                         [(ngModel)]="model.notes" type="text"
-                                                                         name="text"><br>
-                    <label for="dontContact">Has the employer asked to not be contacted?</label><input
-                        [(ngModel)]="model.doNotContact" type="checkbox" name="doNotContact"
-                        id="dontContact">
+                    <label for="followUpRequired">Is Follow Up Required?</label><br><input
+                        [(ngModel)]="model.followUpRequired" type="checkbox" name="followUpRequired"
+                        id="followUpRequired"><br>
+                    <label for="dateFollowUpRequired">Follow up due by:</label><br>
+                    <input name="dateFollowUpRequired" id="dateFollowUpRequired" type="date"
+                           [disabled]="!model.followUpRequired" [(ngModel)]="model.followUpDate">
                 </div>
                 <div class="form-group">
-                    <label>Roles within Employer</label>
+                    <label>Clients Referred</label>
                     <br>
 
-                    <div *ngFor="let role of countRoles; let ndx = index;">
-                        {{model.positionsNeeded[ndx]}}<span style="float: right" *ngIf="model.positionsNeeded[ndx]"
-                                                            (click)="deleteRole(ndx)"
+                    <div *ngFor="let client of countClients; let ndx = index;">
+                        {{model.clientsReferred[ndx]}}<span style="float: right" *ngIf="model.clientsReferred[ndx]"
+                                                            (click)="deleteClient(ndx)"
                                                             class="glyphicon glyphicon-remove-circle"
                                                             aria-hidden="true"></span>
 
 
                     </div>
-                    <div *ngFor="let roleies of rolesAdded">
+                    <div *ngFor="let roleies of clientsAdded">
                         {{roleies}}
                     </div>
-                    <input class="form-control" [(ngModel)]="model.positionsNeeded[getRoleCount()]"
+                    <input class="form-control" [(ngModel)]="model.clientsReferred[getClientCount()]"
                            type="text"
-                           maxlength="40" name="positions">
-                    <button class="btn btn-default" (click)="addRole()" type="button">Add</button>
-                </div>
-                <div class="form-group">
-                    <label>Accessible by Public Transport</label><br><input [(ngModel)]="model.publicTransport"
-                                                                            type="radio"
-                                                                            name="pubT"
-                                                                            [value]=true>Yes<input type="radio"
-                                                                                                   name="pubT"
-                                                                                                   [value]=false
-                                                                                                   [(ngModel)]="model.publicTransport">No
-                    <br>
-                    <label>Wage Sub Facts Sheet Provided </label><br><input type="radio" name="wageS" [value]=true
-                                                                            [(ngModel)]="model.wageSubFactsProvided">Yes<input
-                        type="radio" name="wageS" [value]=false [(ngModel)]="model.wageSubFactsProvided">No
-
+                           maxlength="40" name="clients">
+                    <button class="btn btn-default" (click)="addClient()" type="button">Add</button>
                 </div>
             </div>
             <br style="clear: both;">
             <small>*Required</small>
-            <input class="form-control" [disabled]="!employerForm.form.valid" style="float: right;" name="submit"
+            <input class="form-control" [disabled]="!attemptForm.form.valid" style="float: right;" name="submit"
                    class="btn btn-primary"
                    type="submit">
             <confirm-button [inputValue]="'Cancel'" (clickConfirmed)="onCancel()">Cancel</confirm-button>
-            <div *ngIf="showPending" class="alert alert-info" role="alert">Adding {{model.name}}. Please wait...
+            <div *ngIf="showPending" class="alert alert-info" role="alert">Adding. Please wait...
 
             </div>
-            <div *ngIf="showSuccess" class="alert alert-success" role="alert"> Added {{model.name}}
+            <div *ngIf="showSuccess" class="alert alert-success" role="alert"> Added
             </div>
         </form>
 

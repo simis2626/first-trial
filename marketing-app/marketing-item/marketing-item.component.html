@@ -17,7 +17,7 @@
             <div>
                 <small>Date:</small>
             </div>
-            <div class="text-capitalize">{{attempt.dateAdded}}</div>
+            <div class="text-capitalize">{{attempt.dateAdded | date:"dd/MM/yyyy"}}</div>
             <div>
                 <div>
                     <small>Comments:</small>
@@ -28,7 +28,7 @@
                 <div>
                     <small>Clients Referred:</small>
                 </div>
-                <div> {{attempt.clientsReferred}}</div>
+                <div *ngFor="let client of attempt.clientsReferred"> {{client}}</div>
 
             </div>
         </dl>
@@ -39,7 +39,7 @@
                 <small>Consultant:</small>
             </div>
             <div class="text-capitalize">{{attempt.EC}}</div>
-            <div *ngIf="attempt.followUpRequired">Follow up Required by {{attempt.followUpDate}}
+            <div *ngIf="attempt.followUpRequired">Follow up Required by {{attempt.followUpDate | date:"dd/MM/yyyy"}}
             </div>
         </dl>
         <div class="pull-right">

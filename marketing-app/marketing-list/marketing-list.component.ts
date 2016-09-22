@@ -92,6 +92,7 @@ export class AttemptList implements OnInit {
 
     }
 
+    public showAddForm: boolean = false;
     changeClass(empId: string) {
         for (let i = 0; i < this.attemptClasses.length; i++) {
             if (this.attemptClasses[i].id == empId) {
@@ -101,5 +102,35 @@ export class AttemptList implements OnInit {
 
         }
     }
+
+    attemptAdded(event) {
+
+        this.attempts.unshift(event.attempt);
+        setTimeout(()=> {
+            let val = '{"id":"' + event.attempt._id + '","moveClass":"true"}';
+
+            this.attempts.push(JSON.parse(val));
+            document.getElementById("attempt" + event.attempt._id).scrollIntoView(true);
+        }, 100);
+
+
+    }
+
+    showAddForms() {
+        this.showAddForm = true;
+        setTimeout(()=> {
+            document.getElementById("attForm").scrollIntoView(true);
+        }, 50);
+
+    }
+
+    hideAddForms() {
+
+        setTimeout(()=> {
+            this.showAddForm = false;
+        }, 1000);
+
+    }
+
 
 }
