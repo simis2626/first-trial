@@ -9,7 +9,7 @@
         <span class="sr-only"></span>
     </div>
 </div>
-<li *ngIf="!deleting" class="list-group-item container-fluid">
+<li *ngIf="!deleting" class="list-group-item container-fluid frmHidden" [class.frmShow]="transitionIn">
     <div class="col-md-6 pull-left">
 
         <dl class="dl-horizontal pull-left">

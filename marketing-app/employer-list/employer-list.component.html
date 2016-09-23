@@ -1,9 +1,22 @@
-<div class="panel panel-default">
+<div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
     <div class="panel-heading">Employers</div>
     <div class="panel-heading">
         <button class="btn btn-primary" type="button" (click)="showAddForms()">Add Employer</button>
-        <label for="searchfilter"></label> <input id="searchfilter" type="search">
-        <button class="btn btn-default" type="button">Search</button>
+        <span style="float: right;"><label for="searchfilter">Search by</label>
+        <span class="dropdown">
+            <button class="btn btn-default dropdown-toggle text-capitalize" type="button" id="dropdownMenu1"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{searchType}}
+                <span class="caret"></span>
+            </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a (click)="setSearchType('suburb')">Suburb</a></li>
+            <li><a (click)="setSearchType('name')">Name</a></li>
+        </ul>
+            </span>
+        <input id="searchfilter" type="search" (keyup)="searchEmployers($event)">
+        </span>
+        <!--<button class="btn btn-default" type="button">Search</button>-->
 
     </div>
 

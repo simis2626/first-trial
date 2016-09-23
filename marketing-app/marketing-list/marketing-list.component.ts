@@ -22,7 +22,7 @@ export class AttemptList implements OnInit {
             employer => {
                 this.ready = false;
                 this.employer = employer;
-                this.getAttempts();
+                this.getAttempts().then((resolve)=>this.moveClass());
             }
         );
 
@@ -31,21 +31,23 @@ export class AttemptList implements OnInit {
     checkAttempt;
     ngOnInit() {
         this.employer = this.employerProvider.getSelectedEmployer();
-        this.getAttempts();
         this.attemptClasses = [];
-        this.checkAttempt = setInterval(()=> {
-            if (this.attempts) {
+
+        this.getAttempts().then(()=> {
+            this.moveClass();
 
 
-                for (let i = 0; i < this.attempts.length; i++) {
-                    let val = '{"id":"' + this.attempts[i]._id + '","moveClass":"true"}';
+        });
+    }
 
-                    this.attemptClasses.push(JSON.parse(val));
-                }
-                this.ready = true;
-                clearInterval(this.checkAttempt);
-            }
-        }, 500);
+    moveClass() {
+        this.attemptClasses = [];
+        for (let i = 0; i < this.attempts.length; i++) {
+            let val = '{"id":"' + this.attempts[i]._id + '","moveClass":"true"}';
+
+            this.attemptClasses.push(JSON.parse(val));
+        }
+        this.ready = true;
     }
 
 
@@ -56,16 +58,16 @@ export class AttemptList implements OnInit {
     private attempts: Attempt[];
 
 
-    getAttempts() {
-
-        setTimeout(()=> {
+    getAttempts(): Promise<boolean> {
+        return new Promise((resolve)=> {
 
                 this.attemptProvider.getAttempts(this.employer._id)
-                    .subscribe(attempts => this.attempts = attempts);
-                setTimeout(()=>this.ready = true, 2000);
+                    .subscribe(attempts => {
+                        this.attempts = attempts.reverse();
+                        resolve(true);
+                    });
+        });
 
-            }
-            , 50)
 
 
     }
@@ -106,12 +108,13 @@ export class AttemptList implements OnInit {
     attemptAdded(event) {
 
         this.attempts.unshift(event.attempt);
+        console.log(event.attempt);
         setTimeout(()=> {
             let val = '{"id":"' + event.attempt._id + '","moveClass":"true"}';
 
             this.attempts.push(JSON.parse(val));
-            document.getElementById("attempt" + event.attempt._id).scrollIntoView(true);
-        }, 100);
+            document.getElementById("att" + event.attempt._id).scrollIntoView(true);
+        }, 10000);
 
 
     }

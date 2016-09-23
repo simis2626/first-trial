@@ -15,10 +15,12 @@ export class EmployerList implements OnInit {
     constructor(private employerProvider: EmployerProvider) {
     }
 
+    public masterEmployers: Employer[];
     showAddForm: boolean = false;
     public selectedEmployer: Employer;
     employers: Employer[];
     empClasses;
+    public searchType: string;
     private ready: boolean = false;
     public employerSelected: boolean = false;
     checkEmployer;
@@ -27,15 +29,27 @@ export class EmployerList implements OnInit {
     getEmployers() {
 
         this.employerProvider.getEmployers()
-            .subscribe(employers => this.employers = employers);
-
-
+            .subscribe(employers => {
+                this.employers = employers.sort(function (a, b) {
+                    var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
+                    if (nameA < nameB) //sort string ascending
+                        return -1;
+                    if (nameA > nameB)
+                        return 1;
+                    return 0; //default return value (no sorting)
+                });
+                this.masterEmployers = this.employers;
+            })
     }
+
+
+
 
 
     ngOnInit() {
         this.empClasses = [];
         this.getEmployers();
+        this.setSearchType('suburb');
 
         this.checkEmployer = setInterval(()=> {
             if (this.employers) {
@@ -110,6 +124,46 @@ export class EmployerList implements OnInit {
 
 
         }
+
+    setSearchType(type: string) {
+        this.searchType = type;
+
+    }
+
+
+    searchEmployers(event) {
+        var searchString = event.target.value.toLowerCase();
+        if (true) {
+            var filteredEmployers: Employer[] = this.masterEmployers.filter((ele, ind, arr)=> {
+                switch (this.searchType) {
+                    case 'suburb':
+                        if (ele.address.suburb.toLowerCase().indexOf(searchString) >= 0) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+
+                    case 'name':
+                        if (ele.name.toLowerCase().indexOf(searchString) >= 0) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+
+                }
+
+
+            });
+
+            this.employers = filteredEmployers;
+
+        }
+
+    }
+
+
 
 
 }

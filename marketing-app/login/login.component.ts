@@ -30,18 +30,22 @@ export class LoginComponent implements OnInit {
     public showPending: boolean = false;
     public remember: boolean = false;
     public showSavedLogin: boolean = false;
-    getConsultants() {
 
-        this.consultantProvider.getConsultants()
-            .subscribe(consultants => this.consultants = consultants);
+    getConsultants(): Promise<boolean> {
+        return new Promise((resolve)=> {
+            this.consultantProvider.getConsultants()
+                .subscribe(consultants => {
+                    this.consultants = consultants;
+                    resolve(true);
+                });
 
-
+        });
     }
 
 
     ngOnInit() {
         this.classModal = "modal fade in";
-        this.getConsultants();
+        this.getConsultants().then(()=> {
         this.authProvider.checkToken().then((loggedIn)=> {
             if (loggedIn) {
                 this.showSavedLogin = true;
@@ -52,6 +56,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['./Application']);
                 }, 800);
             }
+        });
         });
         this.authStatus = false;
         this.showSuccess = false;
