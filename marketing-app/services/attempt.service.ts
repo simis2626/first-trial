@@ -42,6 +42,17 @@ export class AttemptProvider {
 
     }
 
+    public getAttemptsByConsultant(consultantUserID: string): Observable<Attempt[]> {
+
+        this.customUrl = this.attemptsUrl + '/consultant/' + consultantUserID;
+
+
+        //noinspection TypeScriptUnresolvedFunction
+        return this.http.get(this.customUrl).map(this.extractData);
+
+
+    }
+
     deleteAttempt(attemptId: string): Observable<Response> {
 
         let delAtt = this.attemptsUrl + "/" + attemptId;

@@ -6,6 +6,7 @@ import {ConsultantProvider} from "../services/consultant.service";
 import {Consultant} from "../objClass/consultant";
 import {AttemptProvider} from "../services/attempt.service";
 import {Attempt} from "../objClass/attempt";
+import {EmployerProvider} from "../services/employer.service";
 
 
 @Component({
@@ -16,31 +17,47 @@ import {Attempt} from "../objClass/attempt";
 
 })
 export class MarketingAuditComponent implements OnInit {
-
+    date: Date;
+    today: Date;
+    employerProvider: EmployerProvider;
     consultantProvider: ConsultantProvider;
     marketingProvider: AttemptProvider;
     consultants: Consultant[];
+    attemptsOriginal: Attempt[];
     selectedConsultant: Consultant;
     ready: boolean = false;
+    blank: boolean = true;
     attempts: Attempt[];
 
-    constructor(consultantProvider: ConsultantProvider, marketingProvider: AttemptProvider) {
+    constructor(consultantProvider: ConsultantProvider, marketingProvider: AttemptProvider, employerProvider: EmployerProvider) {
         this.consultantProvider = consultantProvider;
         this.marketingProvider = marketingProvider;
+        this.employerProvider = employerProvider;
     }
 
 
     ngOnInit() {
         this.consultantProvider.getConsultants().subscribe((data)=>this.consultants = data);
-
+        this.today = new Date();
     }
 
 
     setSelectedConsultant(selectedConsultant: Consultant) {
+        this.blank = false;
+        this.ready = false;
         this.selectedConsultant = selectedConsultant;
-        this.marketingProvider.getAttempts("57dfcbe4c4667e05180f4934")
+        this.marketingProvider.getAttemptsByConsultant(selectedConsultant.userId)
             .subscribe((data)=> {
-                this.attempts = data;
+                this.attempts = data.reverse();
+                this.attemptsOriginal = this.attempts;
+
+                for (let i = 0; i < this.attempts.length; i++) {
+                    console.log(i);
+                    this.attempts[i].employerName = this.employerProvider.getEmployerName(this.attempts[i].employerId);
+                    console.log(this.attempts[i].employerName);
+                }
+
+
                 this.ready = true;
 
             });
@@ -53,6 +70,24 @@ export class MarketingAuditComponent implements OnInit {
         } else {
             return "Select a Consultant";
         }
+    }
+
+    doFilter(event) {
+        this.date = event.target.valueAsDate;
+        console.log(this.date);
+        this.attempts = this.attemptsOriginal.filter((ele, ind, arr)=> {
+            console.log(ele.dateAdded);
+            if (ele.dateAdded == this.date) {
+                return true;
+
+            } else {
+                return false;
+            }
+
+
+        })
+
+
     }
 
 

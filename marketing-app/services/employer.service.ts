@@ -17,12 +17,13 @@ export class EmployerProvider {
 
     }
 
+    employers: Employer[];
     options: RequestOptions;
     headers: Headers;
 
     @Output() selectedEmployerChanged = new EventEmitter();
 
-
+    private firstTime: boolean = true;
     private employersUrl = '/api/employers';
 
     private selectedEmployer = new Subject<Employer>();
@@ -37,9 +38,30 @@ export class EmployerProvider {
 
 
     public getEmployers(): Observable<Employer[]> {
-
+        if (this.firstTime) {
+            this.http.get(this.employersUrl).map(this.extractData).subscribe((data)=> {
+                    this.employers = data;
+                    this.firstTime = false;
+                }
+            );
+        }
         //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.employersUrl).map(this.extractData);
+
+
+    }
+
+    getEmployerName(employerId: string): string {
+        let filteredEmployers: Employer[] = this.employers.filter((employer, ndx, arr)=> {
+            if (employer._id = employerId) {
+                return true;
+            } else {
+                return false;
+            }
+
+        });
+
+        return filteredEmployers[0].name;
 
 
     }

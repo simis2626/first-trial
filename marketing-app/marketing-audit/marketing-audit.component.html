@@ -1,4 +1,4 @@
-<div class="dropdown">
+<span class="dropdown">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="true">
         {{getName()}}
@@ -8,15 +8,17 @@
         <li (click)="setSelectedConsultant(consultant)" *ngFor="let consultant of consultants; let ndx = index"><a>{{consultant.name}}</a>
         </li>
     </ul>
-</div>
+</span>
+<span><input type="date" class="form-control" id="marketing-date" [valueAsDate]="date"
+             (change)="doFilter($event)"> </span>
+
+
 <div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
     <div class="panel-heading">Marketing completed by {{getName()}}</div>
-    <div class="panel-heading" style="height: auto">
-
-    </div>
-
     <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
-        <ul class="list-group">
+        <ul class="list-group" [ngSwitch]="blank">
+            <div *ngSwitchCase="true">No Consultant Selected</div>
+            <span *ngSwitchCase="false">
             <div [ngSwitch]="ready">
             <span *ngSwitchCase="true"><attempt *ngFor="let attempt of attempts; let ndx = index"
                                                 [seqNumber]="ndx+1"
@@ -24,7 +26,7 @@
             ></attempt>
             </span><span *ngSwitchDefault class="container-fluid center-block"><img src="/public/loading.gif"></span>
 
-            </div>
+            </div></span>
         </ul>
     </div>
 

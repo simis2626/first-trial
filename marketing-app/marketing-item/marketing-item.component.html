@@ -13,7 +13,10 @@
     <div class="col-md-6 pull-left">
 
         <dl class="dl-horizontal pull-left">
-
+            <div *ngIf="attempt.employerName">
+                <small>Employer:</small>
+            </div>
+            <div *ngIf="attempt.employerName" class="text-capitalize">{{attempt.employerName}}</div>
             <div>
                 <small>Date:</small>
             </div>

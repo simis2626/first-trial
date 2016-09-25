@@ -159,6 +159,20 @@ router.get('/attempts/:employerID', function (req, res, next) {
         })
     }
 );
+
+router.get('/attempts/consultant/:consultantUserID', function (req, res, next) {
+        var url = 'mongodb://10.3.0.47:27017/marketing';
+        mongo1.connect(url, function (err, db) {
+            var searchJSON = {EC: req.params.consultantUserID};
+            db.collection('attempts').find(searchJSON).toArray(function (err, docs) {
+                res.setHeader('Content-Type', 'application/json');
+                res.send(docs);
+            })
+        })
+    }
+);
+
+
 router.get('/consultants', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/marketing';
         mongo1.connect(url, function (err, db) {

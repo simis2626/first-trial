@@ -10,6 +10,7 @@ export class Attempt {
                 public clientsReferred: string[],
                 public employerId: string,
                 public _id?: string,
-                public followUpDate?: Date) {
+                public followUpDate?: Date,
+                public employerName?: string) {
     }
 }
