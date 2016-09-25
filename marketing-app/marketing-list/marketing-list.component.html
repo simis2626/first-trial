@@ -1,5 +1,8 @@
 <div class="panel panel-default" *ngIf="employer">
-    <div class="panel-heading">Marketing Activity for <span class="text-capitalize">{{employer.name}}</span></div>
+    <div class="panel-heading">Marketing Activity for <span class="text-capitalize">{{employer.name}}</span><span
+            style="float: right"> <button (click)="hideMarketinga()" type="button" class="close"
+                                          aria-label="Close"><span
+            aria-hidden="true">&times;</span></button></span></div>
     <div class="panel-heading">
         <button class="btn btn-primary" type="button" (click)="showAddForms()">Add Marketing</button>
     </div>

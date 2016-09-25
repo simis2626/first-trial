@@ -21,11 +21,12 @@ import {AuthGuard} from "../services/auth.guard";
 import {FormsModule} from "@angular/forms";
 import {EmployerFormComponent} from "../forms/employer-form.component";
 import {AttemptFormComponent} from "../forms/attempt-form.component";
+import {MarketingAuditComponent} from "../marketing-audit/marketing-audit.component";
 
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule, routing, FormsModule],
-    declarations: [AttemptFormComponent, EmployerFormComponent, ConfirmButtonComponent, AppComponent, AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, AttemptComponent, AttemptList],
+    declarations: [AttemptFormComponent, MarketingAuditComponent, EmployerFormComponent, ConfirmButtonComponent, AppComponent, AuthedAppComponent, EmployerComponent, EmployerList, LoginComponent, AttemptComponent, AttemptList],
     bootstrap: [AppComponent],
     providers: [AuthGuard, AuthProvider, EmployerProvider, AttemptProvider, ConsultantProvider, appRoutingProviders]
 })

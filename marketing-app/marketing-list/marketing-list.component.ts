@@ -4,7 +4,7 @@
 /**
  * Created by Andromeda on 19/08/2016.
  */
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {Attempt} from "../objClass/attempt";
 import {AttemptProvider} from "../services/attempt.service";
 import {Employer} from "../objClass/employer";
@@ -28,6 +28,7 @@ export class AttemptList implements OnInit {
 
     }
 
+    @Output() hideMarketing = new EventEmitter();
     checkAttempt;
     ngOnInit() {
         this.employer = this.employerProvider.getSelectedEmployer();
@@ -135,5 +136,8 @@ export class AttemptList implements OnInit {
 
     }
 
+    hideMarketinga() {
+        this.hideMarketing.emit();
+    }
 
 }

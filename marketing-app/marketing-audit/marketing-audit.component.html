@@ -1,0 +1,32 @@
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="true">
+        {{getName()}}
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li (click)="setSelectedConsultant(consultant)" *ngFor="let consultant of consultants; let ndx = index"><a>{{consultant.name}}</a>
+        </li>
+    </ul>
+</div>
+<div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
+    <div class="panel-heading">Marketing completed by {{getName()}}</div>
+    <div class="panel-heading" style="height: auto">
+
+    </div>
+
+    <div class="panel-body" style=" height: 500px; overflow: scroll; overflow-x: hidden">
+        <ul class="list-group">
+            <div [ngSwitch]="ready">
+            <span *ngSwitchCase="true"><attempt *ngFor="let attempt of attempts; let ndx = index"
+                                                [seqNumber]="ndx+1"
+                                                [attempt]="attempt" id="att{{attempt._id}}"
+            ></attempt>
+            </span><span *ngSwitchDefault class="container-fluid center-block"><img src="/public/loading.gif"></span>
+
+            </div>
+        </ul>
+    </div>
+
+
+</div>
