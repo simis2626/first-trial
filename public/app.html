@@ -17,13 +17,7 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
-        System.import('app').catch(function (err) {
-            console.error(err);
-        });
-    </script>
+
 
 
     <!-- Latest compiled and minified CSS -->
@@ -88,7 +82,13 @@
 <root-component style="height: 100%">
     <div class="text-center"><br><img src="/public/loading.gif"></div>
 </root-component>
-
+<!-- 2. Configure SystemJS -->
+<script src="systemjs.config.js"></script>
+<script>
+    System.import('app').catch(function (err) {
+        console.error(err);
+    });
+</script>
 
 </body>
 </html>

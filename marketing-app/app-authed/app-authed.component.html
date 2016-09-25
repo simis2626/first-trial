@@ -9,13 +9,6 @@
         </div>
 
     </div>
-    <div class="row"><!-- Status -->
-        <div class="col-md-1"></div>
-        <div class="col-md-6">
-            <p *ngIf="status">This is a status</p>
-        </div>
-
-    </div>
     <div class="row"> <!-- Selector -->
         <div class="col-md-1"></div>
         <div class="col-md-8">
@@ -29,8 +22,16 @@
                 Seeker
             </button>
         </div>
+        <div class="row" *ngIf="status"><!-- Status -->
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="alert alert-info" role="alert"><a routerLinkActive="true" routerLink="/ConfirmConsultants">Consultants
+                    are awaiting approval. Click to Review</a></div>
+            </div>
+
+        </div>
         <!-- Gap -->
-        <div class="col-md-12"></div>
+        <div *ngIf="!status" class="col-md-12"></div>
 
 
     </div>

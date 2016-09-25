@@ -30,10 +30,14 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <a routerLink="/Signup" routerLinkActive="active">
+                        <button class="btn btn-default" type="button" style="float: left;">Request Access</button>
+                    </a>
                     <input type="checkbox" id="rememberme" name="rememberme" value="true"
                            (click)="toggleRememberme()"><label for="rememberme">Remember me on this computer.</label>
                     <a href="/" class="btn btn-default">Close</a>
-                    <a class="btn btn-success" (click)="checkPassword(pwd.value)">Login</a>
+                    <a class="btn btn-success" (click)="checkPassword(pwd.value)">Login</a><span
+                        style="clear: both;"></span>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

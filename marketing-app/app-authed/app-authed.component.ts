@@ -22,6 +22,7 @@ export class AuthedAppComponent {
 
     }
 
+    status: boolean = false;
     consultantProvider: ConsultantProvider;
     selectedHeader;
     activeClass = "btn btn-primary active";
@@ -42,6 +43,14 @@ export class AuthedAppComponent {
         this.subTitle = "for " + this.consultantProvider.selectedConsultant.name;
         this.activeButton = 1;
         this.showMarketing = false;
+        if (this.consultantProvider.selectedConsultant.admin) {
+            this.consultantProvider.checkForApprovals().then((num)=> {
+                if (num > 0) {
+                    this.status = true;
+                }
+
+            });
+        }
     }
 
 

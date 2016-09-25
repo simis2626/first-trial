@@ -172,11 +172,71 @@ router.get('/attempts/consultant/:consultantUserID', function (req, res, next) {
     }
 );
 
+router.post('/consultants', function (req, res, next) {
+
+        var content = '';
+
+        req.on('data', function (data) {
+            // Append data.
+            content += data;
+        });
+
+        req.on('end', function () {
+            var data = JSON.parse(content);
+            //data = JSON.parse(data);
+            var url = 'mongodb://10.3.0.47:27017/marketing';
+            mongo1.connect(url, function (err, db) {
+                db.collection('consultants').insertOne(data.consultant, function (err, docs) {
+                    res.statusCode = 200;
+                    res.setHeader('Content-Type', 'application/json');
+                    res.send('{"consultant":' + JSON.stringify(docs.ops[0]) + '}');
+                })
+
+            })
+        });
+    }
+);
 
 router.get('/consultants', function (req, res, next) {
         var url = 'mongodb://10.3.0.47:27017/marketing';
         mongo1.connect(url, function (err, db) {
-            db.collection('consultants').find().toArray(function (err, docs) {
+            db.collection('consultants').find({approved: true}).toArray(function (err, docs) {
+                res.setHeader('Content-Type', 'application/json');
+                res.send(docs);
+            })
+        })
+    }
+);
+router.put('/consultants', function (req, res, next) {
+        var url = 'mongodb://10.3.0.47:27017/marketing';
+        var content = '';
+
+        req.on('data', function (data) {
+            // Append data.
+            content += data;
+        });
+
+        req.on('end', function () {
+
+
+            var data = JSON.parse(content);
+            console.log(data);
+
+            var findObjectId = new mongoObject.ObjectID(data.consultantId);
+            mongo1.connect(url, function (err, db) {
+                db.collection('consultants').updateOne({_id: findObjectId}, {$set: {'approved': true}}, function (err, docs) {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.send(docs);
+                })
+            })
+        });
+    }
+);
+
+router.get('/consultants/unapproved', function (req, res, next) {
+        var url = 'mongodb://10.3.0.47:27017/marketing';
+        mongo1.connect(url, function (err, db) {
+            db.collection('consultants').find({approved: false}).toArray(function (err, docs) {
                 res.setHeader('Content-Type', 'application/json');
                 res.send(docs);
             })
@@ -247,7 +307,7 @@ router.post('/auth', function (req, res, next) {
 
                     var findObjectId = new mongoObject.ObjectID(data.consultant._id);
                     var insertJSON = JSON.parse('{"consultant_Id":"' + findObjectId + '","authToken":"' + authToken + '"}');
-                    db.collection('authTokens').insertOne(insertJSON, function (err, docs) {
+                    db.collection('authTokens').insertOne(JSON.stringify(insertJSON), function (err, docs) {
 
                     });
 
@@ -260,6 +320,36 @@ router.post('/auth', function (req, res, next) {
 
         })
     });
+    }
+);
+router.put('/auth', function (req, res, next) {
+
+        var content = '';
+
+        req.on('data', function (data) {
+            // Append data.
+            content += data;
+        });
+
+        req.on('end', function () {
+            // Assuming, we're receiving JSON, parse the string into a JSON object to return.
+            var data = JSON.parse(content);
+            var url = 'mongodb://10.3.0.47:27017/marketing';
+
+            var checkval = data.password;
+            mongo1.connect(url, function (err, db) {
+                var searchJSON = JSON.parse('{"password":"' + checkval + '","consultantId":"' + data.consultantId + '"}');
+                console.log(searchJSON);
+
+                db.collection('auths').insertOne(searchJSON, {}, function (err, docs) {
+                    console.log(err);
+                    res.statusCode = 200;
+                    res.send('{"SuccessfulAuth":true}')
+                })
+
+
+            })
+        });
     }
 );
 

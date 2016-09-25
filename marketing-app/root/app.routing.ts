@@ -16,12 +16,19 @@ const appRoutes: Routes = [
     },
     {
         path: 'Signup',
-        component: LoginComponent,
+        loadChildren: '/app/signup/signup.module#SignupModule',
         data: {
             title: 'ORS Marketing Tracker - Login'
         }
     },
-
+    {
+        path: 'ConfirmConsultants',
+        canActivate: [AuthGuard],
+        loadChildren: '/app/confirm-consultants/confirm-consultants.component#ConfirmConsultantsModule',
+        data: {
+            title: 'ORS Marketing Tracker - Login'
+        }
+    },
     {
         path: 'Login',
         component: LoginComponent,
