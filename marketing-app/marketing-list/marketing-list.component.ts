@@ -113,9 +113,9 @@ export class AttemptList implements OnInit {
         setTimeout(()=> {
             let val = '{"id":"' + event.attempt._id + '","moveClass":"true"}';
 
-            this.attempts.push(JSON.parse(val));
+            this.attemptClasses.push(JSON.parse(val));
             document.getElementById("att" + event.attempt._id).scrollIntoView(true);
-        }, 10000);
+        }, 800);
 
 
     }
