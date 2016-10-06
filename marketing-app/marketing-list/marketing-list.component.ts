@@ -114,8 +114,8 @@ export class AttemptList implements OnInit {
             let val = '{"id":"' + event.attempt._id + '","moveClass":"true"}';
 
             this.attemptClasses.push(JSON.parse(val));
-            document.getElementById("att" + event.attempt._id).scrollIntoView(true);
-        }, 800);
+            //document.getElementById("att" + event.attempt._id).scrollIntoView(true);
+        }, 1400);
 
 
     }
