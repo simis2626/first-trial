@@ -23,7 +23,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json({type: 'application/*+json'}));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -51,7 +51,7 @@ app.use('/systemjs.config.js', function (req, res) {
 });
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
 app.use('/app', express.static(__dirname + '/marketing-app'));
-
+app.use('/messaging', express.static(__dirname + '/messaging'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
